@@ -13,9 +13,11 @@ p, h1, h2 {
     color: var(--white);
 }
 
-a {
+a, li {
     color: var(--white);
     text-decoration: none;
+    list-style: none;
+    font-family: "Roboto", sans-serif;
 }
 
 a, p, h1, h2 {
@@ -34,6 +36,7 @@ main {
     margin: 0 100px 0 100px;
 }
 
+/* ----- Use theese classes in html file ----- */
 /* Drop shadow for text that will be over an image */
 .ds-txt {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
@@ -46,3 +49,11 @@ main {
 .hover:hover {
     transform: scale(1.1);
 }
+
+/* .flex-row-center {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    max-width: 1440px;
+} */
