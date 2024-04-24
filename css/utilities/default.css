@@ -1,0 +1,32 @@
+:root {
+    --dark-grey: #181818;
+    --white: #FFFFFF;
+    --footer-grey: #222222;
+    --faded-light-grey-20: rgba(228, 228, 228, 0.20);
+    --faded-light-grey-75: rgba(228, 228, 228, 0.75);
+    --faded-dark-grey-20: rgba(24, 24, 24, 0.20);
+    --faded-dark-grey-60: rgba(24, 24, 24, 0.60);
+}
+
+
+p, h1, h2 {
+    color: var(--white);
+}
+
+a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+a, p, h1, h2 {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--dark-grey);
+}
+
+main {
+    margin: 0 100px 0 100px;
+}
