@@ -9,11 +9,13 @@
 }
 
 
-p, h1, h2 {
+h1, h2 {
     color: var(--white);
+    font-family: "Inika", serif;
+    font-weight: 700;
 }
 
-a {
+a, p {
     color: var(--white);
     text-decoration: none;
     font-family: "Roboto", sans-serif;
@@ -30,15 +32,39 @@ body {
 }
 
 main {
-    display: flex;
-    justify-content: center;
-    margin: 0 100px 0 100px;
+    margin: 100px;
 }
 
-/* ----- Use theese classes in html file ----- */
+
+
+
+/* ----- CLASSES FOR HTML FILE ----- */
+
 /* Drop shadow for text that will be over an image */
 .ds-txt {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
+}
+
+/* paddin bottom */
+.pb-35 {
+    padding-bottom: 35px;
+}
+
+.gap-35 {
+    gap: 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Hover */
+.hover-scale {
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.hover-scale:hover {
+    transform: scale(1.1);
 }
 
 .hover {
@@ -46,12 +72,12 @@ main {
     cursor: pointer;
 }
 
-.hover:hover {
-    transform: scale(1.1);
-}
 
 .flex-center {
     width: 100%;
     display: flex;
     justify-content: center;
 }
+
+
+

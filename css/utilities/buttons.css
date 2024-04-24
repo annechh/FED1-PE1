@@ -1,0 +1,24 @@
+
+.btn, .btn-img {
+    font-family: "Roboto", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+    padding: 15px 35px;
+    border-radius: 30px;
+}
+
+.btn {
+    background: none;
+    border: 1px solid var(--faded-light-grey-20)
+}
+
+.btn-img {
+    background: var(--faded-dark-grey-20);
+    border: 1px solid var(--faded-light-grey-75)
+}
+
+.btn:hover, .btn-img:hover {
+    color: black;
+    background: var(--faded-light-grey-75);
+}
