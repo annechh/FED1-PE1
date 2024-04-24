@@ -13,10 +13,9 @@ p, h1, h2 {
     color: var(--white);
 }
 
-a, li {
+a {
     color: var(--white);
     text-decoration: none;
-    list-style: none;
     font-family: "Roboto", sans-serif;
 }
 
@@ -44,16 +43,15 @@ main {
 
 .hover {
     transition: 0.3s ease;
+    cursor: pointer;
 }
 
 .hover:hover {
     transform: scale(1.1);
 }
 
-/* .flex-row-center {
+.flex-center {
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
     justify-content: center;
-    max-width: 1440px;
-} */
+}
