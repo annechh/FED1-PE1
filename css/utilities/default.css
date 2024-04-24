@@ -31,6 +31,10 @@ main {
     margin: 0 100px 0 100px;
 }
 
+
+
+/* --------- Reusable classes --------- */
+
 /* Drop shadow for text that will be over an image */
 .ds-txt {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
