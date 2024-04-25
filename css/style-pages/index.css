@@ -136,4 +136,18 @@
     text-align: center;
 }
 
+.carousel-nav {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    width: 100px;
+}
 
+.carousel-indicator {
+    padding: 5px;
+    border-radius: 100%;
+    border: none;
+    background: white;
+    cursor: pointer;
+}
