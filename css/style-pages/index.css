@@ -31,14 +31,13 @@
 
 .card-img-container {
     max-width: 390px;
-    height: 224px;
+    max-height: 224px;
     overflow: hidden;
     display: flex;
     justify-content: center;
 }
 
 .card-img-container img{
-    max-width: auto;
     max-height: 100%;
 }
 
@@ -64,15 +63,55 @@
     font-size: 14px;
 }
 
+/* Carousel */
 
-
-/* .carousel {
+.carousel-container {
+    display: flex;
     max-width: 1440px;
-    max-height: 750px;
-    
+    width: 100%;
+    height: 750px;
+    flex-direction: column;
+    overflow: hidden;
 }
-.big-img {
-    background-image: url('/assets/images/IMG_20210927_132933.jpg');
-    background-size: cover;
 
-} */
+.carousel-img {
+    max-width: 100%;
+    height: 750px;
+    display: flex;
+    justify-self: center;
+    object-fit: cover;
+}
+
+.carousel-info {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: flex-end; */
+    justify-content: space-between;
+    max-width: 1440px;
+    width: 100%;
+    height: 750px;
+}
+
+.nav-arrows {
+    max-width: 1440px;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    top: 50%;
+    padding: 0 35px;
+    max-height: 145px;
+    position: relative;
+}
+
+.carousel-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 35px;
+    gap: 35px;
+    justify-content: flex-end;
+}
+
+
