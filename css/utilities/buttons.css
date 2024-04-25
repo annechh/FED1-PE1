@@ -22,3 +22,19 @@
     color: black;
     background: var(--faded-light-grey-75);
 }
+
+.btn-arrow {
+    border-radius: 100%;
+    background: var(--faded-dark-grey-20);
+    z-index: 2;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-arrow:hover {
+    background: var(--faded-dark-grey-60);
+}
+
+.btn, .btn-img, .btn-arrow {
+    cursor: pointer;
+}
