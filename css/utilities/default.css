@@ -50,6 +50,14 @@ main {
     padding-bottom: 35px;
 }
 
+.px-35 {
+    padding: 35px;
+}
+
+.py-35 {
+    padding: 35px;
+}
+
 .gap-35 {
     gap: 35px;
     display: flex;
@@ -79,5 +87,16 @@ main {
     justify-content: center;
 }
 
+.flex-col {
+    flex-direction: column;
+}
 
+.flex-row {
+    flex-direction: row;
+}
 
+.absolute {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+}
