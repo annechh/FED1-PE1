@@ -45,18 +45,20 @@ main {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.75);
 }
 
-/* paddin bottom */
-.pb-35 {
+/* Padding */
+.pb {
     padding-bottom: 35px;
 }
 
-.px-35 {
-    padding: 35px;
+.px {
+    padding: 0 35px;
 }
 
-.py-35 {
-    padding: 35px;
+.py {
+    padding: 35px 0;
 }
+
+/* Gap */
 
 .gap-35 {
     gap: 35px;
@@ -80,11 +82,16 @@ main {
     cursor: pointer;
 }
 
+/* Flex */
 
 .flex-center {
-    width: 100%;
+    max-width: 100%;
     display: flex;
     justify-content: center;
+}
+
+.flex {
+    display: flex;
 }
 
 .flex-col {
@@ -94,6 +101,21 @@ main {
 .flex-row {
     flex-direction: row;
 }
+
+.justify-center{
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.items-center {
+    align-items: center;
+}
+
+
+/* Absolute */
 
 .absolute {
     position: absolute;
