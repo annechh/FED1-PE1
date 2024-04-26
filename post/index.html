@@ -12,13 +12,68 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="/css/style-pages/post-index.css">
+
     <title>Blog Post Public Page</title>
 </head>
 <body>
-    <header></header>
+    <header class="flex-center flex-col">
+        <nav class="absolute">
+            <img src="/assets/images/Shira-logo-text.png" class="hover-scale" alt="Logo of Shira">
+            <div>
+                <a href="/index.html" class="ds-txt hover-scale">Home</a>
+                <a href="" class="ds-txt hover-scale">Login</a> 
+            </div>
+        </nav>
+        <div class="blog-post-img-wrapper">
+            <div class="big-img-shadow"></div>
+            <div class="post-img-container" id="spesificBlogImg">
+                <img src="../assets/images/IMG_20210927_132933.jpg" alt="">
+            </div>
+        </div>
+    </header>
 
-    <main></main>
 
-    <footer></footer>
+
+
+    <main class="flex-center">
+        <section class="blog-content-wrapper flex flex-col">
+            <div class="blog-content flex flex-col gap px">
+                <div>
+                    <h1 id="spesificBlogTitle">A Sunset Fall Hike: Shira and Anne on the Mountain's </h1>
+                </div>
+                <div>
+                    <p class="written-by-date">Posted: <span id="spesificBlogDate">date here</span></p>
+                    <p class="written-by-date">Written by: <span id="spesificBlogWriter">name here</span></p>
+                </div>
+                <div class="blog-text-wrapper flex flex-col gap" id="spesificBlogText">
+                    <p class="blog-text">Hey there, friends! Join me for a chill evening walk up Ramsdalsheia mountain, where the sky's painted in warm orange and red tones, with fluffy clouds floating against a clear blue backdrop. It's the perfect time for a laid-back adventure.</p>
+                    <p class="blog-text">Shira's leading the way, tail wagging with excitement. We're walking on a path free of leaves, just smooth ground under our feet. The air's calm, hardly any breeze to rustle the grass.</p>
+                    <p class="blog-text">The sunset's casting a cozy glow over everything. Shira stops now and then, taking in the view with me. Her fur's all lit up by the sunset, making for a pretty sight.</p>
+                    <p class="blog-text">We're not in a rush, just enjoying the peace of the mountains. The only sounds are our footsteps and the occasional bird chirping overhead. It's moments like these that make you appreciate the simple things in life.</p>
+                    <p class="blog-text">As the sun sets, painting the sky in fiery colors, we start heading back down. The colors linger in the sky, giving us a beautiful send-off. We're carrying the memory of this chill stroll with us, a reminder to slow down and soak in the beauty around us.
+                        So here's to more relaxed adventures, my pals. Until next time, keep it easy, keep it chill, and keep enjoying the great outdoors. Later, folks!</p>
+                </div>
+                <div class="btn-container">
+                    <button class="btn">Share post</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+    <footer class="flex-center">
+        <div class="footer-content">
+            <img src="../assets/images/Shira.png" class="hover-scale" alt="A white dog">
+            <div class="links">
+                <a href="#" class="hover-scale">Contact</a>
+                <a href="#" class="hover-scale">About Shira</a>
+                <a href="#" class="hover-scale">Privacy Policy</a>
+                <a href="#" class="hover-scale">Follow</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
