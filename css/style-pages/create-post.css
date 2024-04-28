@@ -1,0 +1,84 @@
+@import url('../utilities/default.css');
+@import url('../utilities/header.css');
+@import url('../utilities/footer.css');
+@import url('../utilities/buttons.css');
+
+.blog-post-img-wrapper {
+    display: flex;
+    max-width: 1440px;
+    width: 100%;
+    border-bottom: 1px solid var(--faded-light-grey-20);
+}
+
+.post-img-container {
+    display: flex;
+    max-width: 1440px;
+    height: 750px;
+    width: 100%;
+}
+
+.blog-post-img-wrapper img {
+    width: 100%;
+    height: 750px;
+    display: flex;
+    object-fit: cover;
+}
+
+.add-img {
+    position: absolute;
+    max-width: 1440px;
+    width: 100%;
+    height: 750px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-img svg {
+    padding: 65px;
+    background: var(--faded-light-grey-20);
+    border-radius: 100%;
+    fill: white;
+}
+
+.add-img svg:hover {
+    background: var(--faded-light-grey-75);
+    fill: black;
+}
+
+
+
+/* Title, author and blog text */
+
+.blog-content-wrapper {
+    max-width: 845px;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+form div {
+    gap: 10px;
+}
+
+label {
+    color: white;
+    font-size: 20px;
+    font-family: var(--roboto);
+}
+
+textarea {
+    height: 300px;
+    max-width: 845px;
+}
+
+input, textarea {
+    font-family: var(--roboto);
+    padding: 20px;
+    font-size: 20px;
+}
+

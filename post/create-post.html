@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inika:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/style-pages/create-post.css">
+
+    <title>Create new Blog Post</title>
+</head>
+<body>
+    <header class="flex-center flex-col">
+        <nav class="absolute">
+            <img src="/assets/images/Shira-logo-text.png" class="hover-scale" alt="Logo of Shira">
+            <div>
+                <a href="/index.html" class="ds-txt hover-scale">Home</a>
+                <a href="" class="ds-txt hover-scale">Login</a> 
+            </div>
+        </nav>
+        <div class="blog-post-img-wrapper">
+            <div class="big-img-shadow"></div>
+            <div class="post-img-container" id="spesificBlogImg">
+            </div>
+            <div class="add-img">
+                <svg class="hover" id="addImgBtn" xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
+                    <rect x="31.4297" width="7.14286" height="70" rx="3.57143"/>
+                    <rect y="38.5713" width="7.14286" height="70" rx="3.57143" transform="rotate(-90 0 38.5713)" />
+                </svg>
+            </div>
+        </div>
+    </header>
+
+
+
+
+    <main class="flex-center">
+        <div class="blog-content-wrapper flex flex-col">
+            <div class="blog-content flex flex-col gap px">
+                <form action="../post/index.html">
+                    <div class="flex flex-col">
+                        <label>Pawsome title</label>
+                        <input type="text" id="titleField">
+                    </div>
+                    <div class="flex flex-col">
+                        <label>Author</label>
+                        <input type="text" id="authorField">
+                    </div>
+                    <div class="flex flex-col">
+                        <label>Pawsome story</label>
+                        <textarea name="message" id="blogTextField" cols="30" rows="10"></textarea>
+                    </div>       
+                </form>
+            </div>
+        </div>
+    </main>
+
+
+
+
+    <footer class="flex-center">
+        <div class="footer-content">
+            <img src="../assets/images/Shira.png" class="hover-scale" alt="A white dog">
+            <div class="links">
+                <a href="#" class="hover-scale">Contact</a>
+                <a href="#" class="hover-scale">About Shira</a>
+                <a href="#" class="hover-scale">Privacy Policy</a>
+                <a href="#" class="hover-scale">Follow</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
