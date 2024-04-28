@@ -80,5 +80,13 @@ input, textarea {
     font-family: var(--roboto);
     padding: 20px;
     font-size: 20px;
+    background: var(--faded-light-grey-75);
+    font-weight: 400;
 }
 
+.btn-container {
+    margin: 35px 35px 0 35px;
+    display: flex;
+    justify-content: end;
+    gap: 20px;
+}
