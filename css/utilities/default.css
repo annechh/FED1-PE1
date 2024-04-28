@@ -1,4 +1,5 @@
 :root {
+    /* Colors */
     --dark-grey: #181818;
     --white: #FFFFFF;
     --footer-grey: #222222;
@@ -6,12 +7,16 @@
     --faded-light-grey-75: rgba(228, 228, 228, 0.75);
     --faded-dark-grey-20: rgba(24, 24, 24, 0.20);
     --faded-dark-grey-60: rgba(24, 24, 24, 0.60);
+    
+    /* Fonts */
+    --roboto: "Roboto", sans-serif;
+    --inika: "Inika", serif;
 }
 
 
 h1, h2 {
     color: var(--white);
-    font-family: "Inika", serif;
+    font-family: var(--inika);
     font-weight: 700;
 }
 
@@ -22,7 +27,7 @@ h1 {
 a, p {
     color: var(--white);
     text-decoration: none;
-    font-family: "Roboto", sans-serif;
+    font-family: var(--roboto);
 }
 
 a, p, h1, h2, ul {
@@ -36,7 +41,7 @@ body {
 }
 
 main {
-    margin: 100px;
+    margin: 100px 35px;
 }
 
 .big-img-shadow {
