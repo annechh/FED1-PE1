@@ -23,7 +23,7 @@
     background: var(--faded-light-grey-75);
 }
 
-.btn-arrow {
+.carousel-btn {
     border-radius: 100%;
     background: var(--faded-dark-grey-20);
     z-index: 2;
@@ -31,10 +31,10 @@
     cursor: pointer;
 }
 
-.btn-arrow:hover {
+.carousel-btn:hover {
     background: var(--faded-dark-grey-60);
 }
 
-.btn, .btn-img, .btn-arrow {
+.btn, .btn-img, .carousel-btn {
     cursor: pointer;
 }
