@@ -87,7 +87,6 @@
     height: 750px;
     display: flex;
     object-fit: cover;
-    z-index: -1;
 }
 
 
@@ -143,6 +142,10 @@
     padding: 5px;
     border-radius: 100%;
     border: none;
-    background: white;
+    background: var(--faded-light-grey-20);
     cursor: pointer;
+}
+
+.carousel-indicator.current-indicator {
+    background: var(--white);
 }
