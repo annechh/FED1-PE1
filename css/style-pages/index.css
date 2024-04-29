@@ -92,7 +92,7 @@
 
 
 
-.nav-arrows {
+.carousel-arrows {
     max-width: 1440px;
     width: 100%;
     position: absolute;
@@ -106,7 +106,8 @@
     display: flex;
     justify-content: space-between;
     position: relative;
-    top: 305px;
+    top: 50%;
+    transform: translateY(-50%);
     padding: 0 35px;
     max-height: 140px;
 }
