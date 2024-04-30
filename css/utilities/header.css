@@ -14,6 +14,12 @@ nav {
     height: 150px;
 }
 
+.nav-absolute {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+}
+
 nav img {
     padding-left:35px;
 }
