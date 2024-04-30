@@ -2,7 +2,7 @@
 const apiUrl = "https://v2.api.noroff.dev/blog/posts/Shira";
 const apiAdmin = `${apiUrl}/`
 
-async function fetchApi(method) {  
+export async function fetchApi(method) {  
     try {
         const response = await fetch(apiUrl, {
             method: method,
@@ -23,6 +23,5 @@ async function fetchApi(method) {
     }
 }
 
-fetchApi()
 
 
