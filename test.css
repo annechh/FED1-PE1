@@ -1,8 +1,7 @@
 @import url(/css/utilities/header.css);
 @import url(/css/utilities/default.css);
 
-body {
-}
+
 
 main {
     display: flex;
@@ -115,6 +114,9 @@ a {
 
 
 /* Title and View post btn */
+
+
+
 
 .carousel-info {
     width: 100%;
