@@ -2,7 +2,7 @@
 @import url('../utilities/header.css');
 @import url('../utilities/footer.css');
 @import url('../utilities/buttons.css');
-
+@import url('../utilities/carousel.css');
 
 
 
@@ -61,90 +61,4 @@
 
 .card-title-date p {
     font-size: 14px;
-}
-
-/* Carousel */
-
-.carousel-container {
-    display: flex;
-    max-width: 1440px;
-    width: 100%;
-    height: 750px;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.carousel-img-container {
-    width: 100%;
-    height: 100%;
-    position: relative;
-}
-
-.carousel-img {
-    max-width: 100%;
-    max-width: 1440px;
-    width: 100%;
-    height: 750px;
-    display: flex;
-    object-fit: cover;
-}
-
-.carousel-arrows {
-    max-width: 1440px;
-    width: 100%;
-    position: absolute;
-    display: flex;
-    max-height: 750px;
-    height: 100%;
-}
-
-.arrows {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0 35px;
-    max-height: 140px;
-    z-index: 1;
-}
-
-.carousel-info {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    max-width: 1440px;
-    width: 100%;
-    height: 750px;
-}
-
-.carousel-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-bottom: 35px;
-    gap: 35px;
-    text-align: center;
-}
-
-.carousel-nav {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 20px;
-    width: 100px;
-}
-
-.carousel-indicator {
-    padding: 5px;
-    border-radius: 100%;
-    border: none;
-    background: var(--faded-light-grey-20);
-    cursor: pointer;
-}
-
-.carousel-indicator.current-indicator {
-    background: var(--white);
 }
