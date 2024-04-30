@@ -14,13 +14,13 @@
 
     <link rel="stylesheet" href="css/style-pages/index.css">
 
-    <script type="module" src="JS/carousel.mjs"></script>
+    <script type="module" src="JS/index.mjs"></script>
 
     <title>Document</title>
 </head>
 <body>
     <header class="flex-center flex-col">
-        <nav class="absolute">
+        <nav class="nav-absolute">
             <img src="assets/images/Shira-logo-text.png" class="hover-scale" alt="Logo of Shira">
             <div>
                 <a href="./post/index.html" class="ds-txt hover-scale">Home</a>
@@ -28,7 +28,32 @@
             </div>
         </nav>
 
-        <div class="carousel-container ">
+        <div class="carousel carousel-img-container" data-carousel>
+            <div class="big-img-shadow"></div>
+            <ul class="carousel-items" id="carouselItems" data-carousel-items>
+                <li class="slide carousel-img" data-active>
+                    <img src="assets/images/Ramsdal.jpg" alt="">
+                </li>
+                <li class="slide carousel-img">
+                    <img src="assets/images/IMG_20210927_132933.jpg" alt="">
+                </li>
+                <li class="slide carousel-img">
+                    <img src="assets/images/IMG_20210724_124447.jpg" alt="">
+                </li>
+            </ul>
+            <h1>Title 1</h1>
+            <button class="carousel-btn left" data-carousel-btn="prev"> 
+                <img src="assets/svg/Arrow-left.svg"   alt="Arrow left"> </button>
+            <button class="carousel-btn right" data-carousel-btn="next"> 
+                <img src="assets/svg/Arrow-right.svg"   alt="Arrow right"> </button>
+            <div class="carousel-info ">
+                <div class="carousel-title-view ">
+                    <h1 class="ds-txt">Title of something Pawsome here</h1>
+                    <button class="btn-img">View Post</button>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="carousel-container ">
             <div class="carousel-img-container">
                 <div class="big-img-shadow"></div>
                 <ul id="carouselItems">
@@ -55,7 +80,7 @@
                     <button class="btn-img">View Post</button>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="carousel-nav">
             <button class="carousel-indicator current-indicator"></button>
             <button class="carousel-indicator"></button>
