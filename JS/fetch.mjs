@@ -1,11 +1,13 @@
 
-const apiUrl = "https://v2.api.noroff.dev/blog/posts/Shira";
-// const apiAdmin = `${apiUrl}/`
+const baseUrl = "https://v2.api.noroff.dev";
+export const userUrl = `${baseUrl}/blog/posts/Shira`;
+export const adminUrl = `${baseUrl}/auth/login`;
+
 
 export async function fetchApi(method, body) {  
     try {
         // const token = '';
-        const response = await fetch(apiUrl, {
+        const response = await fetch(userUrl, {
             method: method,
             header: {
                 'Content-Type': 'application/json',
