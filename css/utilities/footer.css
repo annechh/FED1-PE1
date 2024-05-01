@@ -11,13 +11,9 @@ footer {
     gap: 35px;
 }
 
-.logo-link {
-
+footer img {
     max-height: 150px;
     max-width: 150px;
-}
-
-footer img {
 }
 
 .links {
