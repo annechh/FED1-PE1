@@ -1,0 +1,48 @@
+@import url('../utilities/default.css');
+@import url('../utilities/buttons.css');
+@import url('../utilities/header.css');
+@import url('../utilities/footer.css');
+
+
+
+section {
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin-bottom: 100px;
+}
+
+form {
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 35px; 
+    margin-bottom: 35px;
+}
+
+input {
+    padding: 0 0 0 35px;
+    height: 60px;
+    outline: 1px solid;
+    border: none;
+    border-radius: 30px;
+    font-family: var(--roboto);
+    font-size: 20px;
+}
+
+input:placeholder-shown {
+    padding-left: 35px;
+    font-size: 20px;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
