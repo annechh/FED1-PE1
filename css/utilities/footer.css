@@ -3,17 +3,21 @@ footer {
     background: var(--footer-grey);
 }
 
-footer img {
-    max-height: 150px;
-    max-width: 150px;
-}
-
 .footer-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 35px;
+}
+
+.logo-link {
+
+    max-height: 150px;
+    max-width: 150px;
+}
+
+footer img {
 }
 
 .links {
