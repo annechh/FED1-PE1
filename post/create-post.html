@@ -14,6 +14,8 @@
 
     <link rel="stylesheet" href="/css/style-pages/create-post.css">
 
+    <script type="module" src="../JS/createpost.mjs"></script>
+
     <title>Create new Blog Post</title>
 </head>
 <body>
@@ -27,7 +29,7 @@
         </nav>
         <div class="blog-post-img-wrapper">
             <div class="big-img-shadow"></div>
-            <div class="post-img-container" id="spesificBlogImg">
+            <div class="post-img-container" id="createBlogImg">
             </div>
             <div class="add-img">
                 <svg class="hover" id="addImgBtn" xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
@@ -47,21 +49,21 @@
                 <form action="../post/index.html">
                     <div class="flex flex-col">
                         <label>Pawsome Title</label>
-                        <input type="text" id="titleField">
+                        <input type="text" id="createTitle" name="title">
                     </div>
                     <div class="flex flex-col">
                         <label>Author</label>
-                        <input type="text" id="authorField">
+                        <input type="text" id="createAuthor" name="author">
                     </div>
                     <div class="flex flex-col">
                         <label>Pawsome Story</label>
-                        <textarea name="message" id="blogTextField" ></textarea>
+                        <textarea name="blogText" id="createBlogText" ></textarea>
                     </div>       
                 </form>
             </div>
             <div class="btn-container">
-                <button class="btn">Create Post</button>
-                <button class="btn">Delete</button>
+                <button class="btn" id="createPostBtn">Create Post</button>
+                <button class="btn" id="deletePostBtn">Delete</button>
             </div>
         </div>
     </main>
