@@ -12,13 +12,47 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet" href="../css/style-pages/login-register.css">
+
     <title>Login User</title>
 </head>
 <body>
-    <header></header>
+    <header>
+        <nav>
+            <img src="/assets/images/Shira-logo-text.png" class="hover-scale" alt="Logo of Shira">
+            <div>
+                <a href="../index.html" class="ds-txt hover-scale">Home</a>
+                <a href="" class="ds-txt hover-scale">Login</a> 
+            </div>
+        </nav>
+    </header>
 
-    <main></main>
+    <main>
+        <section>
+            <h1>Log In</h1>
+            <form id="loginForm">
+                <input type="text" name="email" id="loginEmail" placeholder="Email">
+                <input type="text" name="password" id="loginPassword" placeholder="Password">
+            </form>
+            <div class="btn-container">
+                <button class="btn">Log In</button>
+                <a href="../account/register.html">Not a user? Register here</a>
+            </div>
+        </section>
+    </main>
 
-    <footer></footer>
+    <footer>
+        <div class="footer-content">
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/images/Shira.png" class="hover-scale" alt="A white dog">
+            </a>
+            <div class="links">
+                <a href="#" class="hover-scale">Contact</a>
+                <a href="#" class="hover-scale">About Shira</a>
+                <a href="#" class="hover-scale">Privacy Policy</a>
+                <a href="#" class="hover-scale">Follow</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
