@@ -44,5 +44,10 @@ input:placeholder-shown {
 .btn-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 35px;
+}
+
+.btn {
+    width: fit-content;
 }
