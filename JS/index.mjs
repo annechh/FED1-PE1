@@ -1,5 +1,5 @@
 // import { fetchApi } from "./fetch.mjs";
-// import { carouselButtons } from "./carousel.mjs";
+import { carouselButtons } from "./carousel.mjs";
 
 const pageSize = 12; // Number of blog posts per page
 let currentPage = 1; // Initial page number
@@ -64,6 +64,9 @@ function createBlogCards(blogPosts) {
         let btn = document.createElement('button');
         btn.classList.add('hover', 'btn');
         btn.textContent = 'View Post';
+        btn.addEventListener('click',() => {
+            window.location.href = `post/index.html?id=${data.id}`
+        })
 
         imgContainer.appendChild(img);
         date.appendChild(span);
