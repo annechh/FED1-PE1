@@ -47,23 +47,22 @@
         <div class="blog-content-wrapper flex flex-col">
             <div class="blog-content flex flex-col gap px">
                 <form action="../post/index.html">
+                    <div class="flex flex-col " id="inputUrl">
+                        <input type="url" name="url" id="createUrl" class="hide" placeholder="Add URL">
+                    </div>
                     <div class="flex flex-col">
                         <label>Pawsome Title</label>
                         <input type="text" id="createTitle" name="title">
-                    </div>
-                    <div class="flex flex-col">
-                        <label>Author</label>
-                        <input type="text" id="createAuthor" name="author">
-                    </div>
+                    </div> 
                     <div class="flex flex-col">
                         <label>Pawsome Story</label>
                         <textarea name="blogText" id="createBlogText" ></textarea>
                     </div>       
+                    <div class="btn-container">
+                        <button class="btn" id="createPostBtn">Create Post</button>
+                        <button class="btn" id="deletePostBtn">Cancel</button>
+                    </div>
                 </form>
-            </div>
-            <div class="btn-container">
-                <button class="btn" id="createPostBtn">Create Post</button>
-                <button class="btn" id="deletePostBtn">Delete</button>
             </div>
         </div>
     </main>

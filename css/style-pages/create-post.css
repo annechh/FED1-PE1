@@ -46,7 +46,9 @@
     fill: black;
 }
 
-
+.hide {
+    display: none;
+}
 
 /* Title, author and blog text */
 
