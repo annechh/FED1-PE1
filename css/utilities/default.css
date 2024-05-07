@@ -20,6 +20,12 @@ h1, h2 {
     font-weight: 700;
 }
 
+.h2-roboto-reg {
+    font-family: var(--roboto);
+    font-weight: 400;
+    line-height: 150%;
+}
+
 h1 {
     font-size: 48px;
 }
