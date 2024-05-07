@@ -19,7 +19,8 @@
 
 .blog-card {
     max-width: 390px;
-    height: 429px;
+    width: 100%;
+    height: 430px;
     background: var(--dark-grey);
     transition: 0.3s ease;
 
@@ -38,7 +39,10 @@
 }
 
 .card-img-container img{
-    max-height: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .blog-card-info {
@@ -61,4 +65,22 @@
 
 .card-title-date p {
     font-size: 14px;
+}
+
+.pag-btn-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 35px;
+}
+
+.pag-btn {
+    background: none;
+    border: none;
+}
+
+.fa-solid {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
 }
