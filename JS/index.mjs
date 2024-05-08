@@ -3,6 +3,7 @@ import { carouselButtons } from "./carousel.mjs";
 
 const pageSize = 12; // Number of blog posts per page
 let currentPage = 1; // Initial page number
+export const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 fetchBlogPosts(currentPage);
 
@@ -30,43 +31,44 @@ function createBlogCards(blogPosts) {
 
     blogPosts.forEach(data => {
         let blogCard = document.createElement('div');
-        blogCard.classList.add('blog-card', 'gap');
+            blogCard.classList.add('blog-card', 'gap');
 
         let imgContainer = document.createElement('div');
-        imgContainer.classList.add('card-img-container');
+            imgContainer.classList.add('card-img-container');
 
         let img = document.createElement('img');
-        img.alt = ''; 
-        if (data.media && data.media.url) {
+            img.alt = ''; 
+            if (data.media && data.media.url) {
             img.src = data.media.url;
-        } else {
+            } else {
             img.src = '../assets/images/Shira.png'; 
-        }
+            }
 
         let blogCardInfo = document.createElement('div');
-        blogCardInfo.classList.add('blog-card-info');
+            blogCardInfo.classList.add('blog-card-info');
 
         let titleDateContainer = document.createElement('div');
-        titleDateContainer.classList.add('card-title-date');
+            titleDateContainer.classList.add('card-title-date');
 
         let title = document.createElement('h2');
-        title.textContent = data.title;
+            title.textContent = data.title;
 
         let date = document.createElement('p');
-        date.textContent = 'Posted: ';
+            date.textContent = 'Posted at: ';
 
+        let formattedDate = new Date(data.created)
         let span = document.createElement('span');
-        span.textContent = data.created;
+            span.textContent = `${formattedDate.getDate()} ${months[formattedDate.getMonth()]} ${formattedDate.getFullYear()}`;
 
         let btnContainer = document.createElement('div');
-        btnContainer.classList.add('pb');
+            btnContainer.classList.add('pb');
 
         let btn = document.createElement('button');
-        btn.classList.add('hover', 'btn');
-        btn.textContent = 'View Post';
-        btn.addEventListener('click',() => {
-            window.location.href = `post/index.html?id=${data.id}`
-        })
+            btn.classList.add('hover', 'btn');
+            btn.textContent = 'View Post';
+            btn.addEventListener('click',() => {
+                window.location.href = `post/index.html?id=${data.id}`
+            })
 
         imgContainer.appendChild(img);
         date.appendChild(span);
@@ -115,4 +117,11 @@ document.getElementById('nextPageBtn').addEventListener('click', () => {
     fetchBlogPosts(currentPage);
 });
 // End pagination part......
+
+
+
+
+
+
+
 
