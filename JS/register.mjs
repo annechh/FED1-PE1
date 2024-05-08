@@ -8,44 +8,33 @@ function createRegisterForm() {
     let form = document.createElement('form');
     form.id = 'registerForm';
     
-    let inputName = ['Name', 'Email', 'Password', 'Confirm Password']; 
-    let inputId = ['registerName', 'registerEmail', 'registerPassword', 'registerConfirmPassword'];
-    let inputType = ['text', 'text', 'password', 'password'];
-    let passwordInput;
-    
-    for (let i = 0; i < inputName.length; i++) {
-        let input = document.createElement('input');
-        input.name = inputName[i];
-        input.type = inputType[i];
-        input.id = inputId[i];
-        input.placeholder = inputName[i];
-        input.required = true;
+    let name = document.createElement('input');
+    name.name = 'Name';
+    name.type = 'text';
+    name.id = 'registerName';
+    name.placeholder = 'Name';
+    name.required = true;
 
-        if ( inputType[i] === 'text' && inputName[i] === 'Name') {
-            input.minLength = 2;
-        } else if (inputType[i] === 'text' && inputName[i] === 'Email') {
-            input.pattern = '[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$';
-            input.title = 'Enter a valid email address'
-        } else if (inputType[i] === 'password') {
-            input.pattern = '(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$';
-            input.title = 'Password must contain at least one letter and one number';
+    let email = document.createElement('input');
+    email.name = 'Email';
+    email.type = 'text';
+    email.id = 'registerEmail';
+    email.placeholder = 'Email';
+    email.required = true;
 
-            passwordInput = input; // Store a reference to the password input element
-        } 
-        
-        form.appendChild(input);
-    }
+    let password = document.createElement('input');
+    password.name = 'Password';
+    password.type = 'password';
+    password.id = 'registerPassword';
+    password.placeholder = 'Password';
+    password.required = true;
 
-    document.addEventListener('DOMContentLoaded', function() {
-        let confirmPasswordInput = document.getElementById('registerConfirmPassword');
-            confirmPasswordInput.addEventListener('input', function() {
-        let password = passwordInput.value;
-        let confirmPassword = confirmPasswordInput.value;
-            if (password !== confirmPassword) {
-                alert('Passwords do not match!');
-            }
-        })
-    })
+    let confirmPassword = document.createElement('input');
+    confirmPassword.name = 'Confirm Password';
+    confirmPassword.type = 'password';
+    confirmPassword.id = 'registerConfirmPassword';
+    confirmPassword.placeholder = 'Confirm Password';
+    confirmPassword.required = true;
 
     let btnContainer = document.createElement('div');
     btnContainer.classList = 'btn-container';
@@ -54,16 +43,18 @@ function createRegisterForm() {
     registerButton.type = 'submit';
     registerButton.innerText = 'Register User';
     registerButton.classList = 'btn';
-    registerButton.addEventListener('click', () => {
-
-    })
+    registerButton.addEventListener('click', (event) => {
+        event.preventDefault(); 
+        handleRegister(); 
+    });
 
     let changeToLogin = document.createElement('a');
     changeToLogin.innerText = 'Already a user? Log in here';
     changeToLogin.href = '../account/login.html';
 
-    btnContainer.append(registerButton, changeToLogin)
-    section.append(h1, form, btnContainer);
+    btnContainer.append(registerButton, changeToLogin);
+    form.append(name, email, password, confirmPassword, btnContainer);
+    section.append(h1, form);
 
     return section;
 }
@@ -71,23 +62,50 @@ function createRegisterForm() {
 createRegisterForm()
 
 
-function registerUser() {
-    
+
+
+function handleRegister() {
+    const name = document.getElementById('registerName').value;
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+    const confirmPassword = document.getElementById('registerConfirmPassword').value;
+
+    if (password !== confirmPassword) {
+        alert('Password do not match');
+        return;
+    }
+
+    const createUser = {
+        name: name,
+        email: email,
+        password: password,
+    }
+
+    fetch('https://v2.api.noroff.dev/auth/register', {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+        body: JSON.stringify(createUser),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Response failed');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Data logs: ', data);
+        alert('Successful registration')
+    })
+    .catch(error => {
+        console.error('There was a problem with the registration', error);
+        alert('Registration failed, please try again later')
+    })
 }
 
 
 
 
 
-console.log('hello');
 
-// const eventConfirmPassword = () => {
-//     let confirmPasswordInput = document.getElementById('registerConfirmPassword');
-//     confirmPasswordInput.addEventListener('input', function() {
-//     let password = passwordInput.value;
-//     let confirmPassword = confirmPasswordInput.value;
-//     if (password !== confirmPassword) {
-//         alert('Passwords do not match!');
-//     }
-//     })
-// }
