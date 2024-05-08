@@ -29,10 +29,15 @@
     max-width: 845px;
 }
 
-.blog-text {
+.blog-text-wrapper {
     font-size: 20px;
 }
 
-.written-by-date {
+
+.blog-text-wrapper p {
+    padding-bottom: 20px;
+}
+
+.posted {
     font-size: 14px;
 }
