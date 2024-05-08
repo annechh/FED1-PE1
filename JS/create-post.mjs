@@ -1,6 +1,6 @@
 
 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiU2hpcmEiLCJlbWFpbCI6InNoaXJhQHN0dWQubm9yb2ZmLm5vIiwiaWF0IjoxNzE0MTMwNjU5fQ.i8uU3oE0g01enjPuI8TW1aPIRtSNek_zHHy-KBNhbro';
+const token = '';
 
 
 function previewImage() {
