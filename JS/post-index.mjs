@@ -4,6 +4,8 @@ const idParameter = window.location.search;
 const searchParameter = new URLSearchParams(idParameter);
 const postId = searchParameter.get('id');
 
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
 if (postId) {
     fetchBlogPost(postId)
 }
@@ -27,11 +29,18 @@ function fetchBlogPost(postId) {
         let title = document.getElementById('specificBlogTitle');
             title.textContent = data.data.title;
 
-        let text = document.getElementById('specificBlogText');
+        let text = document.getElementById('specificBlogText1');
             text.textContent = data.data.body;
+        
+        // let text = document.getElementById('specificBlogText');
+        // let formattedText = data.data.body.split('\n').map(paragraph => `<p>${paragraph}</p>`).join('');
+        //     text.innerHTML = formattedText;
 
+
+
+        let formattedDate = new Date(data.data.created)
         let date = document.getElementById('specificBlogDate');
-            date.textContent = data.data.created;
+            date.textContent = `${formattedDate.getDate()} ${months[formattedDate.getMonth()]} ${formattedDate.getFullYear()}`;
 
         let author = document.getElementById('specificBlogAuthor');
             author.textContent = data.data.author.name;
