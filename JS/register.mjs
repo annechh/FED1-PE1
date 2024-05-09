@@ -1,3 +1,6 @@
+import { fontawsomeScript } from "./default.mjs";
+import { createHeader } from "./header.mjs"; 
+
 
 function createRegisterForm() {
     let section = document.getElementById('registerSection');
@@ -64,7 +67,7 @@ createRegisterForm()
 
 
 
-function handleRegister() {
+async function handleRegister() {
     const name = document.getElementById('registerName').value;
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
@@ -81,7 +84,7 @@ function handleRegister() {
         password: password,
     }
 
-    fetch('https://v2.api.noroff.dev/auth/register', {
+    await fetch('https://v2.api.noroff.dev/auth/register', {
         method: 'POST',
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
