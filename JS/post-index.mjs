@@ -1,4 +1,6 @@
 
+import { fontawsomeScript } from "./default.mjs";
+import { createHeader } from "./header.mjs";
 
 const idParameter = window.location.search;
 const searchParameter = new URLSearchParams(idParameter);
@@ -29,14 +31,22 @@ function fetchBlogPost(postId) {
         let title = document.getElementById('specificBlogTitle');
             title.textContent = data.data.title;
 
-        let text = document.getElementById('specificBlogText1');
-            text.textContent = data.data.body;
+        // let text = document.getElementById('specificBlogText1');
+        //     text.textContent = data.data.body;
         
-        // let text = document.getElementById('specificBlogText');
-        // let formattedText = data.data.body.split('\n').map(paragraph => `<p>${paragraph}</p>`).join('');
-        //     text.innerHTML = formattedText;
+        
 
+        let text = document.getElementById('specificBlogText');
+        
+        let formattedText = data.data.body
+        .split('\n')
+        .map(paragraph => paragraph.trim())
+        .filter(paragraph => paragraph !== '')
+        .map(paragraph => `<p>${paragraph}</p>`)
+        .join('');
+            text.innerHTML = formattedText;
 
+        
 
         let formattedDate = new Date(data.data.created)
         let date = document.getElementById('specificBlogDate');
