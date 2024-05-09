@@ -32,4 +32,11 @@ nav div {
 
 a { 
     font-size: 20px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
 }
+
+/* .logout-icon {
+    display: none;
+} */
