@@ -1,4 +1,7 @@
+import { fontawsomeScript } from "./default.mjs";
 import { loginUrl, fetchApi } from "./fetch.mjs";
+import { createHeader } from "./header.mjs"; 
+
 
 function createLoginForm() {
     let section = document.getElementById('loginSection');
@@ -60,7 +63,7 @@ async function handleLogin(event) {
         if (accessToken) {
             localStorage.setItem('accessToken', accessToken);
             console.log('Token saved to local storage', accessToken);
-            window.location.href = '../index.html'
+            // window.location.href = `../index.html`
         } else {
             console.error('No token found', userData);
         }
@@ -70,7 +73,7 @@ async function handleLogin(event) {
     }
 }
 
-export const token = localStorage.getItem('accessToken');
+
 
 
 
