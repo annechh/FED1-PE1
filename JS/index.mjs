@@ -1,9 +1,11 @@
 // import { fetchApi } from "./fetch.mjs";
 import { carouselButtons } from "./carousel.mjs";
+import { fontawsomeScript } from "./default.mjs";
+import { createHeader } from "./header.mjs";
 
 const pageSize = 12; // Number of blog posts per page
 let currentPage = 1; // Initial page number
-export const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 fetchBlogPosts(currentPage);
 
@@ -125,3 +127,4 @@ document.getElementById('nextPageBtn').addEventListener('click', () => {
 
 
 
+// const token = localStorage.getItem('accessToken');
