@@ -1,6 +1,8 @@
+import { fontawsomeScript } from "./default.mjs";
+import { createHeader } from "./header.mjs"; 
 
 
-const token = '';
+const token = localStorage.getItem('accessToken');
 
 
 function previewImage() {
@@ -42,7 +44,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
                 url: image,
             },
             title: title,
-            body: blogText, formattedBlogText,
+            body: blogText,
         }),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
@@ -67,7 +69,7 @@ createUrlInput.addEventListener('input', previewImage);
 const cancelButton = document.getElementById('cancelPostBtn');
 
 cancelButton.addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent form submission
+    event.preventDefault(); 
 
     document.getElementById('createUrl').value = '';
     document.getElementById('createTitle').value = '';
