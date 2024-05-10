@@ -25,13 +25,12 @@ export function createHeader() {
     let home = document.createElement('a');
         home.className = 'ds-txt hover-scale';
         home.textContent = 'Home';
-        home.href = '../index.html';
-        if (window.location.pathname.endsWith('index.html') && window.location.pathname !== '/post/index.html') {
-            home.href = 'index.html';
-        } 
-        
-        
-        // home.href = '../index.html';
+        if (window.location.pathname === 'index.html') {
+            home.href = ''
+        } else {
+            home.href = '../index.html';
+
+        }
 
     let homeIcon = document.createElement('i');
         homeIcon.className = 'fa-solid fa-house';
@@ -39,16 +38,8 @@ export function createHeader() {
     let login = document.createElement('a');
         login.className = 'ds-txt hover-scale';
         login.textContent = 'Login';
-        login.addEventListener('click', () => {
-            if (window.location.pathname.endsWith('index.html') && window.location.pathname !== '/post/index.html') {
-                login.href = 'account/login.html';
-            } else {
-                login.href = '../account/login.html';
-            }
-        })
-        // login.href = '../account/login.html';
-
-
+        login.href = '../account/login.html';
+        
     let loginIcon = document.createElement('i');
         loginIcon.className = 'fa-solid fa-user login-icon';
 
