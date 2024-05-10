@@ -26,10 +26,9 @@ export function createHeader() {
         home.className = 'ds-txt hover-scale';
         home.textContent = 'Home';
         if (window.location.pathname === 'index.html') {
-            home.href = ''
+            home.href = 'index.html'
         } else {
             home.href = '../index.html';
-
         }
 
     let homeIcon = document.createElement('i');
