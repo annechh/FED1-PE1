@@ -63,7 +63,7 @@ async function handleLogin(event) {
         if (accessToken) {
             localStorage.setItem('accessToken', accessToken);
             console.log('Token saved to local storage', accessToken);
-            // window.location.href = `../index.html`
+            window.location.href = `../index.html`
         } else {
             console.error('No token found', userData);
         }
@@ -76,56 +76,3 @@ async function handleLogin(event) {
 
 
 
-
-
-// const loggedIn = document.getElementById('navLogin');
-
-// function handleLoggedIn() {
-
-//     if (loggedIn.textContent === 'Login') {
-//         loggedIn.textContent = 'Logout'
-//         loggedIn.href = '';
-
-//     } else {
-//         window.location.href = '';
-//     }
-// }
-
-// loggedIn.addEventListener('click', handleLoggedIn)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Kansje bruk kansje ikke
-// async function fetchWithToken(method, url) {
-//     try {
-//         const headers = {
-//             'Content-Type': 'application/json',
-//             Authorization: `Bearer ${token}`,
-//         };
-//         if (method === 'GET') {
-//             const response = await fetch(method, url, {headers})
-//             console.log('something',response);
-            
-//         }
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
-
-
-// fetchWithToken(loginUrl)
