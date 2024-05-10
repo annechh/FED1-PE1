@@ -1,6 +1,6 @@
 
 import { fontawsomeScript } from "./default.mjs";
-import { createHeader } from "./header.mjs";
+import { createHeader } from "./components/header.mjs"; 
 
 const idParameter = window.location.search;
 const searchParameter = new URLSearchParams(idParameter);

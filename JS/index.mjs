@@ -1,7 +1,7 @@
 // import { fetchApi } from "./fetch.mjs";
 import { carouselButtons } from "./carousel.mjs";
 import { fontawsomeScript } from "./default.mjs";
-import { indexHeader } from "./header.mjs";
+import { indexHeader } from "./components/indexHeader.mjs";
 
 const pageSize = 12; // Number of blog posts per page
 let currentPage = 1; // Initial page number
