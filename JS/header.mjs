@@ -28,7 +28,7 @@ export function createHeader() {
         if (window.location.pathname === '/index.html') {
             home.href = '';
         } else {
-            home.href = '../index.html';
+            home.href = '';
         }
 
     let homeIcon = document.createElement('i');
