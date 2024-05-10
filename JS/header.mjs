@@ -10,9 +10,12 @@ export function createHeader() {
         }
 
     let img = document.createElement('img');
-        img.src = '../assets/images/Shira-logo-text.png';
         img.alt = 'logo of a dog with text saying Shiras adventure';
         img.classList.add('hover-scale');
+        img.src = '../assets/images/Shira-logo-text.png';
+        if (window.location.pathname.endsWith('index.html') && window.location.pathname !== '/post/index.html') {
+            img.src = 'assets/images/Shira-logo-text.png';
+        }
         img.addEventListener('click', () => {
             window.location.href = '../index.html';
         }) 
