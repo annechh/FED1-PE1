@@ -25,13 +25,12 @@ export function createHeader() {
     let home = document.createElement('a');
         home.className = 'ds-txt hover-scale';
         home.textContent = 'Home';
-        home.addEventListener('click', () => {
-            if (window.location.pathname.endsWith('index.html') && window.location.pathname !== '/post/index.html') {
-                home.href = 'index.html';
-            } else {
-                home.href = '../index.html';
-            }
-        })
+        home.href = '../index.html';
+        if (window.location.pathname.endsWith('index.html') && window.location.pathname !== '/post/index.html') {
+            home.href = 'index.html';
+        } 
+        
+        
         // home.href = '../index.html';
 
     let homeIcon = document.createElement('i');
