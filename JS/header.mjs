@@ -26,7 +26,7 @@ export function createHeader() {
         home.className = 'ds-txt hover-scale';
         home.textContent = 'Home';
         home.href = '../index.html';
-        if (window.location.pathname.endsWith === 'index.html') {
+        if (window.location.pathname.endsWith === '/index.html') {
             home.href = '#';
         } 
 
