@@ -29,7 +29,9 @@ export function indexHeader() {
     let login = document.createElement('a');
         login.className = 'ds-txt hover-scale';
         login.textContent = 'Login';
-        login.window.location.href = 'account/login.html';
+        login.addEventListener( 'click', () => {
+            window.location.href = 'account/login.html';
+        })
         
     let loginIcon = document.createElement('i');
         loginIcon.className = 'fa-solid fa-user login-icon';
