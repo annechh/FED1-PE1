@@ -25,10 +25,11 @@ export function createHeader() {
     let home = document.createElement('a');
         home.className = 'ds-txt hover-scale';
         home.textContent = 'Home';
-        home.href = '../index.html';
         if (window.location.pathname.endsWith === '/index.html') {
             home.href = '#';
-        } 
+        } else {
+            home.href = '../index.html';
+        }
 
     let homeIcon = document.createElement('i');
         homeIcon.className = 'fa-solid fa-house';
