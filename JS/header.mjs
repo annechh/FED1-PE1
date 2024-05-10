@@ -5,6 +5,9 @@ export function createHeader() {
 
     let nav = document.createElement('nav');
         nav.classList.add('nav-absolute');
+        if (window.location.href.includes('login.html') || window.location.href.includes('register.html')) {
+            nav.className = '';
+        }
 
     let img = document.createElement('img');
         img.src = '../assets/images/Shira-logo-text.png';
@@ -17,17 +20,32 @@ export function createHeader() {
     let linkContainer = document.createElement('div');
 
     let home = document.createElement('a');
-        home.href = '../index.html';
         home.className = 'ds-txt hover-scale';
         home.textContent = 'Home';
+        home.addEventListener('click', () => {
+            if (window.location.pathname.endsWith('index.html') && window.location.pathname !== '/post/index.html') {
+                home.href = 'index.html';
+            } else {
+                home.href = '../index.html';
+            }
+        })
+        // home.href = '../index.html';
 
     let homeIcon = document.createElement('i');
         homeIcon.className = 'fa-solid fa-house';
 
     let login = document.createElement('a');
-        login.href = '../account/login.html';
         login.className = 'ds-txt hover-scale';
         login.textContent = 'Login';
+        login.addEventListener('click', () => {
+            if (window.location.pathname.endsWith('index.html') && window.location.pathname !== '/post/index.html') {
+                login.href = 'account/login.html';
+            } else {
+                login.href = '../account/login.html';
+            }
+        })
+        // login.href = '../account/login.html';
+
 
     let loginIcon = document.createElement('i');
         loginIcon.className = 'fa-solid fa-user login-icon';
