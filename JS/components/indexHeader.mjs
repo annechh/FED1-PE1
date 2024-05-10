@@ -12,9 +12,6 @@ export function indexHeader() {
         img.alt = 'logo of a dog with text saying Shiras adventure';
         img.classList.add('hover-scale');
         img.src = '../assets/images/Shira-logo-text.png';
-        if (window.location.pathname.endsWith('index.html') && window.location.pathname !== '/post/index.html') {
-            img.src = 'assets/images/Shira-logo-text.png';
-        }
         img.addEventListener('click', () => {
             window.location.href = 'index.html';
         }) 
@@ -32,7 +29,7 @@ export function indexHeader() {
     let login = document.createElement('a');
         login.className = 'ds-txt hover-scale';
         login.textContent = 'Login';
-        login.href = 'account/login.html';
+        login.window.location.href = 'account/login.html';
         
     let loginIcon = document.createElement('i');
         loginIcon.className = 'fa-solid fa-user login-icon';
