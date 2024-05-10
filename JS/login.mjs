@@ -1,5 +1,5 @@
 import { fontawsomeScript } from "./default.mjs";
-import { loginUrl, fetchApi } from "./fetch.mjs";
+import { fetchApi } from "./fetch.mjs";
 import { createHeader } from "./components/header.mjs"; 
 
 
@@ -57,7 +57,7 @@ async function handleLogin(event) {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
     try {
-        const userData = await fetchApi('POST', loginUrl, { email, password });
+        const userData = await fetchApi('POST', `https://v2.api.noroff.dev/auth/login`, { email, password });
         console.log('Login successful:', userData);
         const accessToken = userData.data.accessToken;
         if (accessToken) {
@@ -74,5 +74,25 @@ async function handleLogin(event) {
 }
 
 
+// async function handleLogin(event) {
+//     event.preventDefault(); 
 
+//     const email = document.getElementById('loginEmail').value;
+//     const password = document.getElementById('loginPassword').value;
+//     try {
+//         const userData = await fetchApi('POST', loginUrl, { email, password });
+//         console.log('Login successful:', userData);
+//         const accessToken = userData.data.accessToken;
+//         if (accessToken) {
+//             localStorage.setItem('accessToken', accessToken);
+//             console.log('Token saved to local storage', accessToken);
+//             window.location.href = `../index.html`
+//         } else {
+//             console.error('No token found', userData);
+//         }
+//         // return userData;
+//     } catch (error) {
+//         console.error('Login failed:', error);
+//     }
+// }
 
