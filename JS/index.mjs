@@ -1,5 +1,5 @@
 // import { fetchApi } from "./fetch.mjs";
-import { carouselButtons } from "./carousel.mjs";
+import { carousel, carouselButtons } from "./carousel.mjs";
 import { fontawsomeScript } from "./default.mjs";
 import { indexHeader } from "./components/indexHeader.mjs";
 
@@ -9,23 +9,41 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 
 fetchBlogPosts(currentPage);
 
-function fetchBlogPosts(page) {
-    fetch(`https://v2.api.noroff.dev/blog/posts/Shira?page=${page}&limit=${pageSize}`, {
-        method: 'GET',
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
-    .then((response) => response.json())
-    .then(data => {
-        createBlogCards(data.data); // Pass blog post data to create blog cards
-        console.log('Logging data: ', data);
-        updatePaginationUI(data.meta)
-        // Assuming the API provides pagination metadata (total number of pages, etc.)
-        // You can use this metadata for more advanced pagination features
-    })
-    .catch(error => console.error('Error Fetching posts', error));
+async function fetchBlogPosts(page) {
+    try {
+        const response = await fetch(`https://v2.api.noroff.dev/blog/posts/Shira?page=${page}&limit=${pageSize}`, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        createBlogCards(data.data); 
+        // console.log('Logging new data: ', data);
+        updatePaginationUI(data.meta) 
+    } catch (error) {
+        console.error('Could not fetch data' + error)
+        throw error ("There was a problem getting the data")
+    }
 }
+// function fetchBlogPosts(page) {
+//     fetch(`https://v2.api.noroff.dev/blog/posts/Shira?page=${page}&limit=${pageSize}`, {
+//         method: 'GET',
+//         headers: {
+//             'Content-type': 'application/json; charset=UTF-8',
+//         },
+//     })
+//     .then((response) => response.json())
+//     .then(data => {
+//         createBlogCards(data.data); 
+//         console.log('Logging data: ', data);
+//         updatePaginationUI(data.meta) 
+//     })
+//     .catch(error => console.error('Error Fetching posts', error));
+// }
 
 function createBlogCards(blogPosts) {
     let blogCardWrapper = document.getElementById('cardWrapper');
@@ -69,7 +87,7 @@ function createBlogCards(blogPosts) {
             btn.classList.add('hover', 'btn');
             btn.textContent = 'View Post';
             btn.addEventListener('click',() => {
-                window.location.href = `post/index.html?id=${data.id}`
+                window.location.href = `post/index.html?id=${data.id}`;
             })
 
         imgContainer.appendChild(img);
@@ -128,3 +146,5 @@ document.getElementById('nextPageBtn').addEventListener('click', () => {
 
 
 // const token = localStorage.getItem('accessToken');
+
+

@@ -42,6 +42,12 @@
     transition-delay: 0;
 }
 
+/* .active-slide {
+    opacity: 1;
+    z-index: 1;
+    transition-delay: 0;
+} */
+
 .carousel-btn {
     position: absolute;
     background: rgba(24, 24, 24, 0.20);;
@@ -50,8 +56,13 @@
     top: 50%;
     transform: translateY(-50%);
     z-index: 2;
+    height: 145px;
+    width: 145px;
 }
 
+.carousel-btn i {
+    font-size: 40px;
+}
 
 .carousel-btn.left {
     left: 35px;
@@ -60,6 +71,27 @@
 .carousel-btn.right {
     right: 35px;
 }
+
+/* Title */
+
+.carousel-info { 
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    bottom: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carousel-title-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 35px;
+}
+
 
 /* Carousel indicator */
 
