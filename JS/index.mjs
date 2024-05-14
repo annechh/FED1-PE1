@@ -9,41 +9,41 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 
 fetchBlogPosts(currentPage);
 
-async function fetchBlogPosts(page) {
-    try {
-        const response = await fetch(`https://v2.api.noroff.dev/blog/posts/Shira?page=${page}&limit=${pageSize}`, {
-            method: 'GET',
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        });
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        createBlogCards(data.data); 
-        // console.log('Logging new data: ', data);
-        updatePaginationUI(data.meta) 
-    } catch (error) {
-        console.error('Could not fetch data' + error)
-        throw error ("There was a problem getting the data")
-    }
-}
-// function fetchBlogPosts(page) {
-//     fetch(`https://v2.api.noroff.dev/blog/posts/Shira?page=${page}&limit=${pageSize}`, {
-//         method: 'GET',
-//         headers: {
-//             'Content-type': 'application/json; charset=UTF-8',
-//         },
-//     })
-//     .then((response) => response.json())
-//     .then(data => {
+// async function fetchBlogPosts(page) {
+//     try {
+//         const response = await fetch(`https://v2.api.noroff.dev/blog/posts/Shira?page=${page}&limit=${pageSize}`, {
+//             method: 'GET',
+//             headers: {
+//                 'Content-type': 'application/json; charset=UTF-8',
+//             },
+//         });
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         const data = await response.json();
 //         createBlogCards(data.data); 
-//         console.log('Logging data: ', data);
+//         // console.log('Logging new data: ', data);
 //         updatePaginationUI(data.meta) 
-//     })
-//     .catch(error => console.error('Error Fetching posts', error));
+//     } catch (error) {
+//         console.error('Could not fetch data' + error)
+//         throw error ("There was a problem getting the data")
+//     }
 // }
+function fetchBlogPosts(page) {
+    fetch(`https://v2.api.noroff.dev/blog/posts/Shira?page=${page}&limit=${pageSize}`, {
+        method: 'GET',
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8',
+        },
+    })
+    .then((response) => response.json())
+    .then(data => {
+        createBlogCards(data.data); 
+        console.log('Logging data: ', data);
+        updatePaginationUI(data.meta) 
+    })
+    .catch(error => console.error('Error Fetching posts', error));
+}
 
 function createBlogCards(blogPosts) {
     let blogCardWrapper = document.getElementById('cardWrapper');
