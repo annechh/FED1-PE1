@@ -61,7 +61,7 @@ function createBlogCards(blogPosts) {
             if (data.media && data.media.url) {
             img.src = data.media.url;
             } else {
-            img.src = '../assets/images/Shira.png'; 
+            img.src = ''; 
             }
 
         let blogCardInfo = document.createElement('div');
