@@ -58,8 +58,8 @@ function createBlogCards(blogPosts) {
 
         let img = document.createElement('img');
             img.alt = ''; 
-            if (data.media && data.media.url) {
-            img.src = data.media.url;
+            if (data.data.media && data.data.media.url) {
+            img.src = data.data.media.url;
             } else {
             img.src = '../assets/images/Shira.png'; 
             }
@@ -71,12 +71,12 @@ function createBlogCards(blogPosts) {
             titleDateContainer.classList.add('card-title-date');
 
         let title = document.createElement('h2');
-            title.textContent = data.title;
+            title.textContent = data.data.title;
 
         let date = document.createElement('p');
             date.textContent = 'Posted at: ';
 
-        let formattedDate = new Date(data.created)
+        let formattedDate = new Date(data.data.created)
         let span = document.createElement('span');
             span.textContent = `${formattedDate.getDate()} ${months[formattedDate.getMonth()]} ${formattedDate.getFullYear()}`;
 
