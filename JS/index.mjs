@@ -9,41 +9,41 @@ const months = ["January", "February", "March", "April", "May", "June", "July", 
 
 fetchBlogPosts(currentPage);
 
-// async function fetchBlogPosts(page) {
-//     try {
-//         const response = await fetch(`https://v2.api.noroff.dev/blog/posts/Shira?page=${page}&limit=${pageSize}`, {
-//             method: 'GET',
-//             headers: {
-//                 'Content-type': 'application/json; charset=UTF-8',
-//             },
-//         });
-//         if (!response.ok) {
-//             throw new Error('Network response was not ok');
-//         }
-//         const data = await response.json();
-//         createBlogCards(data.data); 
-//         // console.log('Logging new data: ', data);
-//         updatePaginationUI(data.meta) 
-//     } catch (error) {
-//         console.error('Could not fetch data' + error)
-//         throw error ("There was a problem getting the data")
-//     }
-// }
-function fetchBlogPosts(page) {
-    fetch(`https://v2.api.noroff.dev/blog/posts/Shira?page=${page}&limit=${pageSize}`, {
-        method: 'GET',
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
-    .then((response) => response.json())
-    .then(data => {
+async function fetchBlogPosts(page) {
+    try {
+        const response = await fetch(`https://v2.api.noroff.dev/blog/posts/Shira?page=${page}&limit=${pageSize}`, {
+            method: 'GET',
+            headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+            },
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
         createBlogCards(data.data); 
-        console.log('Logging data: ', data);
+        // console.log('Logging new data: ', data);
         updatePaginationUI(data.meta) 
-    })
-    .catch(error => console.error('Error Fetching posts', error));
+    } catch (error) {
+        console.error('Could not fetch data' + error)
+        throw error ("There was a problem getting the data")
+    }
 }
+// function fetchBlogPosts(page) {
+//     fetch(`https://v2.api.noroff.dev/blog/posts/Shira?page=${page}&limit=${pageSize}`, {
+//         method: 'GET',
+//         headers: {
+//             'Content-type': 'application/json; charset=UTF-8',
+//         },
+//     })
+//     .then((response) => response.json())
+//     .then(data => {
+//         createBlogCards(data.data); 
+//         console.log('Logging data: ', data);
+//         updatePaginationUI(data.meta) 
+//     })
+//     .catch(error => console.error('Error Fetching posts', error));
+// }
 
 function createBlogCards(blogPosts) {
     let blogCardWrapper = document.getElementById('cardWrapper');
@@ -58,8 +58,8 @@ function createBlogCards(blogPosts) {
 
         let img = document.createElement('img');
             img.alt = ''; 
-            if (data.data.media && data.data.media.url) {
-            img.src = data.data.media.url;
+            if (data.media && data.media.url) {
+            img.src = data.media.url;
             } else {
             img.src = '../assets/images/Shira.png'; 
             }
@@ -71,12 +71,12 @@ function createBlogCards(blogPosts) {
             titleDateContainer.classList.add('card-title-date');
 
         let title = document.createElement('h2');
-            title.textContent = data.data.title;
+            title.textContent = data.title;
 
         let date = document.createElement('p');
             date.textContent = 'Posted at: ';
 
-        let formattedDate = new Date(data.data.created)
+        let formattedDate = new Date(data.created)
         let span = document.createElement('span');
             span.textContent = `${formattedDate.getDate()} ${months[formattedDate.getMonth()]} ${formattedDate.getFullYear()}`;
 
