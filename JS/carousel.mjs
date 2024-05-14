@@ -6,8 +6,6 @@ export async function carousel() {
     try {
         const carouselItems = document.getElementById('carouselItems');
         const carouselNav = document.getElementById('carouselNav');
-        const prevButton = document.getElementById('prevBtn');
-        const nextButton = document.getElementById('nextBtn');
         const MAX_SLIDES = 3;
 
         const data = await fetchApi('GET', userUrl);
