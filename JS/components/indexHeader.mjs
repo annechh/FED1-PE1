@@ -11,7 +11,7 @@ export function indexHeader() {
     let img = document.createElement('img');
         img.alt = 'logo of a dog with text saying Shiras adventure';
         img.classList.add('hover-scale');
-        img.src = '../assets/images/Shira-logo-text.png';
+        img.src = 'assets/images/Shira-logo-text.png';
         img.addEventListener('click', () => {
             window.location.href = 'index.html';
         }) 
