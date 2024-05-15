@@ -20,24 +20,33 @@ export function createHeader() {
     let linkContainer = document.createElement('div');
 
     let home = document.createElement('a');
-        home.className = 'ds-txt hover-scale';
+        home.classList.add('ds-txt', 'hover-scale');
         home.textContent = 'Home';
         home.href = '../index.html';
 
     let homeIcon = document.createElement('i');
-        homeIcon.className = 'fa-solid fa-house';
+        homeIcon.classList.add('fa-solid', 'fa-house');
 
     let login = document.createElement('a');
-        login.className = 'ds-txt hover-scale';
+        login.classList.add('ds-txt', 'hover-scale');
         login.textContent = 'Login';
         login.href = '../account/login.html';
         
     let loginIcon = document.createElement('i');
-        loginIcon.className = 'fa-solid fa-user login-icon';
+        loginIcon.classList.add('fa-solid', 'fa-user', 'login-icon');
 
+    let logout = document.createElement('a');
+        logout.classList.add('ds-txt', 'hover-scale', 'login-logout-state');
+        logout.textContent ='Logout';
+        // when logging out, change to user view
+
+    let logoutIcon = document.createElement('i');
+        logoutIcon.classList.add('fa-solid', 'fa-right-from-bracket');
+
+    logout.appendChild(logoutIcon);
     login.appendChild(loginIcon);
     home.appendChild(homeIcon);
-    linkContainer.append(home, login)
+    linkContainer.append(home, login, logout)
     nav.append(img, linkContainer);
     header.insertBefore(nav, firstChild);
 }

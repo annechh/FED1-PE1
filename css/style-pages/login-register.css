@@ -51,3 +51,9 @@ input:placeholder-shown {
 .btn {
     width: fit-content;
 }
+
+
+
+.login-logout-state {
+    display: none;
+}
