@@ -1,4 +1,4 @@
-import { fontawsomeScript } from "./default.mjs";
+import { fontawsomeScript } from "./components/default.mjs";
 import { fetchApi } from "./fetch.mjs";
 import { createHeader } from "./components/header.mjs"; 
 
