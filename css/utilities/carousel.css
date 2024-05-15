@@ -111,6 +111,10 @@
     cursor: pointer;
 }
 
-.carousel-indicator.current-indicator {
+.carousel-indicator[data-active] {
     background: var(--white);
+
 }
+
+/* .carousel-indicator.current-indicator {
+} */

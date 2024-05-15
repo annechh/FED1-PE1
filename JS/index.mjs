@@ -1,5 +1,5 @@
 // import { fetchApi } from "./fetch.mjs";
-import { carousel, carouselButtons } from "./carousel.mjs";
+import { carousel } from "./carousel.mjs";
 import { fontawsomeScript } from "./default.mjs";
 import { indexHeader } from "./components/indexHeader.mjs";
 
@@ -22,7 +22,7 @@ async function fetchBlogPosts(page) {
         }
         const data = await response.json();
         createBlogCards(data.data); 
-        // console.log('Logging new data: ', data);
+        console.log('Logging card data: ', data);
         updatePaginationUI(data.meta) 
     } catch (error) {
         console.error('Could not fetch data' + error)
@@ -105,7 +105,7 @@ function createBlogCards(blogPosts) {
 function updatePaginationUI(paginationMeta) {
     const prevPageBtn = document.getElementById('prevPageBtn');
     const nextPageBtn = document.getElementById('nextPageBtn');
-    const paginationNumbers = document.getElementById('paginationNumbers');
+    // const paginationNumbers = document.getElementById('paginationNumbers');
 
     if (paginationMeta.isFirstPage || paginationMeta.isLastPage) {
         prevPageBtn.style.opacity = '0.5';
