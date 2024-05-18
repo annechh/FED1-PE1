@@ -2,6 +2,7 @@
 @import url('../utilities/header.css');
 @import url('../utilities/footer.css');
 @import url('../utilities/buttons.css');
+@import url('../utilities/media-queries.css');
 
 
 .blog-post-img-wrapper {
