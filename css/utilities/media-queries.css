@@ -1,0 +1,53 @@
+/* 1091, 768, 500 */
+
+
+@media screen and (max-width: 1091px) {
+
+    
+    nav {
+        height: 100px;
+    }
+    nav img{
+        height: 75px;
+    }
+    nav div {
+        gap: 35px;
+    }
+    a {
+        font-size: 18px;
+    }
+    
+}
+
+
+
+@media screen and (max-width: 768px) {
+
+    main {
+        margin: 50px 20px;
+    }
+    
+    nav {
+        height: 75px;
+    }
+    nav img{
+        height: 50px;
+        padding-left: 20px;
+    }
+    nav div {
+        gap: 20px;
+        padding-right: 20px;
+    }
+    a {
+        font-size: 16px;
+    }
+}
+
+
+
+@media screen and (max-width: 500px) {
+
+    .links {
+        flex-direction: column;
+    }
+}
