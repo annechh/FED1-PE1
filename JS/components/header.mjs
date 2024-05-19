@@ -1,3 +1,5 @@
+// import { handleLogOut } from "../login.mjs";
+
 
 export function createHeader() {
     let header = document.querySelector('header')
@@ -38,7 +40,12 @@ export function createHeader() {
     let logout = document.createElement('a');
         logout.classList.add('ds-txt', 'hover-scale', 'loggedOut-state');
         logout.textContent ='Logout';
-        // when logging out, change to user view
+        logout.addEventListener('click', () => {
+            localStorage.removeItem('accessToken');
+            localStorage.removeItem('userData');
+            logout.href = '../index.html';
+            alert('You are now logged out');
+        })
 
     let logoutIcon = document.createElement('i');
         logoutIcon.classList.add('fa-solid', 'fa-right-from-bracket');
