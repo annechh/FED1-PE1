@@ -29,11 +29,11 @@ export async function carousel() {
             titleContainer.classList.add('carousel-info');
 
             let titleButton = document.createElement('div');
-            titleButton.classList.add('carousel-title-button');
+            titleButton.classList.add('carousel-title-button', 'px');
 
             let title = document.createElement('h1');
             title.textContent = data.title;
-            title.classList.add('carousel-h2-title', 'ds-txt');
+            title.classList.add('carousel-h1-title', 'ds-txt');
 
             let carouselViewButton = document.createElement('button');
             carouselViewButton.classList.add('btn-img');
