@@ -3,7 +3,7 @@ import { carousel } from "./carousel.mjs";
 import { fontawsomeScript } from "./components/default.mjs";
 import { indexHeader } from "./components/indexHeader.mjs";
 // import { userDataLocalStorage } from "./login.mjs";
-import { loggedInEvents } from "./components/loginState.mjs";
+import { loggedInEvents, getUserData } from "./components/loginState.mjs";
 
 
 
@@ -167,20 +167,46 @@ document.getElementById('nextPageBtn').addEventListener('click', () => {
 
 
 
-function welcomeUser(name) {
+// function welcomeUser(name) {
+//     const userDataString = localStorage.getItem('userData');
+//     const userData = JSON.parse(userDataString);
+//     const userName = userData.name;
     
+    
+//     const introWrapper = document.querySelector('.intro-wrapper');
+
+//     const welcomeDiv = document.createElement('div');
+
+//     const welcomeTitle = document.createElement('h2');
+//         welcomeTitle.classList.add('welcome-user-title');
+//         welcomeTitle.style.fontSize = '50px';
+//         welcomeTitle.textContent = `Welcome back, ${name} !`;
+
+
+//     welcomeDiv.appendChild(welcomeTitle)
+//     introWrapper.insertBefore(welcomeDiv, introWrapper.firstChild)
+// }
+
+// welcomeUser();
+
+
+function welcomeUser() {
+    const userData = getUserData()
+    const userName = userData.name
     
     const introWrapper = document.querySelector('.intro-wrapper');
 
     const welcomeDiv = document.createElement('div');
 
     const welcomeTitle = document.createElement('h2');
-        welcomeTitle.innerHTML = `Welcome back, ${name} !`;
+        welcomeTitle.classList.add('welcome-user-title');
         welcomeTitle.style.fontSize = '50px';
-
+        welcomeTitle.textContent = `Welcome back, ${userName} !`;
 
     welcomeDiv.appendChild(welcomeTitle)
     introWrapper.insertBefore(welcomeDiv, introWrapper.firstChild)
 }
+
+welcomeUser();
 
 

@@ -30,7 +30,7 @@ export function indexHeader() {
         homeIcon.className = 'fa-solid fa-house';
 
     let login = document.createElement('a');
-        login.classList.add('ds-txt', 'hover-scale', 'loggedIn-state');
+        login.classList.add('ds-txt', 'hover-scale', 'loggedOut-state');
         login.textContent = 'Login';
         login.href = 'account/login.html';
 
@@ -39,7 +39,7 @@ export function indexHeader() {
         loginIcon.classList.add('fa-solid', 'fa-user', 'login-icon');
 
     let logout = document.createElement('a');
-        logout.classList.add('ds-txt', 'hover-scale', 'loggedOut-state');
+        logout.classList.add('ds-txt', 'hover-scale', 'loggedIn-state');
         logout.textContent ='Logout';
         logout.addEventListener('click', () => {
             localStorage.removeItem('accessToken');
