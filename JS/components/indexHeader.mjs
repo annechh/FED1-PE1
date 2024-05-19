@@ -1,4 +1,4 @@
-import { loggedInEvents } from "./loginState.mjs";
+// import { loggedInEvents } from "./loginState.mjs";
 
 
 export function indexHeader() {
@@ -61,7 +61,7 @@ export function indexHeader() {
 
 indexHeader();
 
-loggedInEvents();
+// loggedInEvents();
 
 
 // const userDataString = localStorage.getItem('userData');

@@ -1,6 +1,14 @@
 import { fontawsomeScript } from "./components/default.mjs";
 import { createHeader } from "./components/header.mjs"; 
+import { loggedInEvents } from "./components/loginState.mjs";
 
+
+
+
+// Name: pattern: ^[\w]+$
+//       maxLength: 20
+// Email: ^[\w\-.]+@(stud\.)?noroff\.no$  
+// Password:  minLength: 8
 
 function createRegisterForm() {
     let section = document.getElementById('registerSection');
@@ -49,6 +57,7 @@ function createRegisterForm() {
     registerButton.addEventListener('click', (event) => {
         event.preventDefault(); 
         handleRegister(); 
+        // Create or notify registered user, and redirect to login page
     });
 
     let changeToLogin = document.createElement('a');

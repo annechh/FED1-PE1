@@ -1,5 +1,8 @@
 import { fontawsomeScript } from "./components/default.mjs";
 import { createHeader } from "./components/header.mjs"; 
+import { loggedInEvents } from "./components/loginState.mjs";
+
+
 
 const idParameter = window.location.search;
 const searchParameter = new URLSearchParams(idParameter);
@@ -58,7 +61,6 @@ function fetchBlogPost(postId) {
     })
     .catch(error => console.error('Error when trying to fetch post', error))
 }
-
 
 
 

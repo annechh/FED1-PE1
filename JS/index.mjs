@@ -3,6 +3,8 @@ import { carousel } from "./carousel.mjs";
 import { fontawsomeScript } from "./components/default.mjs";
 import { indexHeader } from "./components/indexHeader.mjs";
 // import { userDataLocalStorage } from "./login.mjs";
+import { loggedInEvents } from "./components/loginState.mjs";
+
 
 
 const pageSize = 12; // Number of blog posts per page
@@ -23,9 +25,9 @@ async function fetchBlogPosts(page) {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        createBlogCards(data.data); 
+        createBlogCards(data.data);
         console.log('Logging card data: ', data);
-        updatePaginationUI(data.meta) 
+        updatePaginationUI(data.meta)
     } catch (error) {
         console.error('Could not fetch data' + error)
         throw error ("There was a problem getting the data")
@@ -40,16 +42,16 @@ async function fetchBlogPosts(page) {
 //     })
 //     .then((response) => response.json())
 //     .then(data => {
-//         createBlogCards(data.data); 
+//         createBlogCards(data.data);
 //         console.log('Logging data: ', data);
-//         updatePaginationUI(data.meta) 
+//         updatePaginationUI(data.meta)
 //     })
 //     .catch(error => console.error('Error Fetching posts', error));
 // }
 
 function createBlogCards(blogPosts) {
     let blogCardWrapper = document.getElementById('cardWrapper');
-    // blogCardWrapper.innerHTML = ''; 
+    // blogCardWrapper.innerHTML = '';
 
     blogPosts.forEach(data => {
         let blogCard = document.createElement('div');
@@ -59,11 +61,11 @@ function createBlogCards(blogPosts) {
             imgContainer.classList.add('card-img-container');
 
         let img = document.createElement('img');
-            img.alt = data.title; 
+            img.alt = data.title;
             if (data.media && data.media.url) {
             img.src = data.media.url;
             } else {
-            img.src = ''; 
+            img.src = '';
             }
 
         let blogCardInfo = document.createElement('div');
@@ -76,7 +78,7 @@ function createBlogCards(blogPosts) {
             title.textContent = data.title;
 
         let date = document.createElement('p');
-            date.textContent = 'Posted at: ';
+            date.textContent = ' ';
 
         let formattedDate = new Date(data.created)
         let span = document.createElement('span');
@@ -103,6 +105,7 @@ function createBlogCards(blogPosts) {
 }
 
 
+
 // Pagination part, look into more later..... Called inside fetchBlogPosts
 function updatePaginationUI(paginationMeta) {
     const prevPageBtn = document.getElementById('prevPageBtn');
@@ -111,25 +114,25 @@ function updatePaginationUI(paginationMeta) {
 
     if (paginationMeta.isFirstPage || paginationMeta.isLastPage) {
         prevPageBtn.style.opacity = '0.5';
-        prevPageBtn.disabled = true; 
+        prevPageBtn.disabled = true;
     } else {
-        prevPageBtn.style.opacity = '1'; 
+        prevPageBtn.style.opacity = '1';
         prevPageBtn.disabled = false;
     }
 
     if (paginationMeta.isLastPage) {
-        nextPageBtn.style.opacity = '0.5'; 
-        nextPageBtn.disabled = true; 
+        nextPageBtn.style.opacity = '0.5';
+        nextPageBtn.disabled = true;
     } else {
-        nextPageBtn.style.opacity = '1'; 
-        nextPageBtn.disabled = false; 
+        nextPageBtn.style.opacity = '1';
+        nextPageBtn.disabled = false;
     }
 }
 
 document.getElementById('prevPageBtn').addEventListener('click', () => {
     if (currentPage > 1) {
         currentPage--;
-        
+
         fetchBlogPosts(currentPage);
     }
 });
@@ -142,20 +145,42 @@ document.getElementById('nextPageBtn').addEventListener('click', () => {
 
 
 
-
-
-
-
-
-// const token = localStorage.getItem('accessToken');
+// const userDataString = localStorage.getItem('userData');
+// const userData = JSON.parse(userDataString);
 
 
 // document.addEventListener('DOMContentLoaded', () => {
-//     const userData = userDataLocalStorage();
+//     const newPostButton = document.getElementById('newPost');
+
 //     if (userData) {
-//         console.log('User is logged in:', userData);
-//         // Update the UI or perform actions based on user data
+//         console.log('User is logged in', userData);
+//         newPostButton.style.display = 'block';
+
+//         const userName = userData.name;
+//         welcomeUser(userName)
 //     } else {
-//         console.log('No user is logged in');
+//         console.log('No user logged in');
+//         newPostButton.style.display = 'none'
 //     }
-// });
+// })
+
+
+
+
+function welcomeUser(name) {
+    
+    
+    const introWrapper = document.querySelector('.intro-wrapper');
+
+    const welcomeDiv = document.createElement('div');
+
+    const welcomeTitle = document.createElement('h2');
+        welcomeTitle.innerHTML = `Welcome back, ${name} !`;
+        welcomeTitle.style.fontSize = '50px';
+
+
+    welcomeDiv.appendChild(welcomeTitle)
+    introWrapper.insertBefore(welcomeDiv, introWrapper.firstChild)
+}
+
+
