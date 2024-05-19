@@ -1,5 +1,5 @@
 import { fontawsomeScript } from "./components/default.mjs";
-import { fetchApi } from "./fetch.mjs";
+import { fetchApi, loginUrl } from "./fetch.mjs";
 import { createHeader } from "./components/header.mjs"; 
 
 
@@ -57,12 +57,15 @@ async function handleLogin(event) {
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
     try {
-        const userData = await fetchApi('POST', `https://v2.api.noroff.dev/auth/login`, { email, password });
+        const userData = await fetchApi('POST', loginUrl, { email, password });
         console.log('Login successful:', userData);
         const accessToken = userData.data.accessToken;
         if (accessToken) {
             localStorage.setItem('accessToken', accessToken);
+            localStorage.setItem('userData', JSON.stringify(userData.data));
             console.log('Token saved to local storage', accessToken);
+
+            alert('Login successful! Redirecting to the homepage.');
             window.location.href = `../index.html`
         } else {
             console.error('No token found', userData);
@@ -74,25 +77,20 @@ async function handleLogin(event) {
 }
 
 
-// async function handleLogin(event) {
-//     event.preventDefault(); 
+export function userDataLocalStorage() {
+    const userDataString = localStorage.getItem('userData');
+    if (userDataString) {
+        try {
+            // Parse the JSON string back to an object
+            const userData = JSON.parse(userDataString);
+            console.log('Logged in user data',userData);
+            return userData;
+        } catch (error) {
+            console.error('Failed to parse userData from local storage:', error);
+            return null;
+        }
+    }
+    return null;
+}
 
-//     const email = document.getElementById('loginEmail').value;
-//     const password = document.getElementById('loginPassword').value;
-//     try {
-//         const userData = await fetchApi('POST', loginUrl, { email, password });
-//         console.log('Login successful:', userData);
-//         const accessToken = userData.data.accessToken;
-//         if (accessToken) {
-//             localStorage.setItem('accessToken', accessToken);
-//             console.log('Token saved to local storage', accessToken);
-//             window.location.href = `../index.html`
-//         } else {
-//             console.error('No token found', userData);
-//         }
-//         // return userData;
-//     } catch (error) {
-//         console.error('Login failed:', error);
-//     }
-// }
-
+userDataLocalStorage()
