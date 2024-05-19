@@ -2,6 +2,8 @@
 import { carousel } from "./carousel.mjs";
 import { fontawsomeScript } from "./components/default.mjs";
 import { indexHeader } from "./components/indexHeader.mjs";
+// import { userDataLocalStorage } from "./login.mjs";
+
 
 const pageSize = 12; // Number of blog posts per page
 let currentPage = 1; // Initial page number
@@ -57,7 +59,7 @@ function createBlogCards(blogPosts) {
             imgContainer.classList.add('card-img-container');
 
         let img = document.createElement('img');
-            img.alt = ''; 
+            img.alt = data.title; 
             if (data.media && data.media.url) {
             img.src = data.media.url;
             } else {
@@ -148,3 +150,12 @@ document.getElementById('nextPageBtn').addEventListener('click', () => {
 // const token = localStorage.getItem('accessToken');
 
 
+// document.addEventListener('DOMContentLoaded', () => {
+//     const userData = userDataLocalStorage();
+//     if (userData) {
+//         console.log('User is logged in:', userData);
+//         // Update the UI or perform actions based on user data
+//     } else {
+//         console.log('No user is logged in');
+//     }
+// });
