@@ -28,7 +28,7 @@ export function createHeader() {
         homeIcon.classList.add('fa-solid', 'fa-house');
 
     let login = document.createElement('a');
-        login.classList.add('ds-txt', 'hover-scale');
+        login.classList.add('ds-txt', 'hover-scale', 'loggedIn-state');
         login.textContent = 'Login';
         login.href = '../account/login.html';
         
@@ -36,7 +36,7 @@ export function createHeader() {
         loginIcon.classList.add('fa-solid', 'fa-user', 'login-icon');
 
     let logout = document.createElement('a');
-        logout.classList.add('ds-txt', 'hover-scale', 'login-logout-state');
+        logout.classList.add('ds-txt', 'hover-scale', 'loggedOut-state');
         logout.textContent ='Logout';
         // when logging out, change to user view
 
