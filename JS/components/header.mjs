@@ -1,4 +1,5 @@
-// import { handleLogOut } from "../login.mjs";
+import { loggedInEvents } from "./loginState.mjs";
+
 
 
 export function createHeader() {
@@ -59,5 +60,5 @@ export function createHeader() {
 }
 
 createHeader()
-
+loggedInEvents();
 
