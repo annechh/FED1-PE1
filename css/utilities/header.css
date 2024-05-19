@@ -37,6 +37,6 @@ a {
     align-items: center;
 }
 
-/* .logout-icon {
+.loggedOut-state {
     display: none;
-} */
+}
