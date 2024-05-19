@@ -5,6 +5,9 @@ export const userUrl = `${baseUrl}/blog/posts/Shira`;
 export const loginUrl = `${baseUrl}/auth/login`;
 export const registerUrl = `${baseUrl}/auth/register`;
 
+// Make userUrl usable for whatever registered account that is being made
+// `${baseUrl}/blog/posts/${name}`
+
 // GET, POST - /blog/posts/Shira
 // PUT, DELETE, GET - /blog/posts/Shira/{id}
 // https://v2.api.noroff.dev/blog/posts/Shira
