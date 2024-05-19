@@ -49,8 +49,9 @@
 
 .card-img-container {
     max-width: 390px;
-    max-height: 224px;
-    overflow: hidden;
+    /* max-height: 224px; */
+    /* overflow: hidden; */
+    height: 224px;
     display: flex;
     justify-content: center;
 }

@@ -16,6 +16,15 @@
     a {
         font-size: 18px;
     }
+
+/* Carousel */
+    .carousel-btn {
+        height: 100px;
+        width: 100px;
+    }
+    .carousel-h1-title{
+        font-size: 40px;
+    }
     
 }
 
@@ -28,7 +37,8 @@
     }
     
     nav {
-        height: 75px;
+        height: 55px;
+        align-items: end;
     }
     nav img{
         height: 50px;
@@ -40,6 +50,28 @@
     }
     a {
         font-size: 16px;
+    }
+
+/* Carousel */
+    .carousel-btn {
+        height: 65px;
+        width: 65px;
+        top: 90%
+    }
+    .carousel-btn.left {
+        left: 20px;
+    }
+    .carousel-btn.right {
+        right: 20px;
+    }
+    .carousel-btn i {
+        font-size: 20px;
+    }
+
+
+    .px {
+        padding-left: 20px;
+        padding-right: 20px;
     }
 }
 
