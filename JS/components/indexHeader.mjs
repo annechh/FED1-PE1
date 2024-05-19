@@ -1,3 +1,4 @@
+
 export function indexHeader() {
     let header = document.querySelector('header')
     let firstChild = header.firstChild;
@@ -19,7 +20,7 @@ export function indexHeader() {
     let linkContainer = document.createElement('div');
 
     let home = document.createElement('a');
-        home.className = 'ds-txt hover-scale';
+        home.classList.add('ds-txt', 'hover-scale');
         home.textContent = 'Home';
         home.href = '';
 
@@ -29,12 +30,22 @@ export function indexHeader() {
     let login = document.createElement('a');
         login.className = 'ds-txt hover-scale';
         login.textContent = 'Login';
-        login.addEventListener( 'click', () => {
-            window.location.href = 'account/login.html';
-        })
+        login.href = 'account/login.html';
+
+        // login.addEventListener( 'click', () => {
+        //     window.location.href = 'account/login.html';
+        // })
         
     let loginIcon = document.createElement('i');
         loginIcon.className = 'fa-solid fa-user login-icon';
+
+    let logout = document.createElement('a');
+    logout.classList.add('ds-txt', 'hover-scale', 'loggedOut-state');
+    logout.textContent ='Logout';
+    // when logging out, change to user view
+
+    let logoutIcon = document.createElement('i');
+        logoutIcon.classList.add('fa-solid', 'fa-right-from-bracket');
 
     login.appendChild(loginIcon);
     home.appendChild(homeIcon);
