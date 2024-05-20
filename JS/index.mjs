@@ -192,19 +192,23 @@ document.getElementById('nextPageBtn').addEventListener('click', () => {
 
 function welcomeUser() {
     const userData = getUserData()
-    const userName = userData.name
+    if (userData) {
+        let userName = userData.name
+        
+        const introWrapper = document.querySelector('.intro-wrapper');
+
+        const welcomeDiv = document.createElement('div');
+
+        const welcomeTitle = document.createElement('h2');
+            welcomeTitle.classList.add('welcome-user-title');
+            welcomeTitle.style.fontSize = '50px';
+            welcomeTitle.textContent = `Welcome back, ${userName} !`;
+
+        welcomeDiv.appendChild(welcomeTitle)
+        introWrapper.insertBefore(welcomeDiv, introWrapper.firstChild)    
+    }
     
-    const introWrapper = document.querySelector('.intro-wrapper');
-
-    const welcomeDiv = document.createElement('div');
-
-    const welcomeTitle = document.createElement('h2');
-        welcomeTitle.classList.add('welcome-user-title');
-        welcomeTitle.style.fontSize = '50px';
-        welcomeTitle.textContent = `Welcome back, ${userName} !`;
-
-    welcomeDiv.appendChild(welcomeTitle)
-    introWrapper.insertBefore(welcomeDiv, introWrapper.firstChild)
+    
 }
 
 welcomeUser();

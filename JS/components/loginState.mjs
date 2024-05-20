@@ -18,9 +18,6 @@ export function loggedInEvents() {
             loggedIn.style.display = 'none'
             if ( window.location.href.includes('index.html')) {
                 newPostButton.style.display = 'block';
-
-                // const userName = userData.name;
-                // welcomeUser(userName);
             }
             
         } else {
@@ -36,15 +33,6 @@ export function loggedInEvents() {
 
 loggedInEvents();
 
-
-// export function getUserData() {
-//     if ('userData') {
-//     const userDataString = localStorage.getItem('userData');
-//     const userData = JSON.parse(userDataString);
-//     const userName = userData.name;
-//     return userName;
-//     }
-// }
 
 export function getUserData() {
 
