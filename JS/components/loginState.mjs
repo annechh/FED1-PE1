@@ -16,7 +16,7 @@ export function loggedInEvents() {
             // console.log('User is logged in', userData);
             loggedOut.style.display = 'flex'
             loggedIn.style.display = 'none'
-            if ( window.location.href.includes('index.html')) {
+            if ( newPostButton ) {
                 newPostButton.style.display = 'block';
             }
             
@@ -24,7 +24,7 @@ export function loggedInEvents() {
             console.log('No user logged in');
             loggedIn.style.display = 'flex';
             loggedOut.style.display = 'none';
-            if ( window.location.href.includes('index.html')) {
+            if ( newPostButton ) {
                 newPostButton.style.display = 'none'
             }
         }
