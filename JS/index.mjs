@@ -144,57 +144,11 @@ document.getElementById('nextPageBtn').addEventListener('click', () => {
 // End pagination part......
 
 
-
-// const userDataString = localStorage.getItem('userData');
-// const userData = JSON.parse(userDataString);
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     const newPostButton = document.getElementById('newPost');
-
-//     if (userData) {
-//         console.log('User is logged in', userData);
-//         newPostButton.style.display = 'block';
-
-//         const userName = userData.name;
-//         welcomeUser(userName)
-//     } else {
-//         console.log('No user logged in');
-//         newPostButton.style.display = 'none'
-//     }
-// })
-
-
-
-
-// function welcomeUser(name) {
-//     const userDataString = localStorage.getItem('userData');
-//     const userData = JSON.parse(userDataString);
-//     const userName = userData.name;
-    
-    
-//     const introWrapper = document.querySelector('.intro-wrapper');
-
-//     const welcomeDiv = document.createElement('div');
-
-//     const welcomeTitle = document.createElement('h2');
-//         welcomeTitle.classList.add('welcome-user-title');
-//         welcomeTitle.style.fontSize = '50px';
-//         welcomeTitle.textContent = `Welcome back, ${name} !`;
-
-
-//     welcomeDiv.appendChild(welcomeTitle)
-//     introWrapper.insertBefore(welcomeDiv, introWrapper.firstChild)
-// }
-
-// welcomeUser();
-
-
 function welcomeUser() {
     const userData = getUserData()
     if (userData) {
-        let userName = userData.name
-        
+        const userName = userData.name
+
         const introWrapper = document.querySelector('.intro-wrapper');
 
         const welcomeDiv = document.createElement('div');
