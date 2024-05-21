@@ -1,6 +1,6 @@
-import { fontawsomeScript } from "./components/default.mjs";
-import { createHeader } from "./components/header.mjs"; 
-import { loggedInEvents } from "./components/loginState.mjs";
+import { fontawsomeScript } from "../components/default.mjs";
+import { createHeader } from "../components/header.mjs"; 
+import { loggedInEvents } from "../components/loginState.mjs";
 
 
 

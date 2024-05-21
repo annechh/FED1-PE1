@@ -1,6 +1,6 @@
-import { fontawsomeScript } from "./components/default.mjs";
-import { createHeader } from "./components/header.mjs"; 
-import { loggedInEvents } from "./components/loginState.mjs";
+import { fontawsomeScript } from "../components/default.mjs";
+import { createHeader } from "../components/header.mjs";
+import { loggedInEvents } from "../components/loginState.mjs";
 
 
 
@@ -25,19 +25,14 @@ function fetchBlogPost(postId) {
     })
     .then((response) => response.json())
     .then(data => {
-        console.log('DATA RECIVED: ',data); 
-
+        console.log('DATA gotten: ',data); 
+        
         let image = document.getElementById('specificBlogImg');
             image.src = data.data.media.url;
             image.alt = data.data.title;
-
+        
         let title = document.getElementById('specificBlogTitle');
             title.textContent = data.data.title;
-
-        // let text = document.getElementById('specificBlogText1');
-        //     text.textContent = data.data.body;
-        
-        
 
         let text = document.getElementById('specificBlogText');
         
@@ -48,8 +43,6 @@ function fetchBlogPost(postId) {
         .map(paragraph => `<p>${paragraph}</p>`)
         .join('');
             text.innerHTML = formattedText;
-
-        
 
         let formattedDate = new Date(data.data.created)
         let date = document.getElementById('specificBlogDate');
@@ -62,8 +55,25 @@ function fetchBlogPost(postId) {
     .catch(error => console.error('Error when trying to fetch post', error))
 }
 
+const editBtn = document.getElementById('editBtn');
+const tooltip = document.getElementById('tooltip');
+
+    editBtn.addEventListener('mouseover', () => {
+        tooltip.style.visibility = 'visible';
+        tooltip.style.opacity = '1';
+    })
+
+    editBtn.addEventListener('mouseout', () => {
+        tooltip.style.visibility = 'hidden';
+        tooltip.style.opacity = '0';
+    })
+    
+    editBtn.addEventListener('click',() => {
+        window.location.href = `post/edit.html?id=${postId}`;
+    })
 
 
+    
 // document.addEventListener('DOMContentLoaded', () => {
 //     const newBlogText = document.getElementById('specificBlogText');
 //     postData.content.forEach(paragraph => {

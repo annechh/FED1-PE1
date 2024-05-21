@@ -1,29 +1,52 @@
-import { fontawsomeScript } from "./components/default.mjs";
-import { createHeader } from "./components/header.mjs"; 
-import { loggedInEvents } from "./components/loginState.mjs";
+import { fontawsomeScript } from "../components/default.mjs";
+import { createHeader } from "../components/header.mjs";
+import { loggedInEvents } from "../components/loginState.mjs";
 
 
 const token = localStorage.getItem('accessToken');
 
 
+document.getElementById('createUrl').addEventListener('input', previewImage);
+
 function previewImage() {
     const imageUrl = document.getElementById('createUrl').value;
-    const previewImage = document.getElementById('createBlogImg');
-
-    // previewImage.innerHTML = '';
+    const previewImageContainer = document.getElementById('createBlogImg');
+    let blogImg = document.getElementById('previewImg');
 
     if (imageUrl.trim() !== '') {
-        const blogImg = document.createElement('img');
+        if (!blogImg) {
+            blogImg = document.createElement('img');
+            blogImg.id = 'previewImg';
+            previewImageContainer.appendChild(blogImg);
+        }
         blogImg.src = imageUrl;
-        blogImg.id = 'previewImg';
-        blogImg.classList.remove('hide')
-
-        previewImage.appendChild(blogImg);
+        blogImg.classList.remove('hide');
     } else {
-        previewImage.src = '';
-        previewImage.classList.add('hide');
+        if (blogImg) {
+            blogImg.src = '';
+            blogImg.classList.add('hide');
+        }
     }
 }
+
+// function previewImage() {
+//     const imageUrl = document.getElementById('createUrl').value;
+//     const previewImage = document.getElementById('createBlogImg');
+
+//     // previewImage.innerHTML = '';
+
+//     if (imageUrl.trim() !== '') {
+//         const blogImg = document.createElement('img');
+//         blogImg.src = imageUrl;
+//         blogImg.id = 'previewImg';
+//         blogImg.classList.remove('hide')
+
+//         previewImage.appendChild(blogImg);
+//     } else {
+//         previewImage.src = '';
+//         previewImage.classList.add('hide');
+//     }
+// }
 
 
 document.querySelector('form').addEventListener('submit', function(event) {
