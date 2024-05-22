@@ -70,11 +70,23 @@ function fetchBlogPost(postId) {
         
         let author = document.getElementById('specificBlogAuthor');
             author.textContent = data.data.author.name;
-        
+    
+        let shareBtn = document.getElementById('shareBtn');
+            shareBtn.addEventListener('click', () => {
+                const postUrl = window.location.href;
+                navigator.clipboard.writeText(postUrl);
+                if(navigator.clipboard) {
+                    alert('Url has been copied to clipboard')
+                } else {
+                    alert('Failed to copy url')       
+                }
+            })
+
         let editBtn = document.getElementById('editBtn');
             editBtn.addEventListener('click', () => {
                 window.location.href = `/post/edit.html?id=${data.data.id}`;
             })
+
     })
     .catch(error => console.error('Error when trying to fetch post', error))
 }
