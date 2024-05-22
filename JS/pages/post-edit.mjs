@@ -88,6 +88,7 @@ document.getElementById('deletePostBtn').addEventListener('click', async () => {
         }
     }
 })
+// Legg til på clear button me alert og godta eller avbryt
 
 const updateImgBtn = document.getElementById('updateImgBtn');
 updateImgBtn.addEventListener('click', function() {
@@ -119,16 +120,19 @@ function previewImage() {
 
 
 
-// const cancelButton = document.getElementById('cancelPostBtn');
+const cancelButton = document.getElementById('clearPostBtn');
 
-// cancelButton.addEventListener('click', function(event) {
-//     event.preventDefault(); 
-
-//     document.getElementById('previewImg').src = '';
-//     document.getElementById('updateUrl').value = '';
-//     document.getElementById('updateTitle').value = '';
-//     document.getElementById('updateBlogText').value = '';
-// });
+cancelButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    const confirmClear = window.confirm('Do you want to clear all information in this post?')
+    
+    if (confirmClear) {
+        document.getElementById('previewImg').src = '';
+        document.getElementById('updateUrl').value = '';
+        document.getElementById('updateTitle').value = '';
+        document.getElementById('updateBlogText').value = '';
+    }
+});
 
 document.getElementById('updateUrl').addEventListener('input', previewImage);
 
