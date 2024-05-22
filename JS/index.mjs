@@ -56,6 +56,9 @@ function createBlogCards(blogPosts) {
     blogPosts.forEach(data => {
         let blogCard = document.createElement('div');
             blogCard.classList.add('blog-card', 'gap');
+            blogCard.addEventListener('click',() => {
+                window.location.href = `post/index.html?id=${data.id}`;
+            })
 
         let imgContainer = document.createElement('div');
             imgContainer.classList.add('card-img-container');
@@ -92,7 +95,6 @@ function createBlogCards(blogPosts) {
             btn.textContent = 'View Post';
             btn.addEventListener('click',() => {
                 window.location.href = `post/index.html?id=${data.id}`;
-                // localStorage.setItem('blogPost',JSON.stringify(data))
             })
 
         imgContainer.appendChild(img);
