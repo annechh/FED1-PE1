@@ -32,8 +32,8 @@
             <div class="post-img-container" id="updateBlogImg">
                 <!-- <img src="" alt="" id="previewImg" class="hide"> -->
             </div>
-            <div class="add-img">
-                <svg class="hover" id="updateImgBtn" xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
+            <div class="add-img"> <!--Check if i should change to button here for text tooltip to work-->
+                <svg class="hover tooltip" id="updateImgBtn" data-tooltip="Add Img Url" xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
                     <rect x="31.4297" width="7.14286" height="70" rx="3.57143"/>
                     <rect y="38.5713" width="7.14286" height="70" rx="3.57143" transform="rotate(-90 0 38.5713)" />
                 </svg>
@@ -59,9 +59,9 @@
                     </div>       
                 </form>
                 <div class="btn-container">
-                    <button class="btn" id="savePostBtn"><i class="fa-solid fa-floppy-disk"></i></button>
-                    <button class="btn" id="clearPostBtn">Clear all</button>
-                    <button class="btn" id="deletePostBtn"><i class="fa-solid fa-trash-can"></i>Delete post</button>
+                    <button class="btn tooltip" id="savePostBtn" data-tooltip="Save post"><i class="fa-solid fa-floppy-disk"></i></button>
+                    <button class="btn tooltip" id="clearPostBtn" data-tooltip="Clear all fields">Clear all</button> <!--Add icon -->
+                    <button class="btn tooltip" id="deletePostBtn" data-tooltip="Delete post"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
             </div>
         </div>
@@ -71,10 +71,8 @@
         <div class="footer-content">
             <img src="../assets/images/Shira.png" class="hover-scale" alt="A white dog">
             <div class="links">
-                <a href="#" class="hover-scale">Contact</a>
-                <a href="#" class="hover-scale">About Shira</a>
-                <a href="#" class="hover-scale">Privacy Policy</a>
-                <a href="#" class="hover-scale">Follow</a>
+                <a href="#" class="hover-scale">About</a>
+                <a href="https://www.instagram.com/haloshira/" class="hover-scale">Follow</a>
             </div>
         </div>
     </footer>
