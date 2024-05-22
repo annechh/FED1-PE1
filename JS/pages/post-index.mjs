@@ -9,7 +9,13 @@ const searchParameter = new URLSearchParams(window.location.search);
 const postId = searchParameter.get('id');
 
 
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const months = [
+    "January", "February", 
+    "March", "April", "May", 
+    "June", "July", "August", 
+    "September", "October", 
+    "November", "December"
+];
 
 if (postId) {
     fetchBlogPost(postId)
@@ -48,8 +54,20 @@ function fetchBlogPost(postId) {
 
         let formattedDate = new Date(data.data.created)
         let date = document.getElementById('specificBlogDate');
-            date.textContent = `${formattedDate.getDate()} ${months[formattedDate.getMonth()]} ${formattedDate.getFullYear()}`;
+            date.textContent = `
+            ${formattedDate.getDate()} 
+            ${months[formattedDate.getMonth()]} 
+            ${formattedDate.getFullYear()}
+            `;
 
+        let formattedUpdatedDate = new Date(data.data.updated)
+        let updatedDate = document.getElementById('specificBlogUpdatedDate');
+            updatedDate.textContent = `
+            ${formattedUpdatedDate.getDate()} 
+            ${months[formattedUpdatedDate.getMonth()]} 
+            ${formattedUpdatedDate.getFullYear()}
+            `;
+        
         let author = document.getElementById('specificBlogAuthor');
             author.textContent = data.data.author.name;
         
@@ -60,6 +78,37 @@ function fetchBlogPost(postId) {
     })
     .catch(error => console.error('Error when trying to fetch post', error))
 }
+
+
+
+document.getElementById('deletePostBtn').addEventListener('click', async () => {
+    const id = new URLSearchParams(window.location.search).get('id');
+    console.log('delete post id', id);
+    const confirmDel = confirm('Are you sure you want to delete this post?');
+
+    if (confirmDel) {
+        try {
+            await fetch(`https://v2.api.noroff.dev/blog/posts/Shira/${id}`, {
+                method: 'DELETE',
+                headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                },
+            });
+            window.location.href = '../index.html';
+        } catch (error) {
+            console.error('Error deleting this post:', error);
+            alert('Failed to delete this post');
+        }
+    }
+})
+
+
+
+
+
+
+
 
 // const editBtn = document.getElementById('editBtn');
 // const tooltip = document.getElementById('tooltip');
