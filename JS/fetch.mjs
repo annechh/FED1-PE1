@@ -5,12 +5,7 @@ export const userUrl = `${baseUrl}/blog/posts/Shira`;
 export const loginUrl = `${baseUrl}/auth/login`;
 export const registerUrl = `${baseUrl}/auth/register`;
 
-// Make userUrl usable for whatever registered account that is being made
-// `${baseUrl}/blog/posts/${name}`
 
-// GET, POST - /blog/posts/Shira
-// PUT, DELETE, GET - /blog/posts/Shira/{id}
-// https://v2.api.noroff.dev/blog/posts/Shira
 
 export async function fetchApi(method, url, body) {  
     
@@ -20,6 +15,7 @@ export async function fetchApi(method, url, body) {
             method: method,
             headers: {
                 'Content-Type': 'application/json',
+                // Authorization: `Bearer ${token}`,
                 
             },
             body: JSON.stringify(body),
@@ -36,7 +32,14 @@ export async function fetchApi(method, url, body) {
     }
 }
 
+// const token = localStorage.getItem('accessToken');
 
+// Make userUrl usable for whatever registered account that is being made
+// `${baseUrl}/blog/posts/${name}`
+
+// GET, POST - /blog/posts/Shira
+// PUT, DELETE, GET - /blog/posts/Shira/{id}
+// https://v2.api.noroff.dev/blog/posts/Shira
 
 
 // from login.mjs file

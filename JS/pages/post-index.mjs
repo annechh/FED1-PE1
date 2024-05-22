@@ -4,9 +4,10 @@ import { loggedInEvents } from "../components/loginState.mjs";
 
 
 
-const idParameter = window.location.search;
-const searchParameter = new URLSearchParams(idParameter);
+// const idParameter = window.location.search;
+const searchParameter = new URLSearchParams(window.location.search);
 const postId = searchParameter.get('id');
+
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -14,6 +15,7 @@ if (postId) {
     fetchBlogPost(postId)
 }
 // console.log(searchParameter.get('id'));
+console.log('POST ID',postId);
 
 
 function fetchBlogPost(postId) {
@@ -51,26 +53,28 @@ function fetchBlogPost(postId) {
         let author = document.getElementById('specificBlogAuthor');
             author.textContent = data.data.author.name;
         
+        let editBtn = document.getElementById('editBtn');
+            editBtn.addEventListener('click', () => {
+                window.location.href = `/post/edit.html?id=${data.data.id}`;
+            })
     })
     .catch(error => console.error('Error when trying to fetch post', error))
 }
 
-const editBtn = document.getElementById('editBtn');
-const tooltip = document.getElementById('tooltip');
+// const editBtn = document.getElementById('editBtn');
+// const tooltip = document.getElementById('tooltip');
 
-    editBtn.addEventListener('mouseover', () => {
-        tooltip.style.visibility = 'visible';
-        tooltip.style.opacity = '1';
-    })
+    // editBtn.addEventListener('mouseover', () => {
+    //     tooltip.style.visibility = 'visible';
+    //     tooltip.style.opacity = '1';
+    // })
 
-    editBtn.addEventListener('mouseout', () => {
-        tooltip.style.visibility = 'hidden';
-        tooltip.style.opacity = '0';
-    })
+    // editBtn.addEventListener('mouseout', () => {
+    //     tooltip.style.visibility = 'hidden';
+    //     tooltip.style.opacity = '0';
+    // })
     
-    editBtn.addEventListener('click',() => {
-        window.location.href = `post/edit.html?id=${postId}`;
-    })
+    
 
 
     

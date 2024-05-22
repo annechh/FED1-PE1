@@ -92,6 +92,7 @@ function createBlogCards(blogPosts) {
             btn.textContent = 'View Post';
             btn.addEventListener('click',() => {
                 window.location.href = `post/index.html?id=${data.id}`;
+                // localStorage.setItem('blogPost',JSON.stringify(data))
             })
 
         imgContainer.appendChild(img);

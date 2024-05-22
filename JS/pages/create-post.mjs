@@ -95,6 +95,7 @@ const cancelButton = document.getElementById('cancelPostBtn');
 cancelButton.addEventListener('click', function(event) {
     event.preventDefault(); 
 
+    document.getElementById('previewImg').src = '';
     document.getElementById('createUrl').value = '';
     document.getElementById('createTitle').value = '';
     document.getElementById('createBlogText').value = '';
