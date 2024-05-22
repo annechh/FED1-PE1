@@ -84,7 +84,7 @@ function fetchBlogPost(postId) {
 
         let editBtn = document.getElementById('editBtn');
             editBtn.addEventListener('click', () => {
-                window.location.href = `/post/edit.html?id=${data.data.id}`;
+                window.location.href = `../post/edit.html?id=${data.data.id}`;
             })
 
     })
