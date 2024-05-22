@@ -57,7 +57,7 @@ function createBlogCards(blogPosts) {
         let blogCard = document.createElement('div');
             blogCard.classList.add('blog-card', 'gap');
             blogCard.addEventListener('click',() => {
-                window.location.href = `post/index.html?id=${data.id}`;
+                // window.location.href = `post/index.html?id=${data.id}`;
             })
 
         let imgContainer = document.createElement('div');
@@ -73,6 +73,11 @@ function createBlogCards(blogPosts) {
 
         let blogCardInfo = document.createElement('div');
             blogCardInfo.classList.add('blog-card-info');
+
+        let deleteCheckbox = document.createElement('input');
+            deleteCheckbox.type = 'checkbox';
+            deleteCheckbox.classList.add('delete-checkbox');
+            deleteCheckbox.value = data.id;
 
         let titleDateContainer = document.createElement('div');
             titleDateContainer.classList.add('card-title-date');
@@ -101,7 +106,7 @@ function createBlogCards(blogPosts) {
         date.appendChild(span);
         titleDateContainer.append(title, date);
         btnContainer.appendChild(btn);
-        blogCardInfo.append(titleDateContainer, btnContainer);
+        blogCardInfo.append(deleteCheckbox, titleDateContainer, btnContainer);
         blogCard.append(imgContainer, blogCardInfo);
         blogCardWrapper.appendChild(blogCard);
     });
@@ -164,10 +169,37 @@ function welcomeUser() {
         welcomeDiv.appendChild(welcomeTitle)
         introWrapper.insertBefore(welcomeDiv, introWrapper.firstChild)    
     }
-    
-    
 }
 
 welcomeUser();
 
 
+document.getElementById('deleteSelectedPostsBtn').addEventListener('click', async () => {
+    const checkboxes = document.querySelectorAll('.delete-checkbox:checked');
+    const ids = Array.from(checkboxes).map(checkbox => checkbox.value);
+
+    if (ids.length === 0) {
+        alert('No posts selected for deletion');
+        return;
+    }
+
+    const confirmDel = confirm(`Are you sure you want to delete these ${ids.length} posts?`);
+
+    if (confirmDel) {
+        try {
+            for (const id of ids) {
+                await fetch(`https://v2.api.noroff.dev/blog/posts/Shira/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    },
+                });
+            }
+            window.location.href = '../index.html';
+        } catch (error) {
+            console.error('Error deleting posts:', error);
+            alert('Failed to delete some posts');
+        }
+    }
+});
