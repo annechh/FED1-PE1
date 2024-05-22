@@ -29,25 +29,6 @@ function previewImage() {
     }
 }
 
-// function previewImage() {
-//     const imageUrl = document.getElementById('createUrl').value;
-//     const previewImage = document.getElementById('createBlogImg');
-
-//     // previewImage.innerHTML = '';
-
-//     if (imageUrl.trim() !== '') {
-//         const blogImg = document.createElement('img');
-//         blogImg.src = imageUrl;
-//         blogImg.id = 'previewImg';
-//         blogImg.classList.remove('hide')
-
-//         previewImage.appendChild(blogImg);
-//     } else {
-//         previewImage.src = '';
-//         previewImage.classList.add('hide');
-//     }
-// }
-
 
 document.querySelector('form').addEventListener('submit', function(event) {
     event.preventDefault();
@@ -101,40 +82,3 @@ cancelButton.addEventListener('click', function(event) {
     document.getElementById('createBlogText').value = '';
 });
 
-// //--------------------------------
-// createUrlInput.addEventListener('input', function(event) {
-//     const imageUrl = event.target.value.trim();
-    
-//     // Regular expression pattern to match URL
-//     const urlPattern = /^(ftp|http|https):\/\/[^ "]+$/;
-
-//     if (urlPattern.test(imageUrl)) {
-//         // Valid URL, create image tag
-//         createPreviewImage(imageUrl);
-//     } else {
-//         // Not a valid URL, remove existing image tag if present
-//         removePreviewImage();
-//     }
-// });
-
-// function createPreviewImage(imageUrl) {
-//     // Remove existing image tag if present
-//     removePreviewImage();
-
-//     // Create new image tag
-//     const img = document.createElement('img');
-//     img.src = imageUrl;
-//     img.classList.add('preview-image');
-
-//     // Append image tag to createBlogImg container
-//     createBlogImg.appendChild(img);
-// }
-
-// function removePreviewImage() {
-//     const existingImg = createBlogImg.querySelector('.preview-image');
-//     if (existingImg) {
-//         // Remove existing image tag
-//         createBlogImg.removeChild(existingImg);
-//     }
-// }
-// --------------------------------
