@@ -77,7 +77,6 @@ function createBlogCards(blogPosts) {
         let deleteCheckbox = document.createElement('input');
             deleteCheckbox.type = 'checkbox';
             deleteCheckbox.classList.add('delete-checkbox');
-            deleteCheckbox.id = 'deleteCheckbox';
             deleteCheckbox.value = data.id;
 
         let titleDateContainer = document.createElement('div');
