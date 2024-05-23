@@ -57,7 +57,15 @@ document.querySelector('form').addEventListener('submit', function(event) {
         },
     })
     .then((response) => response.json())
-    .then((json) => console.log('json---', json));
+    .then((json) =>  {
+        console.log('json---', json)
+        if (json.data.id) {
+            alert('Successfully created new post');
+            window.location.href = `../post/index.html?id=${json.data.id}`;
+        } else {
+            throw new Error(alert('Post created but no ID returned'))
+        } 
+    });
 });
 
 const addImgBtn = document.getElementById('addImgBtn');
