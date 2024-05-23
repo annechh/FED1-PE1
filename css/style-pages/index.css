@@ -23,6 +23,12 @@
     justify-content: space-between;
 }
 
+.delete-checkbox,
+#deleteSelectedPostsBtn,
+#cancelSelectPostsBtn {
+    display: none;
+}
+
 
 /* Blog post cards */
 .blog-card-wrapper {

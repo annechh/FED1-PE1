@@ -77,6 +77,7 @@ function createBlogCards(blogPosts) {
         let deleteCheckbox = document.createElement('input');
             deleteCheckbox.type = 'checkbox';
             deleteCheckbox.classList.add('delete-checkbox');
+            deleteCheckbox.id = 'deleteCheckbox';
             deleteCheckbox.value = data.id;
 
         let titleDateContainer = document.createElement('div');
@@ -167,25 +168,58 @@ function welcomeUser() {
             welcomeTitle.textContent = `Welcome back, ${userName} !`;
 
         welcomeDiv.appendChild(welcomeTitle)
-        introWrapper.insertBefore(welcomeDiv, introWrapper.firstChild)    
+        introWrapper.insertBefore(welcomeDiv, introWrapper.firstChild)
     }
 }
 
 welcomeUser();
 
 
-document.getElementById('deleteSelectedPostsBtn').addEventListener('click', async () => {
-    const checkboxes = document.querySelectorAll('.delete-checkbox:checked');
-    const ids = Array.from(checkboxes).map(checkbox => checkbox.value);
 
-    if (ids.length === 0) {
-        alert('No posts selected for deletion');
-        return;
-    }
 
-    const confirmDel = confirm(`Are you sure you want to delete these ${ids.length} posts?`);
 
-    if (confirmDel) {
+const selectBtn = document.getElementById('selectPostsBtn');
+const deleteBtn = document.getElementById('deleteSelectedPostsBtn');
+const cancelBtn = document.getElementById('cancelSelectPostsBtn');
+
+
+function selectPostsBtn() {
+    selectBtn.addEventListener('click', () => {
+        console.log('Select post, changed to Delete post',selectBtn);
+        selectBtn.style.display = 'none';
+        deleteBtn.style.display = 'flex';
+        cancelBtn.style.display = 'flex';
+        displayCheckBox()
+    })
+    deleteSelectedPosts()
+    cancelSelectPosts(); 
+}
+selectPostsBtn()
+
+function cancelSelectPosts() {
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            console.log('Delete post, changed to Select post');
+            resetUI();
+        }
+    });
+
+    cancelBtn.addEventListener('click', () => {
+        resetUI();
+    })
+}
+
+function deleteSelectedPosts() {
+    deleteBtn.addEventListener('click', async () => {
+        const checkboxes = document.querySelectorAll('.delete-checkbox:checked');
+        const ids = Array.from(checkboxes).map(checkbox => checkbox.value);
+        console.log('ids selected',ids);
+
+        if (ids.length === 0) {
+            alert('No posts selected for deletion');
+            return;
+        }
+
         try {
             for (const id of ids) {
                 await fetch(`https://v2.api.noroff.dev/blog/posts/Shira/${id}`, {
@@ -193,13 +227,42 @@ document.getElementById('deleteSelectedPostsBtn').addEventListener('click', asyn
                     headers: {
                         'Content-Type': 'application/json',
                         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                    },
+                    }
                 });
+                console.log(`Deleted post with ID: ${id}`);
             }
+            resetUI(); // Reset the UI after deletion
+            alert('Selected posts deleted successfully');
             window.location.href = '../index.html';
         } catch (error) {
             console.error('Error deleting posts:', error);
-            alert('Failed to delete some posts');
+            alert('Failed to delete selected posts');
         }
-    }
-});
+    });
+}
+
+function displayCheckBox() { 
+    const checkboxes = document.querySelectorAll('.delete-checkbox');
+    checkboxes.forEach(checkbox => {
+        checkbox.style.display = 'flex';
+        checkbox.addEventListener('change', () => {
+            console.log(`Checkbox with value ${checkbox.value} checked: ${checkbox.checked}`);
+        });
+    });
+    console.log('checkboxes: ', checkboxes);
+}
+
+function resetUI() {
+    const checkboxes = document.querySelectorAll('.delete-checkbox');
+        if (checkboxes.length > 0) {
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+                checkbox.style.display = 'none';
+            });
+        }
+    
+    deleteBtn.style.display = 'none';
+    cancelBtn.style.display = 'none';
+    selectBtn.style.display = 'flex'; 
+}
+
