@@ -46,7 +46,7 @@ function createBlogCards(blogPosts) {
         //         window.location.href = `post/index.html?id=${data.id}`;
         //     })
         let blogCard = document.createElement('div');
-        blogCard.classList.add('blog-card', 'gap');
+        blogCard.classList.add('blog-card', 'gap' , 'flex', 'flex-col');
         const navigateToPost = () => {
             window.location.href = `post/index.html?id=${data.id}`;
         };
@@ -65,10 +65,10 @@ function createBlogCards(blogPosts) {
             }
 
         let blogCardInfo = document.createElement('div');
-            blogCardInfo.classList.add('blog-card-info');
+            blogCardInfo.classList.add('blog-card-info', 'gap', 'flex', 'flex-col', 'items-center');
         
         let labelCheckbox = document.createElement('label');
-            labelCheckbox.classList.add('custom-checkbox')
+            labelCheckbox.classList.add('custom-checkbox');
         
         let deleteCheckbox = document.createElement('input');
             deleteCheckbox.type = 'checkbox';
@@ -86,7 +86,7 @@ function createBlogCards(blogPosts) {
             spanCheckMark.classList.add('check-mark');
 
         let titleDateContainer = document.createElement('div');
-            titleDateContainer.classList.add('card-title-date');
+            titleDateContainer.classList.add('card-title-date','flex', 'flex-col');
 
         let title = document.createElement('h2');
             title.textContent = data.title;
