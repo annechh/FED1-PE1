@@ -20,23 +20,25 @@
     <title>Shira's Adventure home page</title>
 </head>
 <body>
-    <header class="flex-center flex-col">
-        <div class="carousel carousel-img-container" id="carouselWrapper" >
-            <div class="big-img-shadow"></div>
-            <ul class="carousel-items" id="carouselItems">
-            <!-- API -->
-            </ul>
-            <div class="carousel-btn left" id="prevBtn" data-carousel-btn="prev"> 
-                <i class="fa-solid fa-chevron-left"></i>
+    <header class="flex-center flex-col items-center">
+        <div class="header flex-center flex-col items-center">
+            <div class="carousel carousel-img-container" id="carouselWrapper" >
+                <div class="big-img-shadow"></div>
+                <ul class="carousel-items" id="carouselItems">
+                <!-- API -->
+                </ul>
+                <div class="carousel-btn left" id="prevBtn" data-carousel-btn="prev"> 
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div class="carousel-btn right" id="nextBtn" data-carousel-btn="next"> 
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>         
             </div>
-            <div class="carousel-btn right" id="nextBtn" data-carousel-btn="next"> 
-                <i class="fa-solid fa-chevron-right"></i>
-            </div>         
         </div>
+    </header>
         <div class="carousel-nav" id="carouselNav">
         <!-- JS -->
         </div>
-    </header>
 
     <main class="">
         <!-- <span class="loader"></span> -->
@@ -60,6 +62,7 @@
                 <!-- JS -->
             </div>
             <div class=" pag-btn-container">
+                <button class="btn">Load More</button>
                 <div id="prevPageBtn" class="pag-btn"><i class="fa-solid fa-chevron-left"></i></div>
                 <div id="nextPageBtn" class="pag-btn"><i class="fa-solid fa-chevron-right"></i></div>
             </div>

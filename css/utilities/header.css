@@ -1,6 +1,15 @@
 
 header {
-    align-items: center;
+    width: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('/assets/images/IMG_20210331_194500.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    /* overflow: hidden; */
+    background-position: center;
+}
+
+.header {
     max-width: 1440px;
     width: 100%;
 }
