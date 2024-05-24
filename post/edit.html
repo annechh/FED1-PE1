@@ -19,14 +19,8 @@
     <title>Edit</title>
 </head>
 <body>
-    <header class="flex-center flex-col">
-        <!-- <nav class="absolute">
-            <img src="../assets/images/Shira-logo-text.png" class="hover-scale" alt="Logo of Shira">
-            <div>
-                <a href="../index.html" class="ds-txt hover-scale"><i class="fa-solid fa-house"></i>Home</a>
-                <a href="../account/login.html" class="ds-txt hover-scale" id="navLogin"><i class="fa-solid fa-user"></i>Login</a> 
-            </div>
-        </nav> -->
+    <header class="flex-center flex-col items-center">
+        <div class="header flex-center flex-col items-center">
         <div class="blog-post-img-wrapper">
             <div class="big-img-shadow"></div>
             <div class="post-img-container" id="updateBlogImg">
@@ -38,6 +32,7 @@
                     <rect y="38.5713" width="7.14286" height="70" rx="3.57143" transform="rotate(-90 0 38.5713)" />
                 </svg>
             </div>
+        </div>
         </div>
     </header>
 
@@ -60,9 +55,9 @@
                     </div>       
                 </form>
                 <div class="btn-container">
-                    <button class="btn tooltip" id="savePostBtn" data-tooltip="Save post"><i class="fa-solid fa-floppy-disk"></i></button>
-                    <button class="btn tooltip" id="clearPostBtn" data-tooltip="Clear all fields">Clear all</button> <!--Add icon -->
-                    <button class="btn tooltip" id="deletePostBtn" data-tooltip="Delete post"><i class="fa-solid fa-trash-can"></i></button>
+                    <div class="btn tooltip" id="savePostBtn" data-tooltip="Save post"><i class="fa-solid fa-floppy-disk"></i></div>
+                    <div class="btn tooltip" id="clearPostBtn" data-tooltip="Clear all fields"><i class="fa-solid fa-eraser"></i></div>
+                    <div class="btn tooltip" id="deletePostBtn" data-tooltip="Delete post"><i class="fa-solid fa-trash-can"></i></div>
                 </div>
             </div>
         </div>
@@ -70,11 +65,11 @@
 
     <footer class="flex-center">
         <div class="footer-content">
-            <img src="../assets/images/Shira.png" class="hover-scale" alt="A white dog">
-            <div class="links">
-                <a href="#" class="hover-scale">About</a>
-                <a href="https://www.instagram.com/haloshira/" class="hover-scale">Follow</a>
-            </div>
+            <a href="#" class="hover-scale">About</a>
+            <a href="../index.html" class="logo-link">
+                <img src="../assets/images/Shira.png" class="hover-scale" alt="A white dog">
+            </a>
+            <a href="https://www.instagram.com/haloshira/" class="hover-scale">Follow</a>
         </div>
     </footer>
 </body>
