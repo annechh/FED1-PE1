@@ -40,11 +40,18 @@ function createBlogCards(blogPosts) {
     // blogCardWrapper.innerHTML = '';
 
     blogPosts.forEach(data => {
+        // let blogCard = document.createElement('div');
+        //     blogCard.classList.add('blog-card', 'gap');
+        //     blogCard.addEventListener('click',() => {
+        //         window.location.href = `post/index.html?id=${data.id}`;
+        //     })
         let blogCard = document.createElement('div');
-            blogCard.classList.add('blog-card', 'gap');
-            blogCard.addEventListener('click',() => {
-                // window.location.href = `post/index.html?id=${data.id}`;
-            })
+        blogCard.classList.add('blog-card', 'gap');
+        const navigateToPost = () => {
+            window.location.href = `post/index.html?id=${data.id}`;
+        };
+
+        blogCard.addEventListener('click', navigateToPost);
 
         let imgContainer = document.createElement('div');
             imgContainer.classList.add('card-img-container');
@@ -109,6 +116,8 @@ function createBlogCards(blogPosts) {
         blogCardInfo.append(labelCheckbox, titleDateContainer, btnContainer);
         blogCard.append(imgContainer, blogCardInfo);
         blogCardWrapper.appendChild(blogCard);
+
+        blogCard._navigateToPost = navigateToPost;
     });
 }
 
@@ -180,7 +189,7 @@ welcomeUser();
 const selectBtn = document.getElementById('selectPostsBtn');
 const deleteBtn = document.getElementById('deleteSelectedPostsBtn');
 const cancelBtn = document.getElementById('cancelSelectPostsBtn');
-
+// const cardLink = document.querySelector('.blog-card');
 
 function selectPostsBtn() {
     selectBtn.addEventListener('click', () => {
@@ -188,11 +197,16 @@ function selectPostsBtn() {
         selectBtn.style.display = 'none';
         deleteBtn.style.display = 'flex';
         cancelBtn.style.display = 'flex';
+        
+        document.querySelectorAll('.blog-card').forEach(blogCard => {
+            blogCard.removeEventListener('click', blogCard._navigateToPost);
+        });
+
         displayCheckBox()
     })
-    deleteSelectedPosts()
-    cancelSelectPosts(); 
 }
+deleteSelectedPosts()
+cancelSelectPosts(); 
 selectPostsBtn()
 
 
@@ -258,14 +272,6 @@ function displayCheckBox() {
 }
 
 
-function removeCheckboxes() {
-    const customCheckboxes = document.querySelectorAll('.custom-checkbox');
-    customCheckboxes.forEach(customCheckbox => {
-        customCheckbox.remove();
-    });
-}
-
-
 function resetUI() {
     const customCheckboxes = document.querySelectorAll('.custom-checkbox');
     if (customCheckboxes.length > 0) {
@@ -285,6 +291,10 @@ function resetUI() {
             customCheckbox.style.display = 'none';
         });
     }
+    document.querySelectorAll('.blog-card').forEach(blogCard => {
+        blogCard.addEventListener('click', blogCard._navigateToPost);
+    });
+
     deleteBtn.style.display = 'none';
     cancelBtn.style.display = 'none';
     selectBtn.style.display = 'flex';
