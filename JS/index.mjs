@@ -41,7 +41,7 @@ function createBlogCards(blogPosts) {
     blogPosts.forEach(data => {
         
         let blogCard = document.createElement('div');
-        blogCard.classList.add('blog-card', 'gap' , 'flex', 'flex-col');
+        blogCard.classList.add('blog-card', 'flex', 'flex-col');
         const navigateToPost = () => {
             window.location.href = `post/index.html?id=${data.id}`;
         };
@@ -60,7 +60,7 @@ function createBlogCards(blogPosts) {
             }
 
         let blogCardInfo = document.createElement('div');
-            blogCardInfo.classList.add('blog-card-info', 'gap', 'flex', 'flex-col', 'items-center');
+            blogCardInfo.classList.add('blog-card-info', 'gap', 'flex', 'flex-col', 'items-center', 'py');
         
         let divCheckbox = document.createElement('label');
             divCheckbox.classList.add('custom-checkbox');
