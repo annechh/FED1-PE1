@@ -76,7 +76,8 @@
     display: none;
 }
 .checkbox-label {
-    opacity: 0;
+    /* opacity: 0; */
+    display: none;
 }
 
 /* Show the check mark when checked */
@@ -173,7 +174,5 @@
 }
 
 .fa-solid {
-    font-size: 20px;
-    font-weight: 700;
     color: var(--white);
 }
