@@ -67,9 +67,13 @@ function createBlogCards(blogPosts) {
         let blogCardInfo = document.createElement('div');
             blogCardInfo.classList.add('blog-card-info', 'gap', 'flex', 'flex-col', 'items-center');
         
-        let labelCheckbox = document.createElement('label');
-            labelCheckbox.classList.add('custom-checkbox');
-            labelCheckbox.textContent = '.';
+        let divCheckbox = document.createElement('label');
+            divCheckbox.classList.add('custom-checkbox');
+            // divCheckbox.textContent = 'Select'
+
+        let checkboxLabel = document.createElement('span');
+            checkboxLabel.classList.add('checkbox-label');
+            checkboxLabel.textContent = 'Select';
         
         let deleteCheckbox = document.createElement('input');
             deleteCheckbox.type = 'checkbox';
@@ -99,22 +103,22 @@ function createBlogCards(blogPosts) {
         let span = document.createElement('span');
             span.textContent = `${formattedDate.getDate()} ${months[formattedDate.getMonth()]} ${formattedDate.getFullYear()}`;
 
-        let btnContainer = document.createElement('div');
-            btnContainer.classList.add('pb');
+        // let btnContainer = document.createElement('div');
+        //     btnContainer.classList.add('pb');
 
-        let btn = document.createElement('button');
-            btn.classList.add('hover', 'btn');
-            btn.textContent = 'View Post';
-            btn.addEventListener('click',() => {
-                window.location.href = `post/index.html?id=${data.id}`;
-            })
+        // let btn = document.createElement('button');
+        //     btn.classList.add('hover', 'btn');
+        //     btn.textContent = 'View Post';
+        //     btn.addEventListener('click',() => {
+        //         window.location.href = `post/index.html?id=${data.id}`;
+        //     })
 
         imgContainer.appendChild(img);
         date.appendChild(span);
         titleDateContainer.append(title, date);
-        btnContainer.appendChild(btn);
-        labelCheckbox.append(deleteCheckbox, spanCheckMark);
-        blogCardInfo.append(labelCheckbox, titleDateContainer, btnContainer);
+        // btnContainer.appendChild(btn);
+        divCheckbox.append(deleteCheckbox, spanCheckMark, checkboxLabel);
+        blogCardInfo.append(divCheckbox, titleDateContainer);
         blogCard.append(imgContainer, blogCardInfo);
         blogCardWrapper.appendChild(blogCard);
 
