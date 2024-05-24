@@ -69,6 +69,7 @@ function createBlogCards(blogPosts) {
         
         let labelCheckbox = document.createElement('label');
             labelCheckbox.classList.add('custom-checkbox');
+            labelCheckbox.textContent = '.';
         
         let deleteCheckbox = document.createElement('input');
             deleteCheckbox.type = 'checkbox';
