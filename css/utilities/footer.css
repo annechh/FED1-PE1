@@ -1,12 +1,11 @@
 footer {
-    height: 400px;
+    height: 200px;
     background: var(--footer-grey);
     margin-top: auto;
 }
 
 .footer-content {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 35px;
@@ -17,7 +16,4 @@ footer {
     max-width: 100%;
 }
 
-.links {
-    display: flex;
-    gap: 35px;
-}
+
