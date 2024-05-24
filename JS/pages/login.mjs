@@ -67,17 +67,36 @@ async function handleLogin(event) {
             localStorage.setItem('userData', JSON.stringify(userData.data));
             console.log('Token saved to local storage', accessToken);
             
-            alert('Login successful! Redirecting to the homepage.');
-            window.location.href = `../index.html`
+            showCustomAlert();
+            
+            setTimeout(() => {
+                hideCustomAlert();
+                window.location.href = '../index.html';
+            }, 3000);
         } else {
             console.error('No token found', userData);
         }
-        // return userData;
     } catch (error) {
         console.error('Login failed:', error);
     }
 }
 
 
+function showCustomAlert() {
+    const customAlert = document.getElementById('customAlert');
+    const logInForm = document.getElementById('loginSection');
+    if (customAlert) {
+        customAlert.style.display = 'block';
+    }
+    if ( logInForm) {
+        logInForm.style.display = 'none';
+    }
+}
 
-
+function hideCustomAlert() {
+    const customAlert = document.getElementById('customAlert');
+    if (customAlert) {
+        customAlert.style.display = 'none';
+    }
+}
+hideCustomAlert()

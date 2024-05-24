@@ -56,3 +56,27 @@ input:placeholder-shown {
 
 
 
+.custom-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--faded-dark-grey-99);
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 250px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.alert-content {
+    text-align: center;
+}
+
+.alert-content h2 {
+    margin-bottom: 10px;
+}
+
+.alert-content p {
+    margin-bottom: 0;
+}
