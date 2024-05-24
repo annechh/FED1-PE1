@@ -1,6 +1,7 @@
 footer {
     height: 400px;
     background: var(--footer-grey);
+    margin-top: auto;
 }
 
 .footer-content {
