@@ -37,7 +37,7 @@ function fetchBlogPost(postId) {
         
         let image = document.getElementById('specificBlogImg');
             image.src = data.data.media.url;
-            image.alt = data.data.title;
+            image.alt = data.data.media.alt;
         
         let title = document.getElementById('specificBlogTitle');
             title.textContent = data.data.title;

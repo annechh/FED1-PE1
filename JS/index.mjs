@@ -7,7 +7,7 @@ import { loggedInEvents, getUserData } from "./components/loginState.mjs";
 
 
 
-const pageSize = 12; // Number of blog posts per page
+const pageSize = 30; // Number of blog posts per page
 let currentPage = 1; // Initial page number
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
@@ -37,14 +37,9 @@ async function fetchBlogPosts(page) {
 
 function createBlogCards(blogPosts) {
     let blogCardWrapper = document.getElementById('cardWrapper');
-    // blogCardWrapper.innerHTML = '';
 
     blogPosts.forEach(data => {
-        // let blogCard = document.createElement('div');
-        //     blogCard.classList.add('blog-card', 'gap');
-        //     blogCard.addEventListener('click',() => {
-        //         window.location.href = `post/index.html?id=${data.id}`;
-        //     })
+        
         let blogCard = document.createElement('div');
         blogCard.classList.add('blog-card', 'gap' , 'flex', 'flex-col');
         const navigateToPost = () => {
@@ -57,7 +52,7 @@ function createBlogCards(blogPosts) {
             imgContainer.classList.add('card-img-container');
 
         let img = document.createElement('img');
-            img.alt = data.title;
+            img.alt = data.media.alt;
             if (data.media && data.media.url) {
             img.src = data.media.url;
             } else {
@@ -69,7 +64,6 @@ function createBlogCards(blogPosts) {
         
         let divCheckbox = document.createElement('label');
             divCheckbox.classList.add('custom-checkbox');
-            // divCheckbox.textContent = 'Select'
 
         let checkboxLabel = document.createElement('span');
             checkboxLabel.classList.add('checkbox-label');
@@ -103,20 +97,9 @@ function createBlogCards(blogPosts) {
         let span = document.createElement('span');
             span.textContent = `${formattedDate.getDate()} ${months[formattedDate.getMonth()]} ${formattedDate.getFullYear()}`;
 
-        // let btnContainer = document.createElement('div');
-        //     btnContainer.classList.add('pb');
-
-        // let btn = document.createElement('button');
-        //     btn.classList.add('hover', 'btn');
-        //     btn.textContent = 'View Post';
-        //     btn.addEventListener('click',() => {
-        //         window.location.href = `post/index.html?id=${data.id}`;
-        //     })
-
         imgContainer.appendChild(img);
         date.appendChild(span);
         titleDateContainer.append(title, date);
-        // btnContainer.appendChild(btn);
         divCheckbox.append(deleteCheckbox, spanCheckMark, checkboxLabel);
         blogCardInfo.append(divCheckbox, titleDateContainer);
         blogCard.append(imgContainer, blogCardInfo);
@@ -249,9 +232,12 @@ function deleteSelectedPosts() {
                 });
                 console.log(`Deleted post with ID: ${id}`);
             }
-            resetUI(); // Reset the UI after deletion
-            alert('Selected posts deleted successfully');
-            window.location.href = '../index.html';
+            const confirmDelete = window.confirm('Do you want to delete selected posts?');
+            if (confirmDelete) {
+                resetUI(); // Reset the UI after deletion
+                window.location.href = '../index.html';
+            }
+            // alert('Selected posts deleted successfully');
         } catch (error) {
             console.error('Error deleting posts:', error);
             alert('Failed to delete selected posts');

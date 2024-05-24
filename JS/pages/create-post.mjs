@@ -3,7 +3,7 @@ import { createHeader } from "../components/header.mjs";
 import { loggedInEvents } from "../components/loginState.mjs";
 
 
-const token = localStorage.getItem('accessToken');
+
 
 
 document.getElementById('createUrl').addEventListener('input', previewImage);
@@ -34,6 +34,7 @@ document.querySelector('form').addEventListener('submit', function(event) {
     event.preventDefault();
 
     let image = document.getElementById('createUrl').value;
+    let alt = document.getElementById('createAlt').value;
     let title = document.getElementById('createTitle').value;
     let blogText = document.getElementById('createBlogText').value;
 
@@ -42,14 +43,17 @@ document.querySelector('form').addEventListener('submit', function(event) {
         return;
     }
 
+    const token = localStorage.getItem('accessToken');
+
     fetch('https://v2.api.noroff.dev/blog/posts/Shira', {
         method: 'POST',
         body: JSON.stringify({
             media: {
                 url: image,
+                alt: alt,
             },
             title: title,
-            body: blogText,
+            body: blogText,     
         }),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',
@@ -69,10 +73,11 @@ document.querySelector('form').addEventListener('submit', function(event) {
 });
 
 const addImgBtn = document.getElementById('addImgBtn');
-const createUrlInput = document.getElementById('createUrl');
-
 addImgBtn.addEventListener('click', function() {
+    const createUrlInput = document.getElementById('createUrl');
+    const createAltInput = document.getElementById('createAlt');
     createUrlInput.classList.toggle('hide');
+    createAltInput.classList.toggle('hide');
 });
 
 createUrlInput.addEventListener('input', previewImage);
@@ -80,13 +85,16 @@ createUrlInput.addEventListener('input', previewImage);
 
 
 const cancelButton = document.getElementById('cancelPostBtn');
-
 cancelButton.addEventListener('click', function(event) {
     event.preventDefault(); 
 
+    const confirmClear = window.confirm('Do you want to clear all information in this post?')
+    if (confirmClear) {
     document.getElementById('previewImg').src = '';
     document.getElementById('createUrl').value = '';
+    document.getElementById('createAlt').value = '';
     document.getElementById('createTitle').value = '';
     document.getElementById('createBlogText').value = '';
+    }
 });
 

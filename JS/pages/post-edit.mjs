@@ -24,22 +24,23 @@ async function fetchBlogPost() {
     if (!response.ok) {
         throw new Error('Failed to fetch post data');
     }
-    const postData = await response.json();
-    console.log(postData);
-    populateFields(postData.data)
+    const data = await response.json();
+    console.log(data);
+    populateFields(data.data)
 }
 
 
-function populateFields(postData) {
-    document.getElementById('updateTitle').value = postData.title;
-    document.getElementById('updateBlogText').value = postData.body;
-    document.getElementById('updateUrl').value = postData.media.url;
+function populateFields(data) {
+    document.getElementById('updateTitle').value = data.title;
+    document.getElementById('updateBlogText').value = data.body;
+    document.getElementById('updateUrl').value = data.media.url;
+    document.getElementById('updateAlt').value = data.media.alt;
     const prevImageContainer = document.getElementById('updateBlogImg');
     const previewImage = document.createElement('img');
-        previewImage.src = postData.media.url;
+        previewImage.src = data.media.url;
+        previewImage.alt = data.media.alt;
         previewImage.classList.add('hide');
         previewImage.id = 'previewImg';
-        previewImage.alt = postData.title;
 
         prevImageContainer.appendChild(previewImage);
 }
@@ -51,7 +52,8 @@ document.getElementById('savePostBtn').addEventListener('click', async () => {
         title: document.getElementById('updateTitle').value,
         body: document.getElementById('updateBlogText').value,
         media: {
-            url: document.getElementById('updateUrl').value
+            url: document.getElementById('updateUrl').value,
+            alt: document.getElementById('updateAlt').value
         },
     };
     await fetch(`https://v2.api.noroff.dev/blog/posts/Shira/${id}`, {
@@ -91,9 +93,13 @@ document.getElementById('deletePostBtn').addEventListener('click', async () => {
 // Legg til på clear button me alert og godta eller avbryt
 
 const updateImgBtn = document.getElementById('updateImgBtn');
+
 updateImgBtn.addEventListener('click', function() {
     const updateUrlInput = document.getElementById('updateUrl');
+    const updateAltInput = document.getElementById('updateAlt');
     updateUrlInput.classList.toggle('hide');
+    updateAltInput.classList.toggle('hide');
+
 });
 
 
@@ -118,7 +124,7 @@ function previewImage() {
     }
 }
 
-
+document.getElementById('updateUrl').addEventListener('input', previewImage);
 
 const cancelButton = document.getElementById('clearPostBtn');
 
@@ -129,12 +135,13 @@ cancelButton.addEventListener('click', function(event) {
     if (confirmClear) {
         document.getElementById('previewImg').src = '';
         document.getElementById('updateUrl').value = '';
+        document.getElementById('updateAlt').value = '';
         document.getElementById('updateTitle').value = '';
         document.getElementById('updateBlogText').value = '';
     }
 });
 
-document.getElementById('updateUrl').addEventListener('input', previewImage);
+
 
 fetchBlogPost()
 
