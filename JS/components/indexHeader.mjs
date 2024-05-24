@@ -2,7 +2,7 @@
 
 
 export function indexHeader() {
-    let header = document.querySelector('header')
+    let header = document.querySelector('header');
     let firstChild = header.firstChild;
 
     let nav = document.createElement('nav');
