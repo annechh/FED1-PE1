@@ -11,20 +11,27 @@ export function loggedInEvents() {
         const loggedIn = document.querySelector('.loggedOut-state');
         const loggedOut = document.querySelector('.loggedIn-state');
         const newPostButton = document.getElementById('newPost');
+        const selectPostsButton = document.getElementById('selectPostsBtn')
         // const adminButtons = document.getElementById('editBtn', 'deleteBtn')
 
         if (userData) {
             // console.log('User is logged in', userData);
-            loggedOut.style.display = 'flex'
-            loggedIn.style.display = 'none'
+            loggedOut.style.display = 'flex';
+            loggedIn.style.display = 'none';
+            if (selectPostsButton) {
+                selectPostsButton.style.display = 'flex';
+            }
             if ( newPostButton ) {
-                newPostButton.style.display = 'block';
+                newPostButton.style.display = 'flex';
             }
             
         } else {
             console.log('No user logged in');
             loggedIn.style.display = 'flex';
             loggedOut.style.display = 'none';
+            if (selectPostsButton) {
+                selectPostsButton.style.display = 'none';
+            }
             if ( newPostButton ) {
                 newPostButton.style.display = 'none'
             }

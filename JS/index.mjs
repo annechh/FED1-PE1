@@ -33,21 +33,7 @@ async function fetchBlogPosts(page) {
         throw error ("There was a problem getting the data")
     }
 }
-// function fetchBlogPosts(page) {
-//     fetch(`https://v2.api.noroff.dev/blog/posts/Shira?page=${page}&limit=${pageSize}`, {
-//         method: 'GET',
-//         headers: {
-//             'Content-type': 'application/json; charset=UTF-8',
-//         },
-//     })
-//     .then((response) => response.json())
-//     .then(data => {
-//         createBlogCards(data.data);
-//         console.log('Logging data: ', data);
-//         updatePaginationUI(data.meta)
-//     })
-//     .catch(error => console.error('Error Fetching posts', error));
-// }
+
 
 function createBlogCards(blogPosts) {
     let blogCardWrapper = document.getElementById('cardWrapper');
@@ -73,11 +59,24 @@ function createBlogCards(blogPosts) {
 
         let blogCardInfo = document.createElement('div');
             blogCardInfo.classList.add('blog-card-info');
-
+        
+        let labelCheckbox = document.createElement('label');
+            labelCheckbox.classList.add('custom-checkbox')
+        
         let deleteCheckbox = document.createElement('input');
             deleteCheckbox.type = 'checkbox';
             deleteCheckbox.classList.add('delete-checkbox');
             deleteCheckbox.value = data.id;
+            deleteCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    spanCheckMark.classList.add('fa-solid', 'fa-check');
+                } else {
+                    spanCheckMark.classList.remove('fa-solid', 'fa-check');
+                }
+            });
+
+        let spanCheckMark = document.createElement('span');
+            spanCheckMark.classList.add('check-mark');
 
         let titleDateContainer = document.createElement('div');
             titleDateContainer.classList.add('card-title-date');
@@ -106,7 +105,8 @@ function createBlogCards(blogPosts) {
         date.appendChild(span);
         titleDateContainer.append(title, date);
         btnContainer.appendChild(btn);
-        blogCardInfo.append(deleteCheckbox, titleDateContainer, btnContainer);
+        labelCheckbox.append(deleteCheckbox, spanCheckMark);
+        blogCardInfo.append(labelCheckbox, titleDateContainer, btnContainer);
         blogCard.append(imgContainer, blogCardInfo);
         blogCardWrapper.appendChild(blogCard);
     });
@@ -195,6 +195,7 @@ function selectPostsBtn() {
 }
 selectPostsBtn()
 
+
 function cancelSelectPosts() {
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
@@ -208,17 +209,16 @@ function cancelSelectPosts() {
     })
 }
 
+
 function deleteSelectedPosts() {
     deleteBtn.addEventListener('click', async () => {
         const checkboxes = document.querySelectorAll('.delete-checkbox:checked');
         const ids = Array.from(checkboxes).map(checkbox => checkbox.value);
         console.log('ids selected',ids);
-
         if (ids.length === 0) {
             alert('No posts selected for deletion');
             return;
         }
-
         try {
             for (const id of ids) {
                 await fetch(`https://v2.api.noroff.dev/blog/posts/Shira/${id}`, {
@@ -240,28 +240,53 @@ function deleteSelectedPosts() {
     });
 }
 
+
 function displayCheckBox() { 
-    const checkboxes = document.querySelectorAll('.delete-checkbox');
-    checkboxes.forEach(checkbox => {
-        checkbox.style.display = 'flex';
+    const customCheckboxes = document.querySelectorAll('.custom-checkbox');
+    customCheckboxes.forEach(customCheckbox => {
+        customCheckbox.style.display = 'flex';
+        const checkbox = customCheckbox.querySelector('.delete-checkbox');
+        const checkMark = customCheckbox.querySelector('.check-mark');
+        if (checkMark) {
+            checkMark.style.display = 'block';
+        }
         checkbox.addEventListener('change', () => {
             console.log(`Checkbox with value ${checkbox.value} checked: ${checkbox.checked}`);
         });
     });
-    console.log('checkboxes: ', checkboxes);
+    console.log('customCheckboxes: ', customCheckboxes);
 }
 
+
+function removeCheckboxes() {
+    const customCheckboxes = document.querySelectorAll('.custom-checkbox');
+    customCheckboxes.forEach(customCheckbox => {
+        customCheckbox.remove();
+    });
+}
+
+
 function resetUI() {
-    const checkboxes = document.querySelectorAll('.delete-checkbox');
-        if (checkboxes.length > 0) {
-            checkboxes.forEach(checkbox => {
+    const customCheckboxes = document.querySelectorAll('.custom-checkbox');
+    if (customCheckboxes.length > 0) {
+        customCheckboxes.forEach(customCheckbox => {
+            const checkbox = customCheckbox.querySelector('.delete-checkbox');
+            const checkMark = customCheckbox.querySelector('.check-mark');
+            
+            if (checkbox) {
                 checkbox.checked = false;
-                checkbox.style.display = 'none';
-            });
-        }
-    
+            }
+            if (checkMark) {
+                checkMark.style.display = 'none';
+            }
+            if (checkMark.classList.contains('fa-check')) {
+                checkMark.classList.remove('fa-check');
+            }
+            customCheckbox.style.display = 'none';
+        });
+    }
     deleteBtn.style.display = 'none';
     cancelBtn.style.display = 'none';
-    selectBtn.style.display = 'flex'; 
+    selectBtn.style.display = 'flex';
 }
 
