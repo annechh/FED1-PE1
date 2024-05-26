@@ -1,42 +1,31 @@
-// import { fetchApi } from "./fetch.mjs";
 import { carousel } from "./carousel.mjs";
 import { fontawsomeScript } from "./components/default.mjs";
 import { indexHeader } from "./components/indexHeader.mjs";
-// import { userDataLocalStorage } from "./login.mjs";
 import { loggedInEvents, getUserData } from "./components/loginState.mjs";
+import { fetchApi, userUrl } from "./fetch.mjs";
 
 
+async function loadPage() {
 
-const pageSize = 30; // Number of blog posts per page
-let currentPage = 1; // Initial page number
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-fetchBlogPosts(currentPage);
-
-async function fetchBlogPosts(page) {
-    try {
-        const response = await fetch(`https://v2.api.noroff.dev/blog/posts/Shira?page=${page}&limit=${pageSize}`, {
-            method: 'GET',
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
-        });
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        createBlogCards(data.data);
-        console.log('Logging card data: ', data);
-        updatePaginationUI(data.meta)
-    } catch (error) {
-        console.error('Could not fetch data' + error)
-        throw error ("There was a problem getting the data")
-    }
+    fetchBlogPosts2()
 }
 
 
+
+const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+
+
+async function fetchBlogPosts2() {
+    const data = await fetchApi('GET', `https://v2.api.noroff.dev/blog/posts/Shira`);
+    console.log('Data index page: ', data);
+    createBlogCards(data.data)
+}
+
+
+
 function createBlogCards(blogPosts) {
-    let blogCardWrapper = document.getElementById('cardWrapper');
+    const blogCardWrapper = document.getElementById('cardWrapper');
 
     blogPosts.forEach(data => {
         
@@ -48,10 +37,10 @@ function createBlogCards(blogPosts) {
 
         blogCard.addEventListener('click', navigateToPost);
 
-        let imgContainer = document.createElement('div');
+        const imgContainer = document.createElement('div');
             imgContainer.classList.add('card-img-container');
 
-        let img = document.createElement('img');
+        const img = document.createElement('img');
             img.alt = data.media.alt;
             if (data.media && data.media.url) {
             img.src = data.media.url;
@@ -59,17 +48,17 @@ function createBlogCards(blogPosts) {
             img.src = '';
             }
 
-        let blogCardInfo = document.createElement('div');
+        const blogCardInfo = document.createElement('div');
             blogCardInfo.classList.add('blog-card-info', 'gap', 'flex', 'flex-col', 'items-center', 'py');
         
-        let divCheckbox = document.createElement('label');
+        const divCheckbox = document.createElement('label');
             divCheckbox.classList.add('custom-checkbox');
 
-        let checkboxLabel = document.createElement('span');
+        const checkboxLabel = document.createElement('span');
             checkboxLabel.classList.add('checkbox-label');
             checkboxLabel.textContent = 'Select';
         
-        let deleteCheckbox = document.createElement('input');
+        const deleteCheckbox = document.createElement('input');
             deleteCheckbox.type = 'checkbox';
             deleteCheckbox.classList.add('delete-checkbox');
             deleteCheckbox.value = data.id;
@@ -81,21 +70,24 @@ function createBlogCards(blogPosts) {
                 }
             });
 
-        let spanCheckMark = document.createElement('span');
+        const spanCheckMark = document.createElement('span');
             spanCheckMark.classList.add('check-mark');
 
-        let titleDateContainer = document.createElement('div');
+        const titleDateContainer = document.createElement('div');
             titleDateContainer.classList.add('card-title-date','flex', 'flex-col');
 
-        let title = document.createElement('h2');
+        const title = document.createElement('h2');
             title.textContent = data.title;
 
-        let date = document.createElement('p');
+        const date = document.createElement('p');
             date.textContent = ' ';
 
-        let formattedDate = new Date(data.created)
-        let span = document.createElement('span');
-            span.textContent = `${formattedDate.getDate()} ${months[formattedDate.getMonth()]} ${formattedDate.getFullYear()}`;
+        const formattedDate = new Date(data.created)
+        const span = document.createElement('span');
+            span.textContent = `
+            ${formattedDate.getDate()} 
+            ${months[formattedDate.getMonth()]} 
+            ${formattedDate.getFullYear()}`;
 
         imgContainer.appendChild(img);
         date.appendChild(span);
@@ -109,44 +101,6 @@ function createBlogCards(blogPosts) {
     });
 }
 
-
-
-// Pagination part, look into more later..... Called inside fetchBlogPosts
-function updatePaginationUI(paginationMeta) {
-    const prevPageBtn = document.getElementById('prevPageBtn');
-    const nextPageBtn = document.getElementById('nextPageBtn');
-    // const paginationNumbers = document.getElementById('paginationNumbers');
-
-    if (paginationMeta.isFirstPage || paginationMeta.isLastPage) {
-        prevPageBtn.style.opacity = '0.5';
-        prevPageBtn.disabled = true;
-    } else {
-        prevPageBtn.style.opacity = '1';
-        prevPageBtn.disabled = false;
-    }
-
-    if (paginationMeta.isLastPage) {
-        nextPageBtn.style.opacity = '0.5';
-        nextPageBtn.disabled = true;
-    } else {
-        nextPageBtn.style.opacity = '1';
-        nextPageBtn.disabled = false;
-    }
-}
-
-document.getElementById('prevPageBtn').addEventListener('click', () => {
-    if (currentPage > 1) {
-        currentPage--;
-
-        fetchBlogPosts(currentPage);
-    }
-});
-
-document.getElementById('nextPageBtn').addEventListener('click', () => {
-    currentPage++;
-    fetchBlogPosts(currentPage);
-});
-// End pagination part......
 
 
 function welcomeUser() {
@@ -169,8 +123,6 @@ function welcomeUser() {
 }
 
 welcomeUser();
-
-
 
 
 
@@ -233,11 +185,11 @@ function deleteSelectedPosts() {
                 console.log(`Deleted post with ID: ${id}`);
             }
             const confirmDelete = window.confirm('Do you want to delete selected posts?');
+            alert('Selected posts deleted successfully');
             if (confirmDelete) {
                 resetUI(); // Reset the UI after deletion
                 window.location.href = '../index.html';
             }
-            // alert('Selected posts deleted successfully');
         } catch (error) {
             console.error('Error deleting posts:', error);
             alert('Failed to delete selected posts');
@@ -291,3 +243,100 @@ function resetUI() {
     selectBtn.style.display = 'flex';
 }
 
+loadPage()
+
+
+
+
+
+
+// fetchBlogPosts(currentPage);
+// fetchBlogPosts2();
+
+// async function fetchBlogPosts(page) {
+//     try {
+//         const response = await fetch(`https://v2.api.noroff.dev/blog/posts/Shira?page=${page}&limit=${pageSize}`, {
+//         // const response = await fetch(`https://v2.api.noroff.dev/blog/posts/Shira`, {
+
+//             method: 'GET',
+//             headers: {
+//                 'Content-type': 'application/json; charset=UTF-8',
+//             },
+//         });
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         const data = await response.json();
+//         createBlogCards(data.data);
+//         // displayImageHeader(data.data);
+//         console.log('Logging card data: ', data);
+//         updatePaginationUI(data.meta)
+//     } catch (error) {
+//         console.error('Could not fetch data' + error);
+//         throw error ("There was a problem getting the data");
+//     }
+// }
+
+
+
+// function displayImageHeader(blogPosts){
+
+//     if (blogPosts.length > 0) {
+//         const latestPost = blogPosts[0];
+//         let header = document.querySelector('header');
+//         console.log('header posts',latestPost);
+
+//         // let blogImgHeader = document.getElementById('headerImage');
+//         //     blogImgHeader.classList.add('header', 'flex-center', 'flex-col', 'items-center');
+//         //     blogImgHeader.style.backgroundImage = `
+//         //     ${latestPost.media.url}`;
+//             // blogImgHeader.style.backgroundSize = 'cover';
+//             // blogImgHeader.style.backgroundPosition = 'center';
+//             // blogImgHeader.style.width = '100%';
+//             // blogImgHeader.style.height = '100%';
+
+            
+//             header.appendChild(blogImgHeader);
+//     }  
+// }
+
+
+//const pageSize = 30; // Number of blog posts per page
+//let currentPage = 1; // Initial page number
+
+// // Pagination part, look into more later..... Called inside fetchBlogPosts
+// function updatePaginationUI(paginationMeta) {
+//     const prevPageBtn = document.getElementById('prevPageBtn');
+//     const nextPageBtn = document.getElementById('nextPageBtn');
+//     // const paginationNumbers = document.getElementById('paginationNumbers');
+
+//     if (paginationMeta.isFirstPage || paginationMeta.isLastPage) {
+//         prevPageBtn.style.opacity = '0.5';
+//         prevPageBtn.disabled = true;
+//     } else {
+//         prevPageBtn.style.opacity = '1';
+//         prevPageBtn.disabled = false;
+//     }
+
+//     if (paginationMeta.isLastPage) {
+//         nextPageBtn.style.opacity = '0.5';
+//         nextPageBtn.disabled = true;
+//     } else {
+//         nextPageBtn.style.opacity = '1';
+//         nextPageBtn.disabled = false;
+//     }
+// }
+
+// document.getElementById('prevPageBtn').addEventListener('click', () => {
+//     if (currentPage > 1) {
+//         currentPage--;
+
+//         fetchBlogPosts2(currentPage);
+//     }
+// });
+
+// document.getElementById('nextPageBtn').addEventListener('click', () => {
+//     currentPage++;
+//     fetchBlogPosts2(currentPage);
+// });
+// End pagination part......
