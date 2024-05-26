@@ -51,7 +51,13 @@ function createLoginForm() {
 
 createLoginForm()
 
+// async function handleLogin2() {
+//     const email = document.getElementById('loginEmail').value;
+//     const password = document.getElementById('loginPassword').value;
+//     const userData = await fetchApi('POST', loginUrl, { email, password });
 
+    
+// }
 
 async function handleLogin(event) {
     event.preventDefault(); 
