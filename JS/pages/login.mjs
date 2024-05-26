@@ -51,23 +51,14 @@ function createLoginForm() {
 
 createLoginForm()
 
-// async function handleLogin2() {
-//     const email = document.getElementById('loginEmail').value;
-//     const password = document.getElementById('loginPassword').value;
-//     const userData = await fetchApi('POST', loginUrl, { email, password });
-
-    
-// }
-
 async function handleLogin(event) {
     event.preventDefault(); 
-
+    
     const email = document.getElementById('loginEmail').value;
     const password = document.getElementById('loginPassword').value;
-    try {
-        const userData = await fetchApi('POST', loginUrl, { email, password });
-        console.log('Login successful:', userData);
-        const accessToken = userData.data.accessToken;
+    const userData = await fetchApi('POST', loginUrl, { email, password });
+    
+    const accessToken = userData.data.accessToken;
         if (accessToken) {
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('userData', JSON.stringify(userData.data));
@@ -82,10 +73,35 @@ async function handleLogin(event) {
         } else {
             console.error('No token found', userData);
         }
-    } catch (error) {
-        console.error('Login failed:', error);
-    }
 }
+
+// async function handleLogin(event) {
+//     event.preventDefault(); 
+
+//     const email = document.getElementById('loginEmail').value;
+//     const password = document.getElementById('loginPassword').value;
+//     try {
+//         const userData = await fetchApi('POST', loginUrl, { email, password });
+//         console.log('Login successful:', userData);
+//         const accessToken = userData.data.accessToken;
+//         if (accessToken) {
+//             localStorage.setItem('accessToken', accessToken);
+//             localStorage.setItem('userData', JSON.stringify(userData.data));
+//             console.log('Token saved to local storage', accessToken);
+            
+//             showLoginAlert();
+            
+//             setTimeout(() => {
+//                 hideLoginAlert();
+//                 window.location.href = '../index.html';
+//             }, 2500);
+//         } else {
+//             console.error('No token found', userData);
+//         }
+//     } catch (error) {
+//         console.error('Login failed:', error);
+//     }
+// }
 
 
 function showLoginAlert() {
