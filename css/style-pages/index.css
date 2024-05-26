@@ -167,11 +167,6 @@
     gap: 35px;
 }
 
-.pag-btn {
-    background: none;
-    border: none;
-}
-
 .fa-solid {
     color: var(--white);
 }
