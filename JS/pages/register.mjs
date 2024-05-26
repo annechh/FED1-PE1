@@ -102,10 +102,24 @@ function createRegisterForm() {
 createRegisterForm();
 
 
+function checkIfEmptyField(fieldValue, errorMessageElement) {
+    if (!fieldValue) {
+        errorMessageElement.textContent = 'This field cannot be empty, please fill out.';
+        errorMessageElement.classList.add('show');
+        return true;
+    } else {
+        errorMessageElement.textContent = '';
+        errorMessageElement.classList.remove('show');
+        return false;
+    }
+}
+
 
 function validateName() {
     const name = document.getElementById('registerName').value;
     const nameError = document.getElementById('nameError');
+    if (checkIfEmptyField(name, nameError)) return;
+
     const namePrefix = /^[\w]{1,20}$/;
     if (!namePrefix.test(name)) {
         nameError.textContent = 'Username can only contain letters, numbers, and underscores.';
@@ -119,6 +133,8 @@ function validateName() {
 function validateEmail() {
     const email = document.getElementById('registerEmail').value;
     const emailError = document.getElementById('emailError');
+    if (checkIfEmptyField(email, emailError)) return;
+
     const emailPrefix = /^[\w\-.]+@(stud\.)?noroff\.no$/;
     if (!emailPrefix.test(email)) {
         emailError.textContent = 'Not a valid email address. Must contain @stud.noroff.no.';
@@ -132,6 +148,8 @@ function validateEmail() {
 function validatePassword() {
     const password = document.getElementById('registerPassword').value;
     const passwordError = document.getElementById('passwordError');
+    if (checkIfEmptyField(password, passwordError)) return;
+
     if (password.length < 8) {
         passwordError.textContent = 'Password needs to be at least 8 characters.';
         passwordError.classList.add('show');
@@ -145,8 +163,10 @@ function validateConfirmPassword() {
     const password = document.getElementById('registerPassword').value;
     const confirmPassword = document.getElementById('registerConfirmPassword').value;
     const confirmPassError = document.getElementById('confirmPasswordError');
+    if (checkIfEmptyField(confirmPassword, confirmPassError )) return;
+
     if (password !== confirmPassword) {
-        confirmPassError.textContent = 'Passwords need to match.';
+        confirmPassError.textContent = 'Passwords do not match. Please try again';
         confirmPassError.classList.add('show');
     } else {
         confirmPassError.textContent = '';
