@@ -1,13 +1,17 @@
 .loader {
-    color: #fff;
+    color: #ffffff;
     font-size: 10px;
     width: 1em;
     height: 1em;
     border-radius: 50%;
-    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
     text-indent: -9999em;
     animation: mulShdSpin 1.3s infinite linear;
     transform: translateZ(0);
+    z-index: 5;
 }
 
 @keyframes mulShdSpin {
