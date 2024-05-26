@@ -67,12 +67,12 @@ async function handleLogin(event) {
             localStorage.setItem('userData', JSON.stringify(userData.data));
             console.log('Token saved to local storage', accessToken);
             
-            showCustomAlert();
+            showLoginAlert();
             
             setTimeout(() => {
-                hideCustomAlert();
+                hideLoginAlert();
                 window.location.href = '../index.html';
-            }, 3000);
+            }, 2500);
         } else {
             console.error('No token found', userData);
         }
@@ -82,21 +82,21 @@ async function handleLogin(event) {
 }
 
 
-function showCustomAlert() {
-    const customAlert = document.getElementById('customAlert');
+function showLoginAlert() {
+    const loginAlert = document.getElementById('loginAlert');
     const logInForm = document.getElementById('loginSection');
-    if (customAlert) {
-        customAlert.style.display = 'block';
+    if (loginAlert) {
+        loginAlert.style.display = 'block';
     }
     if ( logInForm) {
         logInForm.style.display = 'none';
     }
 }
 
-function hideCustomAlert() {
-    const customAlert = document.getElementById('customAlert');
-    if (customAlert) {
-        customAlert.style.display = 'none';
+function hideLoginAlert() {
+    const loginAlert = document.getElementById('loginAlert');
+    if (loginAlert) {
+        loginAlert.style.display = 'none';
     }
 }
-hideCustomAlert()
+hideLoginAlert()
