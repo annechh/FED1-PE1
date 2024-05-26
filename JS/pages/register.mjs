@@ -20,87 +20,87 @@ hideRegisterAlert();
 
 
 function createRegisterForm() {
-    let section = document.getElementById('registerSection');
+    const section = document.getElementById('registerSection');
 
-    let h1 = document.createElement('h1');
+    const h1 = document.createElement('h1');
     h1.innerHTML = 'Register User';
 
-    let form = document.createElement('form');
+    const form = document.createElement('form');
     form.id = 'registerForm';
 
-    let nameDiv = document.createElement('div');
+    const nameDiv = document.createElement('div');
         nameDiv.classList.add('form-div')
     
-        let name = document.createElement('input');
-        name.name = 'Name';
-        name.type = 'text';
-        name.id = 'registerName';
-        name.placeholder = 'Name';
-        name.required = true;
+        const name = document.createElement('input');
+            name.name = 'Name';
+            name.type = 'text';
+            name.id = 'registerName';
+            name.placeholder = 'Name';
+            name.required = true;
 
-        let nameError = document.createElement('label');
+        const nameError = document.createElement('label');
             nameError.id = 'nameError';
             nameError.classList.add('error-message', 'hide', 'pl');
     
-    let emailDiv = document.createElement('div');
+    const emailDiv = document.createElement('div');
         emailDiv.classList.add('form-div')
 
-        let email = document.createElement('input');
-        email.name = 'Email';
-        email.type = 'text';
-        email.id = 'registerEmail';
-        email.placeholder = 'Email';
-        email.required = true;
+        const email = document.createElement('input');
+            email.name = 'Email';
+            email.type = 'text';
+            email.id = 'registerEmail';
+            email.placeholder = 'Email';
+            email.required = true;
 
-        let emailError = document.createElement('label');
+        const emailError = document.createElement('label');
             emailError.id = 'emailError';
             emailError.classList.add('error-message', 'hide', 'pl');
     
-    let passwordDiv = document.createElement('div');
+    const passwordDiv = document.createElement('div');
         passwordDiv.classList.add('form-div')
 
-        let password = document.createElement('input');
-        password.name = 'Password';
-        password.type = 'password';
-        password.id = 'registerPassword';
-        password.placeholder = 'Password';
-        password.required = true;
+        const password = document.createElement('input');
+            password.name = 'Password';
+            password.type = 'password';
+            password.id = 'registerPassword';
+            password.placeholder = 'Password';
+            password.required = true;
 
-        let passwordError = document.createElement('label');
+        const passwordError = document.createElement('label');
             passwordError.id = 'passwordError';
             passwordError.classList.add('error-message', 'hide', 'pl');
 
-    let confirmPassDiv = document.createElement('div');
+    const confirmPassDiv = document.createElement('div');
         confirmPassDiv.classList.add('form-div')
 
-        let confirmPassword = document.createElement('input');
-        confirmPassword.name = 'Confirm Password';
-        confirmPassword.type = 'password';
-        confirmPassword.id = 'registerConfirmPassword';
-        confirmPassword.placeholder = 'Confirm Password';
-        confirmPassword.required = true;
+        const confirmPassword = document.createElement('input');
+            confirmPassword.name = 'Confirm Password';
+            confirmPassword.type = 'password';
+            confirmPassword.id = 'registerConfirmPassword';
+            confirmPassword.placeholder = 'Confirm Password';
+            confirmPassword.required = true;
 
-        let confirmPassError = document.createElement('label');
+        const confirmPassError = document.createElement('label');
             confirmPassError.id = 'confirmPasswordError';
             confirmPassError.classList.add('error-message', 'hide', 'pl');
     
 
-    let btnContainer = document.createElement('div');
-    btnContainer.classList = 'btn-container';
+    const btnContainer = document.createElement('div');
+        btnContainer.classList = 'btn-container';
 
-    let registerButton = document.createElement('button');
-    registerButton.type = 'submit';
-    registerButton.innerText = 'Register User';
-    registerButton.classList = 'btn';
-    registerButton.addEventListener('click', (event) => {
+    const registerButton = document.createElement('button');
+        registerButton.type = 'submit';
+        registerButton.innerText = 'Register User';
+        registerButton.classList = 'btn';
+        registerButton.addEventListener('click', (event) => {
         event.preventDefault(); 
         handleRegister(); 
         // Create or notify registered user, and redirect to login page
     });
 
-    let changeToLogin = document.createElement('a');
-    changeToLogin.innerText = 'Already a user? Log in here';
-    changeToLogin.href = '../account/login.html';
+    const changeToLogin = document.createElement('a');
+        changeToLogin.innerText = 'Already a user? Log in here';
+        changeToLogin.href = '../account/login.html';
 
     btnContainer.append(registerButton, changeToLogin);
     confirmPassDiv.append(confirmPassword, confirmPassError)
@@ -113,6 +113,43 @@ function createRegisterForm() {
     return section;
 }
 
+
+async function fetchData() {
+    const name = document.getElementById('registerName').value;
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
+
+    try {
+        const data = await fetchApi('POST', registerUrl, { name, email, password });
+        if (data) {
+            showRegisterAlert();
+            setTimeout(() => {
+                hideRegisterAlert();
+                window.location.href = '../account/login.html';
+            }, 2500);
+        }
+    } catch (error) {
+        console.error('Registration failed', error);
+    }
+}
+
+
+async function handleRegister() {
+    validateName();
+    validateEmail();
+    validatePassword();
+    validateConfirmPassword();
+
+    const nameError = document.getElementById('nameError').textContent;
+    const emailError = document.getElementById('emailError').textContent;
+    const passwordError = document.getElementById('passwordError').textContent;
+    const confirmPasswordError = document.getElementById('confirmPasswordError').textContent;
+
+    if (nameError || emailError || passwordError || confirmPasswordError) {
+        return;
+    }
+    fetchData()
+}
 
 
 function validateName() {
@@ -142,42 +179,6 @@ function validateConfirmPassword() {
     const confirmPassError = document.getElementById('confirmPasswordError');
     if (checkIfEmptyField(confirmPassword, confirmPassError )) return;
     confirmPasswordValidation(password, confirmPassword, confirmPassError);
-}
-
-async function handleRegister() {
-    validateName();
-    validateEmail();
-    validatePassword();
-    validateConfirmPassword();
-
-    const nameError = document.getElementById('nameError').textContent;
-    const emailError = document.getElementById('emailError').textContent;
-    const passwordError = document.getElementById('passwordError').textContent;
-    const confirmPasswordError = document.getElementById('confirmPasswordError').textContent;
-
-    if (nameError || emailError || passwordError || confirmPasswordError) {
-        return;
-    }
-    fetchData()
-}
-
-async function fetchData() {
-    const name = document.getElementById('registerName').value;
-    const email = document.getElementById('registerEmail').value;
-    const password = document.getElementById('registerPassword').value;
-
-    try {
-        const data = await fetchApi('POST', registerUrl, { name, email, password });
-        if (data) {
-            showRegisterAlert();
-            setTimeout(() => {
-                hideRegisterAlert();
-                window.location.href = '../account/login.html';
-            }, 2500);
-        }
-    } catch (error) {
-        console.error('Registration failed', error);
-    }
 }
 
 
