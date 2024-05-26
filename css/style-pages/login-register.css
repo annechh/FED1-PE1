@@ -36,6 +36,7 @@ input {
     border-radius: 30px;
     font-family: var(--roboto);
     font-size: 20px;
+    width: 100%;
 }
 
 input:placeholder-shown {
@@ -56,7 +57,7 @@ input:placeholder-shown {
 
 
 
-.custom-alert {
+.log-reg-alert {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -69,14 +70,26 @@ input:placeholder-shown {
     z-index: 1000;
 }
 
-.alert-content {
+.alert-reg-success {
     text-align: center;
 }
 
-.alert-content h2 {
+.alert-reg-success h2 {
     margin-bottom: 10px;
 }
 
-.alert-content p {
+.alert-reg-success p {
     margin-bottom: 0;
+}
+
+.hide {
+    display: flex;
+}
+
+.error-message {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    justify-content: center;
+    color: red;
 }
