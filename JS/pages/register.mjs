@@ -1,14 +1,9 @@
 import { fontawsomeScript } from "../components/default.mjs";
 import { createHeader } from "../components/header.mjs"; 
 import { loggedInEvents } from "../components/loginState.mjs";
+import { fetchApi, registerUrl } from "../fetch.mjs";
 
 
-
-
-// Name: pattern: ^[\w]+$
-//       maxLength: 20
-// Email: ^[\w\-.]+@(stud\.)?noroff\.no$  
-// Password:  minLength: 8
 
 function createRegisterForm() {
     let section = document.getElementById('registerSection');
@@ -18,34 +13,63 @@ function createRegisterForm() {
 
     let form = document.createElement('form');
     form.id = 'registerForm';
+
+    let nameDiv = document.createElement('div');
+        nameDiv.classList.add('form-div')
     
-    let name = document.createElement('input');
-    name.name = 'Name';
-    name.type = 'text';
-    name.id = 'registerName';
-    name.placeholder = 'Name';
-    name.required = true;
+        let name = document.createElement('input');
+        name.name = 'Name';
+        name.type = 'text';
+        name.id = 'registerName';
+        name.placeholder = 'Name';
+        name.required = true;
 
-    let email = document.createElement('input');
-    email.name = 'Email';
-    email.type = 'text';
-    email.id = 'registerEmail';
-    email.placeholder = 'Email';
-    email.required = true;
+        let nameError = document.createElement('label');
+            nameError.id = 'nameError';
+            nameError.classList.add('error-message', 'hide');
+    
+    let emailDiv = document.createElement('div');
+        emailDiv.classList.add('form-div')
 
-    let password = document.createElement('input');
-    password.name = 'Password';
-    password.type = 'password';
-    password.id = 'registerPassword';
-    password.placeholder = 'Password';
-    password.required = true;
+        let email = document.createElement('input');
+        email.name = 'Email';
+        email.type = 'text';
+        email.id = 'registerEmail';
+        email.placeholder = 'Email';
+        email.required = true;
 
-    let confirmPassword = document.createElement('input');
-    confirmPassword.name = 'Confirm Password';
-    confirmPassword.type = 'password';
-    confirmPassword.id = 'registerConfirmPassword';
-    confirmPassword.placeholder = 'Confirm Password';
-    confirmPassword.required = true;
+        let emailError = document.createElement('label');
+            emailError.id = 'emailError';
+            emailError.classList.add('error-message', 'hide');
+    
+    let passwordDiv = document.createElement('div');
+        passwordDiv.classList.add('form-div')
+
+        let password = document.createElement('input');
+        password.name = 'Password';
+        password.type = 'password';
+        password.id = 'registerPassword';
+        password.placeholder = 'Password';
+        password.required = true;
+
+        let passwordError = document.createElement('label');
+            passwordError.id = 'passwordError';
+            passwordError.classList.add('error-message', 'hide');
+
+    let confirmPassDiv = document.createElement('div');
+        confirmPassDiv.classList.add('form-div')
+
+        let confirmPassword = document.createElement('input');
+        confirmPassword.name = 'Confirm Password';
+        confirmPassword.type = 'password';
+        confirmPassword.id = 'registerConfirmPassword';
+        confirmPassword.placeholder = 'Confirm Password';
+        confirmPassword.required = true;
+
+        let confirmPassError = document.createElement('label');
+            confirmPassError.id = 'confirmPasswordError';
+            confirmPassError.classList.add('error-message', 'hide');
+    
 
     let btnContainer = document.createElement('div');
     btnContainer.classList = 'btn-container';
@@ -65,59 +89,123 @@ function createRegisterForm() {
     changeToLogin.href = '../account/login.html';
 
     btnContainer.append(registerButton, changeToLogin);
-    form.append(name, email, password, confirmPassword, btnContainer);
+    confirmPassDiv.append(confirmPassword, confirmPassError)
+    passwordDiv.append(password, passwordError)
+    emailDiv.append(email, emailError)
+    nameDiv.append(name, nameError)
+    form.append(nameDiv, emailDiv, passwordDiv, confirmPassDiv, btnContainer);
     section.append(h1, form);
 
     return section;
 }
 
-createRegisterForm()
+createRegisterForm();
 
 
 
-
-async function handleRegister() {
+function validateName() {
     const name = document.getElementById('registerName').value;
+    const nameError = document.getElementById('nameError');
+    const namePrefix = /^[\w]{1,20}$/;
+    if (!namePrefix.test(name)) {
+        nameError.textContent = 'Username can only contain letters, numbers, and underscores.';
+        nameError.classList.add('show');
+    } else {
+        nameError.textContent = '';
+        nameError.classList.remove('show');
+    }
+}
+
+function validateEmail() {
     const email = document.getElementById('registerEmail').value;
+    const emailError = document.getElementById('emailError');
+    const emailPrefix = /^[\w\-.]+@(stud\.)?noroff\.no$/;
+    if (!emailPrefix.test(email)) {
+        emailError.textContent = 'Not a valid email address. Must contain @stud.noroff.no.';
+        emailError.classList.add('show');
+    } else {
+        emailError.textContent = '';
+        emailError.classList.remove('show');
+    }
+}
+
+function validatePassword() {
+    const password = document.getElementById('registerPassword').value;
+    const passwordError = document.getElementById('passwordError');
+    if (password.length < 8) {
+        passwordError.textContent = 'Password needs to be at least 8 characters.';
+        passwordError.classList.add('show');
+    } else {
+        passwordError.textContent = '';
+        passwordError.classList.remove('show');
+    }
+}
+
+function validateConfirmPassword() {
     const password = document.getElementById('registerPassword').value;
     const confirmPassword = document.getElementById('registerConfirmPassword').value;
-
+    const confirmPassError = document.getElementById('confirmPasswordError');
     if (password !== confirmPassword) {
-        alert('Password do not match');
+        confirmPassError.textContent = 'Passwords need to match.';
+        confirmPassError.classList.add('show');
+    } else {
+        confirmPassError.textContent = '';
+        confirmPassError.classList.remove('show');
+    }
+}
+
+async function handleRegister() {
+    validateName();
+    validateEmail();
+    validatePassword();
+    validateConfirmPassword();
+
+    const nameError = document.getElementById('nameError').textContent;
+    const emailError = document.getElementById('emailError').textContent;
+    const passwordError = document.getElementById('passwordError').textContent;
+    const confirmPasswordError = document.getElementById('confirmPasswordError').textContent;
+
+    if (nameError || emailError || passwordError || confirmPasswordError) {
         return;
     }
 
-    const createUser = {
-        name: name,
-        email: email,
-        password: password,
-    }
+    const name = document.getElementById('registerName').value;
+    const email = document.getElementById('registerEmail').value;
+    const password = document.getElementById('registerPassword').value;
 
-    await fetch('https://v2.api.noroff.dev/auth/register', {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-        body: JSON.stringify(createUser),
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Response failed');
+    try {
+        const registerData = await fetchApi('POST', registerUrl, { name, email, password });
+        if (registerData) {
+            showRegisterAlert();
+            setTimeout(() => {
+                hideRegisterAlert();
+                window.location.href = '../account/login.html';
+            }, 2500);
         }
-        return response.json();
-    })
-    .then(data => {
-        console.log('Data logs: ', data);
-        alert('Successful registration')
-    })
-    .catch(error => {
-        console.error('There was a problem with the registration', error);
-        alert('Registration failed, please try again later')
-    })
+    } catch (error) {
+        console.error('Registration failed', error);
+    }
 }
 
 
+function showRegisterAlert() {
+    const registerAlert = document.getElementById('registerAlert');
+    const registerForm = document.getElementById('registerSection');
+    if (registerAlert) {
+        registerAlert.style.display = 'block';
+    }
+    if ( registerForm) {
+        registerForm.style.display = 'none';
+    };
+};
 
+function hideRegisterAlert() {
+    const registerAlert = document.getElementById('registerAlert');
+    if (registerAlert) {
+        registerAlert.style.display = 'none';
+    };
+};
 
+hideRegisterAlert();
 
 
