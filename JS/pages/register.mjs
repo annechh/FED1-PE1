@@ -2,6 +2,7 @@ import { fontawsomeScript } from "../components/default.mjs";
 import { createHeader } from "../components/header.mjs"; 
 import { loggedInEvents } from "../components/loginState.mjs";
 import { fetchApi, registerUrl } from "../fetch.mjs";
+import { checkIfEmptyField } from "../components/validation.mjs";
 
 
 
@@ -102,17 +103,7 @@ function createRegisterForm() {
 createRegisterForm();
 
 
-function checkIfEmptyField(fieldValue, errorMessageElement) {
-    if (!fieldValue) {
-        errorMessageElement.textContent = 'This field cannot be empty, please fill out.';
-        errorMessageElement.classList.add('show');
-        return true;
-    } else {
-        errorMessageElement.textContent = '';
-        errorMessageElement.classList.remove('show');
-        return false;
-    }
-}
+
 
 
 function validateName() {
@@ -188,14 +179,17 @@ async function handleRegister() {
     if (nameError || emailError || passwordError || confirmPasswordError) {
         return;
     }
+    fetchData()
+}
 
+async function fetchData() {
     const name = document.getElementById('registerName').value;
     const email = document.getElementById('registerEmail').value;
     const password = document.getElementById('registerPassword').value;
 
     try {
-        const registerData = await fetchApi('POST', registerUrl, { name, email, password });
-        if (registerData) {
+        const data = await fetchApi('POST', registerUrl, { name, email, password });
+        if (data) {
             showRegisterAlert();
             setTimeout(() => {
                 hideRegisterAlert();
