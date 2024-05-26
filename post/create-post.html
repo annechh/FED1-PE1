@@ -34,7 +34,7 @@
                 <div class="post-img-container" id="createBlogImg">
                 </div>
                 <div class="add-img">
-                    <svg class="hover" id="addImgBtn" xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
+                    <svg class="hover" id="addImgBtn" data-tooltip="Add Img Url" xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
                         <rect x="31.4297" width="7.14286" height="70" rx="3.57143"/>
                         <rect y="38.5713" width="7.14286" height="70" rx="3.57143" transform="rotate(-90 0 38.5713)" />
                     </svg>
@@ -64,8 +64,8 @@
                         <textarea name="blogText" id="createBlogText" ></textarea>
                     </div>       
                     <div class="btn-container">
-                        <button class="btn" id="createPostBtn">Create Post</button>
-                        <button class="btn" id="cancelPostBtn">Cancel</button>
+                        <button class="btn" id="createPostBtn" data-tooltip="Create post">Create Post</button>
+                        <div class="btn" id="cancelPostBtn" data-tooltip="Clear all fields"><i class="fa-solid fa-eraser"></i></div>
                     </div>
                 </form>
             </div>
