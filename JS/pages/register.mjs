@@ -95,7 +95,6 @@ function createRegisterForm() {
         registerButton.addEventListener('click', (event) => {
         event.preventDefault(); 
         handleRegister(); 
-        // Create or notify registered user, and redirect to login page
     });
 
     const changeToLogin = document.createElement('a');
