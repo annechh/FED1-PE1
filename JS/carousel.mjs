@@ -23,7 +23,7 @@ export async function carousel() {
 
             let img = document.createElement('img');
             img.src = data.media.url;
-            img.alt = data.title;
+            img.alt = data.media.alt;
 
             let titleContainer = document.createElement('div');
             titleContainer.classList.add('carousel-info');
