@@ -1,5 +1,3 @@
-
-
 const baseUrl = "https://v2.api.noroff.dev";
 export const userUrl = `${baseUrl}/blog/posts/Shira`;
 export const loginUrl = `${baseUrl}/auth/login`;
