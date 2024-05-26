@@ -8,6 +8,7 @@ export const registerUrl = `${baseUrl}/auth/register`;
 
 
 export async function fetchApi(method, url, body) {  
+// const token = localStorage.getItem('accessToken');
     
     showLoader();
     try {
@@ -30,7 +31,7 @@ export async function fetchApi(method, url, body) {
         console.error('Could not fetch data' + error);
         throw error ("There was a problem getting the data")
     } finally {
-        // hideLoader();
+        hideLoader();
     }
 }
 
@@ -50,7 +51,6 @@ function hideLoader() {
     }
 }
 
-// const token = localStorage.getItem('accessToken');
 
 // Make userUrl usable for whatever registered account that is being made
 // `${baseUrl}/blog/posts/${name}`
