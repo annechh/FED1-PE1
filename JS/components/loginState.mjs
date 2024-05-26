@@ -63,3 +63,11 @@ export function getUserData() {
     
     return userData;
 }
+
+export function accessDenied(){
+    if (!getUserData()) {
+        alert('No authorization to use this page, log in');
+        window.location.href = '../account/login.html'
+        return;
+    }
+}
