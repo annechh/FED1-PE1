@@ -83,7 +83,6 @@ input:placeholder-shown {
 .error-message {
     display: flex;
     flex-direction: row;
-    align-items: end;
     justify-content: center;
     color: red;
     padding-top: 5px;

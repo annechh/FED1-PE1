@@ -27,7 +27,7 @@ function createRegisterForm() {
 
         let nameError = document.createElement('label');
             nameError.id = 'nameError';
-            nameError.classList.add('error-message', 'hide');
+            nameError.classList.add('error-message', 'hide', 'pl');
     
     let emailDiv = document.createElement('div');
         emailDiv.classList.add('form-div')
@@ -41,7 +41,7 @@ function createRegisterForm() {
 
         let emailError = document.createElement('label');
             emailError.id = 'emailError';
-            emailError.classList.add('error-message', 'hide');
+            emailError.classList.add('error-message', 'hide', 'pl');
     
     let passwordDiv = document.createElement('div');
         passwordDiv.classList.add('form-div')
@@ -55,7 +55,7 @@ function createRegisterForm() {
 
         let passwordError = document.createElement('label');
             passwordError.id = 'passwordError';
-            passwordError.classList.add('error-message', 'hide');
+            passwordError.classList.add('error-message', 'hide', 'pl');
 
     let confirmPassDiv = document.createElement('div');
         confirmPassDiv.classList.add('form-div')
@@ -69,7 +69,7 @@ function createRegisterForm() {
 
         let confirmPassError = document.createElement('label');
             confirmPassError.id = 'confirmPasswordError';
-            confirmPassError.classList.add('error-message', 'hide');
+            confirmPassError.classList.add('error-message', 'hide', 'pl');
     
 
     let btnContainer = document.createElement('div');
