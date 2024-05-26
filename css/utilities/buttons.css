@@ -54,14 +54,12 @@
     bottom: 100%; /* Position above the button */
     left: 50%;
     transform: translateX(-50%);
-    /* background-color: black; */
     color: #fff;
     padding: 5px 10px;
     border-radius: 5px;
     white-space: nowrap;
     opacity: 0;
     visibility: hidden;
-    /* transition: opacity 0.3s; */
     z-index: 5;
     font-size: 16px;
 }
@@ -69,15 +67,12 @@
 .tooltip::before {
     content: "";
     position: absolute;
-    bottom: 100%; /* Position at the bottom of tooltip */
+    bottom: 100%; 
     left: 50%;
     transform: translateX(-50%);
     border-width: 5px;
-    /* border-style: solid; */
-    /* border-color: black transparent transparent transparent; */
     opacity: 0;
     visibility: hidden;
-    /* transition: opacity 0.3s; */
     z-index: 5;
 }
 
