@@ -2,7 +2,20 @@ import { fontawsomeScript } from "../components/default.mjs";
 import { createHeader } from "../components/header.mjs"; 
 import { loggedInEvents } from "../components/loginState.mjs";
 import { fetchApi, registerUrl } from "../fetch.mjs";
-import { checkIfEmptyField } from "../components/validation.mjs";
+import { 
+    checkIfEmptyField, 
+    nameValidation, 
+    emailValidation, 
+    passwordValidation, 
+    confirmPasswordValidation } from "../components/validation.mjs";
+
+
+
+function runRegisterPage() {
+
+createRegisterForm();
+hideRegisterAlert();
+}
 
 
 
@@ -100,54 +113,27 @@ function createRegisterForm() {
     return section;
 }
 
-createRegisterForm();
-
-
-
 
 
 function validateName() {
     const name = document.getElementById('registerName').value;
     const nameError = document.getElementById('nameError');
     if (checkIfEmptyField(name, nameError)) return;
-
-    const namePrefix = /^[\w]{1,20}$/;
-    if (!namePrefix.test(name)) {
-        nameError.textContent = 'Username can only contain letters, numbers, and underscores.';
-        nameError.classList.add('show');
-    } else {
-        nameError.textContent = '';
-        nameError.classList.remove('show');
-    }
+    nameValidation(name, nameError)
 }
 
 function validateEmail() {
     const email = document.getElementById('registerEmail').value;
     const emailError = document.getElementById('emailError');
     if (checkIfEmptyField(email, emailError)) return;
-
-    const emailPrefix = /^[\w\-.]+@(stud\.)?noroff\.no$/;
-    if (!emailPrefix.test(email)) {
-        emailError.textContent = 'Not a valid email address. Must contain @stud.noroff.no.';
-        emailError.classList.add('show');
-    } else {
-        emailError.textContent = '';
-        emailError.classList.remove('show');
-    }
+    emailValidation(email, emailError);
 }
 
 function validatePassword() {
     const password = document.getElementById('registerPassword').value;
     const passwordError = document.getElementById('passwordError');
     if (checkIfEmptyField(password, passwordError)) return;
-
-    if (password.length < 8) {
-        passwordError.textContent = 'Password needs to be at least 8 characters.';
-        passwordError.classList.add('show');
-    } else {
-        passwordError.textContent = '';
-        passwordError.classList.remove('show');
-    }
+    passwordValidation(password, passwordError); 
 }
 
 function validateConfirmPassword() {
@@ -155,14 +141,7 @@ function validateConfirmPassword() {
     const confirmPassword = document.getElementById('registerConfirmPassword').value;
     const confirmPassError = document.getElementById('confirmPasswordError');
     if (checkIfEmptyField(confirmPassword, confirmPassError )) return;
-
-    if (password !== confirmPassword) {
-        confirmPassError.textContent = 'Passwords do not match. Please try again';
-        confirmPassError.classList.add('show');
-    } else {
-        confirmPassError.textContent = '';
-        confirmPassError.classList.remove('show');
-    }
+    confirmPasswordValidation(password, confirmPassword, confirmPassError);
 }
 
 async function handleRegister() {
@@ -220,6 +199,5 @@ function hideRegisterAlert() {
     };
 };
 
-hideRegisterAlert();
 
-
+runRegisterPage()
