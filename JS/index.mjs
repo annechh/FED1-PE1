@@ -5,23 +5,29 @@ import { loggedInEvents, getUserData } from "./components/loginState.mjs";
 import { fetchApi, userUrl } from "./fetch.mjs";
 
 
+const months = [
+    "January", 
+    "February", 
+    "March", 
+    "April", 
+    "May", 
+    "June", 
+    "July", 
+    "August", 
+    "September", 
+    "October", 
+    "November", 
+    "December"];
+
+
 async function loadPage() {
 
-    fetchBlogPosts2()
+    fetchBlogPosts()
+    welcomeUser();
+    deleteSelectedPosts()
+    cancelSelectPosts(); 
+    selectPostsBtn()
 }
-
-
-
-const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-
-
-
-async function fetchBlogPosts2() {
-    const data = await fetchApi('GET', `https://v2.api.noroff.dev/blog/posts/Shira`);
-    console.log('Data index page: ', data);
-    createBlogCards(data.data)
-}
-
 
 
 function createBlogCards(blogPosts) {
@@ -102,6 +108,12 @@ function createBlogCards(blogPosts) {
 }
 
 
+async function fetchBlogPosts() {
+    const data = await fetchApi('GET', userUrl);
+    console.log('Data index page: ', data);
+    createBlogCards(data.data)
+}
+
 
 function welcomeUser() {
     const userData = getUserData()
@@ -122,81 +134,6 @@ function welcomeUser() {
     }
 }
 
-welcomeUser();
-
-
-
-const selectBtn = document.getElementById('selectPostsBtn');
-const deleteBtn = document.getElementById('deleteSelectedPostsBtn');
-const cancelBtn = document.getElementById('cancelSelectPostsBtn');
-// const cardLink = document.querySelector('.blog-card');
-
-function selectPostsBtn() {
-    selectBtn.addEventListener('click', () => {
-        console.log('Select post, changed to Delete post',selectBtn);
-        selectBtn.style.display = 'none';
-        deleteBtn.style.display = 'flex';
-        cancelBtn.style.display = 'flex';
-        
-        document.querySelectorAll('.blog-card').forEach(blogCard => {
-            blogCard.removeEventListener('click', blogCard._navigateToPost);
-        });
-
-        displayCheckBox()
-    })
-}
-deleteSelectedPosts()
-cancelSelectPosts(); 
-selectPostsBtn()
-
-
-function cancelSelectPosts() {
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Escape') {
-            console.log('Delete post, changed to Select post');
-            resetUI();
-        }
-    });
-
-    cancelBtn.addEventListener('click', () => {
-        resetUI();
-    })
-}
-
-
-function deleteSelectedPosts() {
-    deleteBtn.addEventListener('click', async () => {
-        const checkboxes = document.querySelectorAll('.delete-checkbox:checked');
-        const ids = Array.from(checkboxes).map(checkbox => checkbox.value);
-        console.log('ids selected',ids);
-        if (ids.length === 0) {
-            alert('No posts selected for deletion');
-            return;
-        }
-        try {
-            for (const id of ids) {
-                await fetch(`https://v2.api.noroff.dev/blog/posts/Shira/${id}`, {
-                    method: 'DELETE',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                    }
-                });
-                console.log(`Deleted post with ID: ${id}`);
-            }
-            const confirmDelete = window.confirm('Do you want to delete selected posts?');
-            alert('Selected posts deleted successfully');
-            if (confirmDelete) {
-                resetUI(); // Reset the UI after deletion
-                window.location.href = '../index.html';
-            }
-        } catch (error) {
-            console.error('Error deleting posts:', error);
-            alert('Failed to delete selected posts');
-        }
-    });
-}
-
 
 function displayCheckBox() { 
     const customCheckboxes = document.querySelectorAll('.custom-checkbox');
@@ -212,6 +149,79 @@ function displayCheckBox() {
         });
     });
     console.log('customCheckboxes: ', customCheckboxes);
+}
+
+
+const selectBtn = document.getElementById('selectPostsBtn');
+const deleteBtn = document.getElementById('deleteSelectedPostsBtn');
+const cancelBtn = document.getElementById('cancelSelectPostsBtn');
+
+function selectPostsBtn() {
+    selectBtn.addEventListener('click', () => {
+        console.log('Select post, changed to Delete post',selectBtn);
+        selectBtn.style.display = 'none';
+        deleteBtn.style.display = 'flex';
+        cancelBtn.style.display = 'flex';
+        
+        document.querySelectorAll('.blog-card').forEach(blogCard => {
+            blogCard.removeEventListener('click', blogCard._navigateToPost);
+        });
+        displayCheckBox()
+    })
+}
+
+
+function cancelSelectPosts() {
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            console.log('Delete post, changed to Select post');
+            resetUI();
+        }
+    });
+    cancelBtn.addEventListener('click', () => {
+        resetUI();
+    })
+}
+
+
+function getSelectedPostIds() {
+    const checkboxes = document.querySelectorAll('.delete-checkbox:checked');
+    return Array.from(checkboxes).map(checkbox => checkbox.value);
+}
+
+function confirmDeletion() {
+    const confirm = window.confirm('Do you want to delete selected posts?');
+    resetUI()
+    return confirm;
+}
+
+async function deletePostsById(id) {
+    await fetchApi('DELETE', `https://v2.api.noroff.dev/blog/posts/Shira/${id}`);
+}
+
+async function deleteSelectedPosts() {
+    deleteBtn.addEventListener('click', async () => {
+        const ids = getSelectedPostIds();
+        console.log('ids selected', ids);
+
+        if (ids.length === 0) {
+            alert('No posts selected for deletion');
+            return;
+        }
+        if (!confirmDeletion()) {
+            return;
+        }
+        try {
+            for (const id of ids) {
+                await deletePostsById(id);
+            }
+            alert('Selected posts deleted successfully');
+            resetUI(); 
+            window.location.href = '../index.html';
+        } catch (error) {
+            alert('Failed to delete selected posts');
+        }
+    });
 }
 
 
@@ -340,3 +350,76 @@ loadPage()
 //     fetchBlogPosts2(currentPage);
 // });
 // End pagination part......
+
+
+// function deleteSelectedPosts() {
+//     deleteBtn.addEventListener('click', async () => {
+//         const checkboxes = document.querySelectorAll('.delete-checkbox:checked');
+//         const ids = Array.from(checkboxes).map(checkbox => checkbox.value);
+//         console.log('ids selected',ids);
+//         if (ids.length === 0) {
+//             alert('No posts selected for deletion');
+//             return;
+//         }
+//         try {
+//             for (const id of ids) {
+//                 await fetch(`https://v2.api.noroff.dev/blog/posts/Shira/${id}`, {
+//                     method: 'DELETE',
+//                     headers: {
+//                         'Content-Type': 'application/json',
+//                         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+//                     }
+//                 });
+//                 console.log(`Deleted post with ID: ${id}`);
+//             }
+//             const confirmDelete = window.confirm('Do you want to delete selected posts?');
+//             alert('Selected posts deleted successfully');
+//             if (confirmDelete) {
+//                 resetUI(); // Reset the UI after deletion
+//                 window.location.href = '../index.html';
+//             }
+//         } catch (error) {
+//             console.error('Error deleting posts:', error);
+//             alert('Failed to delete selected posts');
+//         }
+//     });
+// }
+
+
+// function deleteSelectedPosts1() {
+//     deleteBtn.addEventListener('click', async () => {
+//         const checkboxes = document.querySelectorAll('.delete-checkbox:checked');
+//         const ids = Array.from(checkboxes).map(checkbox => checkbox.value);
+//         console.log('ids selected', ids);
+        
+//         if (ids.length === 0) {
+//             alert('No posts selected for deletion');
+//             return;
+//         }
+
+//         const confirmDelete = window.confirm('Do you want to delete selected posts?');
+//         if (!confirmDelete) {
+//             return;
+//         }
+
+//         try {
+//             for (const id of ids) {
+//                 await fetch(`https://v2.api.noroff.dev/blog/posts/Shira/${id}`, {
+//                     method: 'DELETE',
+//                     headers: {
+//                         'Content-Type': 'application/json',
+//                         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+//                     }
+//                 });
+//                 console.log(`Deleted post with ID: ${id}`);
+//             }
+
+//             alert('Selected posts deleted successfully');
+//             resetUI(); // Reset the UI after deletion
+//             window.location.href = '../index.html';
+//         } catch (error) {
+//             console.error('Error deleting posts:', error);
+//             alert('Failed to delete selected posts');
+//         }
+//     });
+// }
