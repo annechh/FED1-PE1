@@ -196,7 +196,7 @@ function confirmDeletion() {
 }
 
 async function deletePostsById(id) {
-    await fetchApi('DELETE', `https://v2.api.noroff.dev/blog/posts/Shira/${id}`);
+    await fetchApi('DELETE', `${userUrl}/${id}`);
 }
 
 async function deleteSelectedPosts() {
