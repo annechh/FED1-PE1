@@ -7,17 +7,14 @@ import { fetchApi, userUrl } from "../fetch.mjs";
 accessDenied()
 
 const id = new URLSearchParams(window.location.search).get('id');
+console.log('id, url params: ',id);
 
 async function fetchBlog() {
-    try {
-        console.log('id, url params: ',id);
         const data = await fetchApi('GET', `${userUrl}/${id}`);
         console.log('data: ', data);
         populateFields(data.data);
-    } catch (error) {
-        console.error('Failed to fetch post data', error);
-    }
 }
+
 console.log('hello');
 
 function populateFields(data) {
