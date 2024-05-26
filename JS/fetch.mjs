@@ -39,6 +39,30 @@ const token = localStorage.getItem('accessToken');
     }
 }
 
+
+function showLoader() {
+    const loader = document.getElementById('loader');
+    if (loader) {
+        loader.style.display = 'block';
+    }
+}
+
+function hideLoader() {
+    const loader = document.getElementById('loader');
+    if (loader) {
+        loader.style.display = 'none';
+    }
+}
+
+
+// Make userUrl usable for whatever registered account that is being made
+// `${baseUrl}/blog/posts/${name}`
+
+// GET, POST - /blog/posts/Shira
+// PUT, DELETE, GET - /blog/posts/Shira/{id}
+// https://v2.api.noroff.dev/blog/posts/Shira
+
+
 // export async function fetchApi(method, url, body) {  
 //     const token = localStorage.getItem('accessToken');
     
@@ -66,25 +90,3 @@ const token = localStorage.getItem('accessToken');
 //         hideLoader();
 //     }
 // }
-
-function showLoader() {
-    const loader = document.getElementById('loader');
-    if (loader) {
-        loader.style.display = 'block';
-    }
-}
-
-function hideLoader() {
-    const loader = document.getElementById('loader');
-    if (loader) {
-        loader.style.display = 'none';
-    }
-}
-
-
-// Make userUrl usable for whatever registered account that is being made
-// `${baseUrl}/blog/posts/${name}`
-
-// GET, POST - /blog/posts/Shira
-// PUT, DELETE, GET - /blog/posts/Shira/{id}
-// https://v2.api.noroff.dev/blog/posts/Shira
