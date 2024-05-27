@@ -217,7 +217,7 @@ async function deleteSelectedPosts() {
             }
             alert('Selected posts deleted successfully');
             resetUI(); 
-            window.location.href = '../index.html';
+            window.location.href = 'index.html';
         } catch (error) {
             alert('Failed to delete selected posts');
         }
