@@ -174,4 +174,7 @@
         width: 8px;
         height: 8px;
     }
+    .carousel {
+        height: 450px;
+    }
 }
