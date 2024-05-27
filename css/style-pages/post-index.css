@@ -39,9 +39,6 @@
     font-size: 18px;
 }
 
-.blog-text-wrapper p {
-}
-
 .posted-container {
     display: flex;
     flex-direction: column;
