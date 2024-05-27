@@ -1,12 +1,7 @@
 import { fontawsomeScript } from "../components/default.mjs";
 import { createHeader } from "../components/header.mjs";
 import { loggedInEvents } from "../components/loginState.mjs";
-
-
-
-// const idParameter = window.location.search;
-const searchParameter = new URLSearchParams(window.location.search);
-const postId = searchParameter.get('id');
+import { fetchApi, userUrl } from "../fetch.mjs";
 
 
 const months = [
@@ -17,25 +12,23 @@ const months = [
     "November", "December"
 ];
 
-if (postId) {
-    fetchBlogPost(postId)
+
+async function fetchBlogs() {
+    const postId = new URLSearchParams(window.location.search).get('id');
+        console.log('POST ID',postId);
+    if (!postId) {
+        console.error('No post ID found in Url');
+        return;
+    }
+    const data = await fetchApi('GET',`${userUrl}/${postId}`);
+    getFields(data);
 }
-// console.log(searchParameter.get('id'));
-console.log('POST ID',postId);
+
+fetchBlogs();
 
 
-function fetchBlogPost(postId) {
-    fetch(`https://v2.api.noroff.dev/blog/posts/Shira/${postId}`, {
-        method: 'GET',
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-        },
-    })
-    .then((response) => response.json())
-    .then(data => {
-        console.log('DATA gotten: ',data); 
-        
-        let image = document.getElementById('specificBlogImg');
+function getFields(data) {
+    let image = document.getElementById('specificBlogImg');
             image.src = data.data.media.url;
             image.alt = data.data.media.alt;
         
@@ -76,9 +69,9 @@ function fetchBlogPost(postId) {
                 const postUrl = window.location.href;
                 navigator.clipboard.writeText(postUrl);
                 if(navigator.clipboard) {
-                    alert('Url has been copied to clipboard')
+                    alert('Url has been copied to clipboard');
                 } else {
-                    alert('Failed to copy url')       
+                    alert('Failed to copy url');       
                 }
             })
 
@@ -86,12 +79,7 @@ function fetchBlogPost(postId) {
             editBtn.addEventListener('click', () => {
                 window.location.href = `../post/edit.html?id=${data.data.id}`;
             })
-
-    })
-    .catch(error => console.error('Error when trying to fetch post', error))
 }
-
-
 
 document.getElementById('deletePostBtn').addEventListener('click', async () => {
     const id = new URLSearchParams(window.location.search).get('id');
@@ -100,13 +88,8 @@ document.getElementById('deletePostBtn').addEventListener('click', async () => {
 
     if (confirmDel) {
         try {
-            await fetch(`https://v2.api.noroff.dev/blog/posts/Shira/${id}`, {
-                method: 'DELETE',
-                headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                },
-            });
+            await fetchApi('DELETE', `${userUrl}/${id}`);
+            alert('Post successfully deleted, redirecting you to homepage');
             window.location.href = '../index.html';
         } catch (error) {
             console.error('Error deleting this post:', error);
@@ -115,78 +98,3 @@ document.getElementById('deletePostBtn').addEventListener('click', async () => {
     }
 })
 
-
-
-
-
-
-
-
-// const editBtn = document.getElementById('editBtn');
-// const tooltip = document.getElementById('tooltip');
-
-    // editBtn.addEventListener('mouseover', () => {
-    //     tooltip.style.visibility = 'visible';
-    //     tooltip.style.opacity = '1';
-    // })
-
-    // editBtn.addEventListener('mouseout', () => {
-    //     tooltip.style.visibility = 'hidden';
-    //     tooltip.style.opacity = '0';
-    // })
-    
-    
-
-
-    
-// document.addEventListener('DOMContentLoaded', () => {
-//     const newBlogText = document.getElementById('specificBlogText');
-//     postData.content.forEach(paragraph => {
-//         const newParagraph = document.createElement('p');
-//         newParagraph.innerText = paragraph;
-//         newBlogText.appendChild(newParagraph);
-
-// })
-
-// })
-//  //-------------
-
-// const blogText = document.getElementById('blogText');
-// blogText.addEventListener('keydown', (event) => {
-//     if (event.key === 'Enter') {
-//         event.preventDefault();
-//         const newParagraph = document.createElement('p');
-//         newParagraph.innerText = blogText.value;
-//     }
-// })
-// //-----------
-// document.addEventListener("DOMContentLoaded", function() {
-//     // Retrieve the stored post data from localStorage
-//     const postData = JSON.parse(localStorage.getItem("newPost"));
-
-//     // Insert the post title into the <h1> element
-//     document.getElementById("spesificBlogTitle").innerText = postData.title;
-
-//     // Insert the post author into the <span> element with id "spesificBlogAuthor"
-//     document.getElementById("spesificBlogAthor").innerText = postData.author;
-
-//     // Insert each paragraph of the post text into the <div> element with id "spesificBlogText"
-//     const spesificBlogText = document.getElementById("spesificBlogText");
-//     postData.content.forEach(paragraph => {
-//         const p = document.createElement("p");
-//         p.innerText = paragraph;
-//         spesificBlogText.appendChild(p);
-//     });
-
-//     // Event listener to create a new <p> tag when pressing enter in the create post form
-//     const blogTextField = document.getElementById("blogTextField");
-//     blogTextField.addEventListener("keydown", function(event) {
-//         if (event.key === "Enter") {
-//             event.preventDefault(); // Prevent the default behavior of adding a newline in the textarea
-//             const p = document.createElement("p");
-//             p.innerText = blogTextField.value;
-//             spesificBlogText.appendChild(p);
-//             blogTextField.value = ""; // Clear the textarea after adding the paragraph
-//         }
-//     });
-// });
