@@ -36,7 +36,7 @@ function createBlogCards(blogPosts) {
     blogPosts.forEach(data => {
         
         let blogCard = document.createElement('div');
-        blogCard.classList.add('blog-card', 'flex', 'flex-col');
+        blogCard.classList.add('blog-card');
         const navigateToPost = () => {
             window.location.href = `post/index.html?id=${data.id}`;
         };

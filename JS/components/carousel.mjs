@@ -66,7 +66,7 @@ carousel();
 
 
 // Code borrowed and modified from: https://www.youtube.com/watch?v=9HcxHDS2w1s&t=477s
-const carouselButtons = carouselWrapper.querySelectorAll('.carousel-btn');
+const carouselButtons = carouselWrapper.querySelectorAll('.carousel-slide-btn');
 
 carouselButtons.forEach(button => {
     button.addEventListener('click', () => {

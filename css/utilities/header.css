@@ -1,11 +1,10 @@
 
 header {
     width: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)), url('/assets/images/IMG_20210331_194500.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9));
     background-size: cover;
     background-repeat: no-repeat;
     object-fit: cover;
-    /* overflow: hidden; */
     background-position: center;
 }
 
@@ -46,6 +45,33 @@ a {
     align-items: center;
 }
 
-/* .loggedOut-state {
-    display: none;
-} */
+@media screen and (max-width: 1091px) {
+    nav {
+        height: 100px;
+    }
+    nav img{
+        height: 75px;
+    }
+    nav div {
+        gap: 35px;
+    }
+    a {
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    
+    nav {
+        height: 55px;
+        align-items: end;
+    }
+    nav img{
+        height: 50px;
+        padding-left: 20px;
+    }
+    nav div {
+        gap: 20px;
+        padding-right: 20px;
+    }
+}

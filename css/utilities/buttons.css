@@ -4,7 +4,8 @@
     font-size: 20px;
     font-weight: 700;
     color: var(--white);
-    padding: 15px 35px;
+    padding: 0 25px;
+    height: 60px;
     border-radius: 30px;
 }
 
@@ -23,7 +24,7 @@
     background: var(--faded-light-grey-75);
 }
 
-.carousel-btn {
+.carousel-slide-btn {
     border-radius: 100%;
     background: var(--faded-dark-grey-20);
     z-index: 2;
@@ -31,11 +32,11 @@
     cursor: pointer;
 }
 
-.carousel-btn:hover {
+.carousel-slide-btn:hover {
     background: var(--faded-dark-grey-60);
 }
 
-.btn, .btn-img, .carousel-btn {
+.btn, .btn-img, .carousel-slide-btn {
     cursor: pointer;
 }
 
@@ -67,7 +68,7 @@
 .tooltip::before {
     content: "";
     position: absolute;
-    bottom: 100%; 
+    bottom: 100%;
     left: 50%;
     transform: translateX(-50%);
     border-width: 5px;
@@ -80,4 +81,30 @@
 .tooltip:hover::before {
     opacity: 1;
     visibility: visible;
+}
+
+
+@media screen and (max-width: 1091px) {
+
+
+}
+
+
+
+@media screen and (max-width: 768px) {
+
+    .btn {
+        height: 50px;
+        font-size: 16px;
+    }
+}
+
+
+
+@media screen and (max-width: 500px) {
+    .btn, .btn-img {
+        height: 40px;
+        font-size: 14px;
+    }
+
 }
