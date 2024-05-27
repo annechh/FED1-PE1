@@ -109,4 +109,9 @@
     .button-options-container {
         flex-wrap: wrap;
     }
+    #deleteSelectedPostsBtn {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+    }
 }
