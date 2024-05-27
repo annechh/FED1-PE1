@@ -1,6 +1,7 @@
 import { fontawsomeScript } from "../components/default.mjs";
 import { createHeader } from "../components/header.mjs";
 import { loggedInEvents, accessDenied } from "../components/loginState.mjs";
+import { userUrl } from "../fetch.mjs";
 
 
 accessDenied();
@@ -28,7 +29,6 @@ function previewImage() {
         }
     }
 }
-
 
 
 document.querySelector('form').addEventListener('submit', async function(event) {
@@ -59,8 +59,7 @@ document.querySelector('form').addEventListener('submit', async function(event) 
 async function createPost(image, alt, title, blogText) {
     const token = localStorage.getItem('accessToken');
 
-
-    return fetch('https://v2.api.noroff.dev/blog/posts/Shira', {
+    return fetch(userUrl, {
         method: 'POST',
         body: JSON.stringify({
             media: {
@@ -89,12 +88,6 @@ function handleResponse(json) {
 
 
 
-
-
-
-
-
-
 const addImgBtn = document.getElementById('addImgBtn');
 const createUrlInput = document.getElementById('createUrl');
 const createAltInput = document.getElementById('createAlt');
@@ -118,18 +111,18 @@ cancelButton.addEventListener('click', function(event) {
     const createBlogText = document.getElementById('createBlogText').value;
 
     if (!createUrl && !createAlt && !createTitle && !createBlogText) {
-        alert('No content to clear')
+        alert('No fields to clear')
     } else {
-        const confirmClear = window.confirm('Do you want to clear all information in this post?');
+        const confirmClear = window.confirm('Do you want to clear all fields in this post?');
         if (confirmClear) {
         document.getElementById('previewImg').src = '';
         document.getElementById('createUrl').value = '';
         document.getElementById('createAlt').value = '';
         document.getElementById('createTitle').value = '';
         document.getElementById('createBlogText').value = '';
+        alert('All fields have been cleared');
     }}
 });
-
 
 
 
