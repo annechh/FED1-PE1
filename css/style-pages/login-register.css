@@ -2,7 +2,6 @@
 @import url('../utilities/buttons.css');
 @import url('../utilities/header.css');
 @import url('../utilities/footer.css');
-/* @import url('../utilities/loader.css'); */
 
 
 
@@ -23,25 +22,27 @@ h1 {
 form {
     max-width: 500px;
     width: 100%;
+}
+
+.form-div {
     display: flex;
     flex-direction: column;
-    gap: 35px; 
-    margin-bottom: 35px;
+    align-items: center;
+    width: 100%;
 }
 
 input {
-    padding: 0 0 0 35px;
+    max-width: 500px;
+    padding: 0 35px;
     height: 60px;
     outline: 1px solid;
     border: none;
     border-radius: 30px;
     font-family: var(--roboto);
-    font-size: 20px;
-    width: 100%;
+    width: 80%;
 }
 
 input:placeholder-shown {
-    padding-left: 35px;
     font-size: 20px;
 }
 
@@ -86,4 +87,32 @@ input:placeholder-shown {
     justify-content: center;
     color: red;
     padding-top: 5px;
+}
+
+
+@media screen and (max-width: 768px) {
+    input {
+        height: 50px;
+        font-size: 16px;
+        padding: 0 20px;
+    }
+    input:placeholder-shown {
+        font-size: 16px;
+    }
+    label{
+        font-size: 12px;
+    }
+    h1 {
+        margin-bottom: 50px;
+    }
+    .btn-container {
+        gap: 20px;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    input:placeholder-shown {
+        font-size: 14px;
+    }
 }

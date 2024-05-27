@@ -26,6 +26,7 @@ function createRegisterForm() {
 
     const form = document.createElement('form');
     form.id = 'registerForm';
+    form.classList.add('gap','flex', 'flex-col', 'items-center');
 
     const nameDiv = document.createElement('div');
         nameDiv.classList.add('form-div')
@@ -39,7 +40,7 @@ function createRegisterForm() {
 
         const nameError = document.createElement('label');
             nameError.id = 'nameError';
-            nameError.classList.add('error-message', 'hide', 'pl');
+            nameError.classList.add('error-message', 'hide');
     
     const emailDiv = document.createElement('div');
         emailDiv.classList.add('form-div')
@@ -53,7 +54,7 @@ function createRegisterForm() {
 
         const emailError = document.createElement('label');
             emailError.id = 'emailError';
-            emailError.classList.add('error-message', 'hide', 'pl');
+            emailError.classList.add('error-message', 'hide');
     
     const passwordDiv = document.createElement('div');
         passwordDiv.classList.add('form-div')
@@ -67,7 +68,7 @@ function createRegisterForm() {
 
         const passwordError = document.createElement('label');
             passwordError.id = 'passwordError';
-            passwordError.classList.add('error-message', 'hide', 'pl');
+            passwordError.classList.add('error-message', 'hide');
 
     const confirmPassDiv = document.createElement('div');
         confirmPassDiv.classList.add('form-div')
@@ -81,7 +82,7 @@ function createRegisterForm() {
 
         const confirmPassError = document.createElement('label');
             confirmPassError.id = 'confirmPasswordError';
-            confirmPassError.classList.add('error-message', 'hide', 'pl');
+            confirmPassError.classList.add('error-message', 'hide');
     
 
     const btnContainer = document.createElement('div');

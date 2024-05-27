@@ -19,10 +19,11 @@ function createLoginForm() {
 
     const form = document.createElement('form');
         form.id = 'loginForm';
+        form.classList.add('gap','flex', 'flex-col', 'items-center');
         form.addEventListener('submit', loggedInEvents());
 
     const emailDiv = document.createElement('div');
-        emailDiv.classList.add('form-div')
+        emailDiv.classList.add('form-div');
 
         const email = document.createElement('input');
             email.name = 'Email';
@@ -33,10 +34,10 @@ function createLoginForm() {
 
         const emailError = document.createElement('label');
             emailError.id = 'emailError';
-            emailError.classList.add('error-message', 'hide', 'pl');    
+            emailError.classList.add('error-message', 'hide');    
 
     const passwordDiv = document.createElement('div');
-            passwordDiv.classList.add('form-div')
+            passwordDiv.classList.add('form-div');
 
         const password = document.createElement('input');
             password.name = 'Password';
@@ -47,7 +48,7 @@ function createLoginForm() {
 
         const passwordError = document.createElement('label');
             passwordError.id = 'passwordError';
-            passwordError.classList.add('error-message', 'hide', 'pl');
+            passwordError.classList.add('error-message', 'hide');
 
     const btnContainer = document.createElement('div');
         btnContainer.classList = 'btn-container';
