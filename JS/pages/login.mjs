@@ -1,7 +1,7 @@
 import { fontawsomeScript } from "../components/default.mjs";
 import { createHeader } from "../components/header.mjs"; 
 import { loggedInEvents } from "../components/loginState.mjs";
-import { fetchApi, loginUrl } from "../fetch.mjs";
+import { fetchApi, loginUrl } from "../components/fetch.mjs";
 import { checkIfEmptyField, emailValidation, passwordValidation } from "../components/validation.mjs";
 
 

@@ -1,6 +1,5 @@
 
-import { fetchApi } from "./fetch.mjs";
-import { userUrl } from "./fetch.mjs";
+import { fetchApi, userUrl } from "./fetch.mjs";
 
 export async function carousel() {
     try {

@@ -1,8 +1,8 @@
-import { carousel } from "./carousel.mjs";
-import { fontawsomeScript } from "./components/default.mjs";
-import { indexHeader } from "./components/indexHeader.mjs";
-import { loggedInEvents, getUserData } from "./components/loginState.mjs";
-import { fetchApi, userUrl } from "./fetch.mjs";
+import { carousel } from "../components/carousel.mjs";
+import { fontawsomeScript } from "../components/default.mjs";
+import { indexHeader } from "../components/indexHeader.mjs";
+import { loggedInEvents, getUserData } from "../components/loginState.mjs";
+import { fetchApi, userUrl } from "../components/fetch.mjs";
 
 
 const months = [

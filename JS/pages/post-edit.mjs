@@ -1,7 +1,7 @@
 import { fontawsomeScript } from "../components/default.mjs";
 import { createHeader } from "../components/header.mjs";
 import { loggedInEvents, accessDenied } from "../components/loginState.mjs";
-import { fetchApi, userUrl } from "../fetch.mjs";
+import { fetchApi, userUrl } from "../components/fetch.mjs";
 
 
 accessDenied()

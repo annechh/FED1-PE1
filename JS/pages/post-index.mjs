@@ -1,7 +1,7 @@
 import { fontawsomeScript } from "../components/default.mjs";
 import { createHeader } from "../components/header.mjs";
 import { loggedInEvents } from "../components/loginState.mjs";
-import { fetchApi, userUrl } from "../fetch.mjs";
+import { fetchApi, userUrl } from "../components/fetch.mjs";
 
 
 const months = [
