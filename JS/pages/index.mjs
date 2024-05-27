@@ -255,3 +255,27 @@ function resetUI() {
 
 loadPage()
 
+window.onscroll = function() {
+        scrollFunction();
+    };
+    
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        document.getElementById("scrollToTopBtn").style.display = "block";
+        } else {
+        document.getElementById("scrollToTopBtn").style.display = "none";
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    
+        scrollToTopBtn.addEventListener('click', function() {
+        scrollToTop();
+        });
+    
+        function scrollToTop() {
+        document.documentElement.scrollTop = 0;
+        }
+    });
+    

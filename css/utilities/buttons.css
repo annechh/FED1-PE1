@@ -1,5 +1,7 @@
 
-.btn, .btn-img {
+.btn, 
+.btn-img,
+.btn-fixed {
     font-family: var(--roboto);
     font-size: 20px;
     font-weight: 700;
@@ -19,7 +21,14 @@
     border: 1px solid var(--faded-light-grey-75)
 }
 
-.btn:hover, .btn-img:hover {
+.btn-fixed {
+    background: var(--dark-grey);
+    border: 1px solid var(--faded-light-grey-20)
+
+}
+
+.btn:hover, 
+.btn-img:hover {
     color: black;
     background: var(--faded-light-grey-75);
 }
@@ -36,8 +45,24 @@
     background: var(--faded-dark-grey-60);
 }
 
-.btn, .btn-img, .carousel-slide-btn {
+.btn, 
+.btn-img, 
+.carousel-slide-btn {
     cursor: pointer;
+}
+
+#cancelSelectPostsBtn{
+    bottom: 10px;
+    left: 20px;
+}
+#deleteSelectedPostsBtn {
+    bottom: 80px;
+    left: 20px;
+}
+#scrollToTopBtn {
+    bottom: 10px;
+    right: 35px;
+    position: fixed;
 }
 
 
@@ -85,22 +110,19 @@
 
 
 @media screen and (max-width: 1091px) {
-
-
-}
-
-
-
-@media screen and (max-width: 768px) {
-
-    .btn {
-        padding: 12px 25px;
-        font-size: 16px;
-    }
     #cancelSelectPostsBtn,
     #deleteSelectedPostsBtn {
         position: fixed;
         background: var(--dark-grey);
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .btn,
+    .btn-fixed {
+        padding: 12px 25px;
+        font-size: 16px;
     }
     #cancelSelectPostsBtn{
         bottom: 10px;
@@ -110,12 +132,14 @@
         bottom: 60px;
         left: 20px;
     }
+    
 }
 
 
-
 @media screen and (max-width: 500px) {
-    .btn, .btn-img {
+    .btn, 
+    .btn-img,
+    .btn-fixed {
         padding: 10px 20px;
         font-size: 14px;
     }

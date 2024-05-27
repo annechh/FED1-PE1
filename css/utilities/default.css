@@ -1,5 +1,4 @@
 :root {
-    /* Colors */
     --dark-grey: #181818;
     --white: #FFFFFF;
     --footer-grey: #222222;
@@ -8,13 +7,15 @@
     --faded-dark-grey-20: rgba(24, 24, 24, 0.20);
     --faded-dark-grey-60: rgba(24, 24, 24, 0.60);
     --faded-dark-grey-99: rgba(24, 24, 24, 0.99);
-
     
-    /* Fonts */
     --roboto: "Roboto", sans-serif;
     --inika: "Inika", serif;
 }
 
+html,
+body {
+    scroll-behavior: smooth;
+}
 
 h1, h2 {
     color: var(--white);
@@ -63,6 +64,7 @@ main {
     max-width: 1440px;
     width: 100%;
     height: 50%;
+    z-index: 2;
     background-image: linear-gradient(to bottom,  rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 100%);
 }
 
@@ -130,9 +132,6 @@ main {
 }
 
 /* Flex */
-
-
-
 .flex-center {
     max-width: 100%;
     display: flex;
@@ -163,11 +162,12 @@ main {
     align-items: center;
 }
 
+
+
 @media screen and (max-width: 1091px) {
 
     
 }
-
 
 
 @media screen and (max-width: 768px) {
@@ -203,7 +203,6 @@ main {
         padding-bottom: 20px;
     }
 }
-
 
 
 @media screen and (max-width: 500px) {

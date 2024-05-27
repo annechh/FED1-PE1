@@ -7,7 +7,10 @@
 @import url('../utilities/select-blogs.css');
 
 
-
+html,
+body {
+    scroll-behavior: smooth;
+}
 .welcome-user-title {
     font-size: 50px;
 }
@@ -81,13 +84,10 @@
 
 
 
-
-
 @media screen and (max-width: 1091px) { 
     .blog-card {
         box-shadow: 0px 0px 10px 1px rgba(228, 228, 228, 0.25);
     }
-
 }
 
 @media screen and (max-width: 944px) { 
