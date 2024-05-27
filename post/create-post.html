@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="The create page of Shira's Adventure for pawsome new stories">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,7 +18,7 @@
 
     <script type="module" src="../JS/pages/create-post.mjs"></script> 
 
-    <title>Create new Blog Post</title>
+    <title>Shira's Adventure Create post page</title>
 </head>
 <body>
     <header class="flex-center flex-col items-center">
@@ -34,24 +35,18 @@
                 <div class="post-img-container" id="createBlogImg">
                 </div>
                 <div class="add-img">
-                    <svg class="hover" id="addImgBtn" data-tooltip="Add Img Url" xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 70 70" fill="none">
-                        <rect x="31.4297" width="7.14286" height="70" rx="3.57143"/>
-                        <rect y="38.5713" width="7.14286" height="70" rx="3.57143" transform="rotate(-90 0 38.5713)" />
-                    </svg>
+                    <i class="fa-solid fa-plus hover" id="addImgBtn" data-tooltip="Add Img Url"></i>
                 </div>
             </div>
         </div>
     </header>
-
-
-
 
     <main class="flex flex-col items-center">
         <h1 class="createEdit-post-title pb">Create post</h1>
         <div class="blog-content-wrapper flex flex-col">
             <div class="blog-content flex flex-col gap px">
                 <form >
-                    <div class="flex flex-col " id="inputUrl">
+                    <div class="flex flex-col" id="inputUrl">
                         <input type="url" name="url" id="createUrl" class="hide" placeholder="Add URL">
                         <input type="text" name="" id="createAlt" class="hide" placeholder="Add Image description">
                     </div>
