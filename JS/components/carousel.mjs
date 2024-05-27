@@ -28,7 +28,7 @@ export async function carousel() {
             titleContainer.classList.add('carousel-info');
 
             let titleButton = document.createElement('div');
-            titleButton.classList.add('carousel-title-button', 'px');
+            titleButton.classList.add('carousel-title-button', 'px', 'gap');
 
             let title = document.createElement('h1');
             title.textContent = data.title;
