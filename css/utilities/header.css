@@ -24,7 +24,7 @@ nav {
 
 .nav-absolute {
     position: absolute;
-    z-index: 3;
+    z-index: 5;
     top: 0;
 }
 
