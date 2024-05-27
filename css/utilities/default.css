@@ -115,6 +115,10 @@ main {
     gap: 35px;
 }
 
+.gap-text {
+    gap: 20px
+}
+
 
 /* Hover */
 .hover-scale {
@@ -181,6 +185,9 @@ main {
     .gap {
         gap: 20px;
     }
+    .padding {
+        padding: 20px;
+    }
     .px {
         padding: 0 20px;
     }
@@ -211,5 +218,8 @@ main {
     }
     h2 {
         font-size: 16px;
+    }
+    p {
+        font-size: 14px;
     }
 }

@@ -35,8 +35,8 @@
     <span class="loader" id="loader"></span>
 
     <main class="flex-center">
-        <section class="blog-content-wrapper flex flex-col">
-            <div class="blog-content flex flex-col gap px">
+        <section class="blog-content-wrapper flex flex-col gap">
+            <div class="blog-content flex flex-col gap padding">
                 <div>
                     <h1 id="specificBlogTitle"></h1>
                 </div>
@@ -45,16 +45,14 @@
                     <p class="posted">Updated at: <span id="specificBlogUpdatedDate">date here</span></p>
                     <p class="posted">Posted by: <span id="specificBlogAuthor"></span></p>
                 </div>
-                <div class="blog-text-wrapper flex flex-col" id="specificBlogText">
-                    <p id="specificBlogText1"></p>
-                <!-- blog text <p>,  craft new p on enter when creating new post -->
+                <div class="blog-text-wrapper flex flex-col gap-text" id="specificBlogText">
                 </div>
-                <div class="btn-container flex justify-between">
-                    <button class="btn tooltip" id="shareBtn" data-tooltip="Share post"><i class="fa-solid fa-share"></i></button>
-                    <div class="btn-container flex flex-row gap">
-                        <button class="btn tooltip" id="editBtn" data-tooltip="Edit post"><i class="fa-solid fa-pen-to-square"></i></button>
-                        <button class="btn tooltip" id="deletePostBtn" data-tooltip="Delete this post"><i class="fa-solid fa-trash-can"></i></button>
-                    </div>
+            </div>
+            <div class="btn-container flex justify-between">
+                <button class="btn tooltip" id="shareBtn" data-tooltip="Share post"><i class="fa-solid fa-share"></i></button>
+                <div class="btn-container flex flex-row gap">
+                    <button class="btn tooltip" id="editBtn" data-tooltip="Edit post"><i class="fa-solid fa-pen-to-square"></i></button>
+                    <button class="btn tooltip" id="deletePostBtn" data-tooltip="Delete this post"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
             </div>
         </section>
