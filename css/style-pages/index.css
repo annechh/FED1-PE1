@@ -15,7 +15,6 @@
 .intro-container {
     border-bottom: 1px solid var(--faded-light-grey-20);
     max-width: 1090px;
-    /* padding: 35px; */
     text-align: center;
 }
 
@@ -37,7 +36,6 @@
 }
 
 .blog-card {
-    
     border-bottom: 1px solid var(--faded-light-grey-20);
 }
 

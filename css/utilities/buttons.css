@@ -109,14 +109,17 @@
     .button-options-container {
         flex-wrap: wrap;
     }
+    #cancelSelectPostsBtn,
     #deleteSelectedPostsBtn {
         position: fixed;
-        bottom: 20px;
+        background: var(--dark-grey);
+    }
+    #cancelSelectPostsBtn{
+        bottom: 10px;
         left: 20px;
     }
     #deleteSelectedPostsBtn {
-
-        background: var(--dark-grey);
+        bottom: 60px;
+        left: 20px;
     }
-
 }
