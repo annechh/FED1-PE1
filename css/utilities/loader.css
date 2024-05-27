@@ -1,3 +1,6 @@
+/* Code from https://cssloaders.github.io/ */
+
+
 .loader {
     color: #ffffff;
     font-size: 10px;
@@ -62,4 +65,3 @@
     -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em;
 }
 }
-    
