@@ -1,6 +1,6 @@
 import { fontawsomeScript } from "../components/default.mjs";
 import { createHeader } from "../components/header.mjs";
-import { loggedInEvents } from "../components/loginState.mjs";
+import { loggedInEvents, checkForAdmin } from "../components/loginState.mjs";
 import { fetchApi, userUrl } from "../components/fetch.mjs";
 
 
@@ -82,6 +82,11 @@ function getFields(data) {
 }
 
 document.getElementById('deletePostBtn').addEventListener('click', async () => {
+    if (!checkForAdmin()) {
+        alert('You do not have permission to delete posts');
+        window.location.reload(); 
+        return; 
+    }
     const id = new URLSearchParams(window.location.search).get('id');
     console.log('delete post id', id);
     const confirmDel = confirm('Are you sure you want to delete this post?');

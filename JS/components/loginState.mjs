@@ -56,10 +56,12 @@ export function loggedInEvents() {
 loggedInEvents();
 
 
-export function getUserData() {
+export function getUserData(adminName) {
 
     const userDataString = localStorage.getItem('userData');
     const userData = JSON.parse(userDataString);
+    adminName = 'Shira';
+    console.log('user data from log in state', userData);
     
     return userData;
 }
@@ -70,4 +72,10 @@ export function accessDenied(){
         window.location.href = '../account/login.html'
         return;
     }
+}
+
+export function checkForAdmin() {
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    const adminName = userData.name;
+    return adminName === 'Shira';
 }

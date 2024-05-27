@@ -1,7 +1,7 @@
 import { carousel } from "../components/carousel.mjs";
 import { fontawsomeScript } from "../components/default.mjs";
 import { indexHeader } from "../components/indexHeader.mjs";
-import { loggedInEvents, getUserData } from "../components/loginState.mjs";
+import { loggedInEvents, getUserData, checkForAdmin } from "../components/loginState.mjs";
 import { fetchApi, userUrl } from "../components/fetch.mjs";
 
 
@@ -201,6 +201,11 @@ async function deletePostsById(id) {
 
 async function deleteSelectedPosts() {
     deleteBtn.addEventListener('click', async () => {
+        if (!checkForAdmin()) {
+            alert('You do not have permission to delete posts');
+            window.location.reload(); 
+            return; 
+        }
         const ids = getSelectedPostIds();
         console.log('ids selected', ids);
 
@@ -215,7 +220,7 @@ async function deleteSelectedPosts() {
             for (const id of ids) {
                 await deletePostsById(id);
             }
-            alert('Selected posts deleted successfully');
+            alert('Selected posts deleted successfully, reloading page');
             resetUI(); 
             window.location.href = 'index.html';
         } catch (error) {

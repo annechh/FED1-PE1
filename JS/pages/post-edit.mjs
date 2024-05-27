@@ -1,6 +1,6 @@
 import { fontawsomeScript } from "../components/default.mjs";
 import { createHeader } from "../components/header.mjs";
-import { loggedInEvents, accessDenied } from "../components/loginState.mjs";
+import { loggedInEvents, accessDenied, getUserData, checkForAdmin } from "../components/loginState.mjs";
 import { fetchApi, userUrl } from "../components/fetch.mjs";
 
 
@@ -33,7 +33,13 @@ function populateFields(data) {
 }
 
 document.getElementById('savePostBtn').addEventListener('click', async () => {
+    if (!checkForAdmin()) {
+        alert('You do not have permission to delete posts');
+        window.location.reload(); 
+        return; 
+    }
     const id = new URLSearchParams(window.location.search).get('id');
+    
     console.log('click',id);
     const updatedPost = {
         title: document.getElementById('updateTitle').value,
@@ -57,6 +63,11 @@ document.getElementById('savePostBtn').addEventListener('click', async () => {
 
 
 document.getElementById('deletePostBtn').addEventListener('click', async () => {
+    if (!checkForAdmin()) {
+        alert('You do not have permission to delete posts');
+        window.location.reload(); 
+        return; 
+    }
     const id = new URLSearchParams(window.location.search).get('id');
     console.log('delete post id', id);
     const confirmDel = confirm('Are you sure you want to delete this post?');
@@ -65,10 +76,11 @@ document.getElementById('deletePostBtn').addEventListener('click', async () => {
             await fetch(`https://v2.api.noroff.dev/blog/posts/Shira/${id}`, {
                 method: 'DELETE',
                 headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 },
             });
+            alert('Post successfully deleted, redirecting you to homepage');
             window.location.href = '../index.html';
         } catch (error) {
             console.error('Error deleting this post:', error);
