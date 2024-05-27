@@ -5,7 +5,7 @@ Client
 Shira’s Adventure
 - Employees - 1
 - Location - Sunnfjord
-- Mission - Share the Paw adventures with blogs
+- Mission - Share the Paw adventures
 ---
 
 Link to Shira’s Adventure
