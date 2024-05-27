@@ -73,13 +73,11 @@ main {
 
 /* ----- CLASSES FOR HTML FILE ----- */
 
-/* Drop shadow for text that will be over an image */
 .ds-txt {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 1);
 }
 
 /* Padding */
-
 .padding {
     padding: 35px;
 }
@@ -108,9 +106,7 @@ main {
     padding-bottom: 35px;
 }
 
-
 /* Gap */
-
 .gap {
     gap: 35px;
 }
@@ -178,7 +174,6 @@ main {
     main {
         margin: 50px 20px;
     }
-
     a {
         font-size: 16px;
     }
@@ -197,15 +192,12 @@ main {
     .pl {
         padding-left: 20px;
     }
-    
     .pr {
         padding-right: 20px;
     }
-    
     .pt {
         padding-top: 20px;
     }
-    
     .pb {
         padding-bottom: 20px;
     }
