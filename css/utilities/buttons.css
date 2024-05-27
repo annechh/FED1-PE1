@@ -97,18 +97,6 @@
         padding: 12px 25px;
         font-size: 16px;
     }
-}
-
-
-
-@media screen and (max-width: 500px) {
-    .btn, .btn-img {
-        padding: 10px 20px;
-        font-size: 14px;
-    }
-    .button-options-container {
-        flex-wrap: wrap;
-    }
     #cancelSelectPostsBtn,
     #deleteSelectedPostsBtn {
         position: fixed;
@@ -122,4 +110,18 @@
         bottom: 60px;
         left: 20px;
     }
+}
+
+
+
+@media screen and (max-width: 500px) {
+    .btn, .btn-img {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+    .button-options-container {
+        flex-wrap: wrap;
+    }
+    
+    
 }
