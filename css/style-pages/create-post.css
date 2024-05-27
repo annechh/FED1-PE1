@@ -36,16 +36,17 @@
     align-items: center;
 }
 
-.add-img svg {
-    padding: 65px;
+.fa-plus {
+    padding: 60px;
     background: var(--faded-light-grey-20);
     border-radius: 100%;
-    fill: white;
+    font-size: 45px;
+    color: white;
 }
 
-.add-img svg:hover {
+.add-img i:hover {
     background: var(--faded-light-grey-75);
-    fill: black;
+    color: black;
 }
 
 .hide {
