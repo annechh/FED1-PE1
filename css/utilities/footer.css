@@ -8,7 +8,6 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 35px;
 }
 
 .logo-footer {
@@ -17,3 +16,9 @@ footer {
 }
 
 
+@media screen and (max-width: 500px) {
+    .logo-footer {
+        height: 100px;
+        max-width: 100%;
+    }
+}
