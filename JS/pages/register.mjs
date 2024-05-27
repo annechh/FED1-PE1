@@ -12,9 +12,8 @@ import {
 
 
 function runRegisterPage() {
-
-createRegisterForm();
-hideRegisterAlert();
+    createRegisterForm();
+    hideRegisterAlert();
 }
 
 
