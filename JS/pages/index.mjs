@@ -84,6 +84,7 @@ function createBlogCards(blogPosts) {
 
         const title = document.createElement('h2');
             title.textContent = data.title;
+            title.classList.add('px');
 
         const date = document.createElement('p');
             date.textContent = ' ';
