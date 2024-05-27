@@ -68,7 +68,6 @@
 form {
     display: flex;
     flex-direction: column;
-    gap: 35px;
 }
 
 form div {
@@ -98,4 +97,47 @@ input, textarea {
     display: flex;
     justify-content: end;
     gap: 20px;
+}
+
+
+
+
+
+@media screen and (max-width: 1091px) {
+    .post-img-container,
+    .blog-post-img-wrapper img,
+    .add-img {
+        height: 550px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .fa-plus {
+        padding: 40px;
+        font-size: 35px;
+    }
+    label {
+        font-size: 14px;
+    }
+    textarea {
+        padding: 20px;
+        font-size: 16px;
+    }  
+    input {
+        height: 40px;
+        padding: 5px 20px;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .post-img-container,
+    .blog-post-img-wrapper img,
+    .add-img {
+        height: 450px;
+    }
+    .fa-plus {
+        padding: 25px;
+        font-size: 25px;
+    } 
 }
