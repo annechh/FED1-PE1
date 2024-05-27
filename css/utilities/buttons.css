@@ -4,9 +4,9 @@
     font-size: 20px;
     font-weight: 700;
     color: var(--white);
-    padding: 0 25px;
-    height: 60px;
+    padding: 15px 25px;
     border-radius: 30px;
+    text-align: center center;
 }
 
 .btn {
@@ -94,7 +94,7 @@
 @media screen and (max-width: 768px) {
 
     .btn {
-        height: 50px;
+        padding: 12px 25px;
         font-size: 16px;
     }
 }
@@ -103,8 +103,10 @@
 
 @media screen and (max-width: 500px) {
     .btn, .btn-img {
-        height: 40px;
+        padding: 10px 20px;
         font-size: 14px;
     }
-
+    .button-options-container {
+        flex-wrap: wrap;
+    }
 }

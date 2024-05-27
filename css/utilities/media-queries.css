@@ -9,16 +9,13 @@
 
 
 @media screen and (max-width: 768px) {
-
     main {
         margin: 50px 20px;
     }
-    
-    
+
     a {
         font-size: 16px;
     }
-
     .px {
         padding-left: 20px;
         padding-right: 20px;
@@ -29,7 +26,12 @@
 
 
 @media screen and (max-width: 500px) {
-
+    h1 {
+        font-size: 18px;
+    }
+    h2 {
+        font-size: 16px;
+    }
     .carousel  {
         height: 450px;
     }

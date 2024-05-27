@@ -126,7 +126,6 @@ function welcomeUser() {
 
         const welcomeTitle = document.createElement('h2');
             welcomeTitle.classList.add('welcome-user-title');
-            welcomeTitle.style.fontSize = '50px';
             welcomeTitle.textContent = `Welcome back, ${userName} !`;
 
         welcomeDiv.appendChild(welcomeTitle)

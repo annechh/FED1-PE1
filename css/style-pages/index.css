@@ -8,7 +8,9 @@
 @import url('../utilities/media-queries.css');
 
 
-
+.welcome-user-title {
+    font-size: 50px;
+}
 
 .intro-container {
     border-bottom: 1px solid var(--faded-light-grey-20);
@@ -64,10 +66,6 @@
     gap: 20px;
 }
 
-.card-title-date h2 {
-    font-size: 20px;
-}
-
 .card-title-date p {
     font-size: 12px;
 }
@@ -100,7 +98,16 @@
 
 @media screen and (max-width: 768px) { 
     .blog-card-wrapper {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .welcome-user-title {
+        font-size: 20px;
+    }
+    .blog-card-wrapper {
+        grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
         gap: 20px;
     }
     .card-img-container {
