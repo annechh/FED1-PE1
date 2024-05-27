@@ -114,4 +114,9 @@
         bottom: 20px;
         left: 20px;
     }
+    #deleteSelectedPostsBtn {
+
+        background: var(--dark-grey);
+    }
+
 }
