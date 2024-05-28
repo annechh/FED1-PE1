@@ -14,13 +14,17 @@ let currentPage = 1;
 const postsPerPage = 12;
 let totalPostsLoaded = 0;
 
+let allBlogPosts = [];
+let selectedTag = '';
+
 async function loadPage() {
 
-    fetchBlogPosts()
+    await fetchBlogPosts()
     welcomeUser();
     deleteSelectedPosts()
     cancelSelectPosts(); 
     selectPostsBtn()
+    populateTagsDropdown()
 }
 
 async function loadMorePosts() {
@@ -33,6 +37,7 @@ document.getElementById('loadMoreBtn').addEventListener('click', loadMorePosts);
 
 function createBlogCards(blogPosts) {
     const blogCardWrapper = document.getElementById('cardWrapper');
+        blogCardWrapper.innerHTML = '';
 
     blogPosts.forEach(data => {
         
@@ -114,7 +119,10 @@ async function fetchBlogPosts() {
     const data = await fetchApi('GET', `${userUrl}?page=${currentPage}&limit=${postsPerPage}`);
     // const data = await fetchApi('GET', userUrl);
     console.log('Data index page: ', data);
-    createBlogCards(data.data)
+    allBlogPosts = allBlogPosts.concat(data.data); // Store all blog posts
+    const filteredPosts = selectedTag ? allBlogPosts.filter(post => post.tags.includes(selectedTag)) : allBlogPosts;
+    createBlogCards(filteredPosts);
+    // createBlogCards(data.data)
     totalPostsLoaded += data.data.length;
 
     const loadMoreBtn = document.getElementById('loadMoreBtn');
@@ -124,6 +132,31 @@ async function fetchBlogPosts() {
         loadMoreBtn.style.display = 'block';
     }
 }
+
+function populateTagsDropdown() {
+    const tagsDropdown = document.getElementById('sortTagsDropdown');
+    const uniqueTags = [...new Set(allBlogPosts.flatMap(post => post.tags))];
+    uniqueTags.forEach(tag => {
+        const option = document.createElement('option');
+        option.value = tag;
+        option.textContent = tag;
+        tagsDropdown.appendChild(option);
+    });
+}
+// async function fetchBlogPosts() {
+//     const data = await fetchApi('GET', `${userUrl}?page=${currentPage}&limit=${postsPerPage}`);
+//     // const data = await fetchApi('GET', userUrl);
+//     console.log('Data index page: ', data);
+//     createBlogCards(data.data)
+//     totalPostsLoaded += data.data.length;
+
+//     const loadMoreBtn = document.getElementById('loadMoreBtn');
+//     if (data.data.length < postsPerPage) {
+//         loadMoreBtn.style.display = 'none';
+//     } else {
+//         loadMoreBtn.style.display = 'block';
+//     }
+// }
 
 
 function welcomeUser() {
