@@ -29,7 +29,7 @@ const token = localStorage.getItem('accessToken');
             return null;
         }
     } catch (error) {
-        throw new Error("There was a problem getting the data");
+        throw new Error('There was a problem getting the data');
     } finally {
         hideLoader();
     }

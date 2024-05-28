@@ -25,17 +25,7 @@ export function nameValidation(name, nameError) {
     }
 }
 
-// export function nameValidation(nameValue, error) {
-//     const namePrefix = /^[\w]{1,20}$/;
-//     const nameError = textContent;
-//     if (!namePrefix.test(name)) {
-//         nameError.textContent = 'Username can only contain letters, numbers, and underscores.';
-//         nameError.classList.add('show');
-//     } else {
-//         nameError.textContent = '';
-//         nameError.classList.remove('show');
-//     }
-// }
+
 
 export function emailValidation(email, emailError) {
     const emailPrefix = /^[\w\-.]+@(stud\.)?noroff\.no$/;

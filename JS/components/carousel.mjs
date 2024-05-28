@@ -8,10 +8,8 @@ export async function carousel() {
         const MAX_SLIDES = 3;
 
         const data = await fetchApi('GET', userUrl);
-        console.log('carousel data', data);
 
         const carouselBlogPost = data.data.slice(0, MAX_SLIDES);
-        console.log(carouselBlogPost);
 
         carouselBlogPost.forEach((data, index) => {
             let li = document.createElement('li');
@@ -57,7 +55,7 @@ export async function carousel() {
         });
     } catch (error) {
         console.error('Could not fetch data' + error);
-        throw error("There was a problem getting the data");
+        throw error('Voffsies! could not find the Pawsome posts');
     }
 }
 
@@ -70,7 +68,7 @@ const carouselButtons = carouselWrapper.querySelectorAll('.carousel-slide-btn');
 
 carouselButtons.forEach(button => {
     button.addEventListener('click', () => {
-        const next = button.dataset.carouselBtn === "next" ? 1 : -1;
+        const next = button.dataset.carouselBtn === 'next' ? 1 : -1;
 
         const carouselItems = document.getElementById('carouselItems');
         const carouselNav = document.getElementById('carouselNav');

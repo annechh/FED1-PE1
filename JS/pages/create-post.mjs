@@ -1,13 +1,16 @@
 import { fontawsomeScript } from "../components/default.mjs";
 import { createHeader } from "../components/header.mjs";
-import { loggedInEvents } from "../components/loginState.mjs";
-import { userUrl } from "../components/fetch.mjs";
+import { loggedInEvents, checkForAdmin } from "../components/loginState.mjs";
+import { fetchApi, userUrl } from "../components/fetch.mjs";
 import { clearFields } from "../components/clear-fields.mjs";
-import { showLoader, hideLoader } from "../components/fetch.mjs";
+
+
 
 
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 const selectedTags = [];
+
+
 
 
 checkboxes.forEach(checkbox => {
@@ -69,39 +72,32 @@ document.querySelector('form').addEventListener('submit', async function(event) 
             return;
         }
 
-        const response = await createPost(image, alt, title, blogText);
-        const json = await response.json();
-
+        const json = await createPost(image, alt, title, blogText);
         handleResponse(json);
     } catch (error) {
         console.error('Error:', error);
-        alert('An error occurred while creating the post. Please try again.');
-    }
+        alert('Pawsome blog post failed to be posted. Please try again.');
+    } 
 });
 
-
-
-
-
 async function createPost(image, alt, title, blogText) {
-    const token = localStorage.getItem('accessToken');
+    if (!checkForAdmin()) {
+        alert('You do not have permission to create posts');
+        window.location.reload();
+        return;
+    }
 
-    return fetch(userUrl, {
-        method: 'POST',
-        body: JSON.stringify({
-            media: {
-                url: image,
-                alt: alt,
-            },
-            title: title,
-            body: blogText,
-            tags: selectedTags,
-        }),
-        headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-            Authorization: `Bearer ${token}`,
+    const body = {
+        media: {
+            url: image,
+            alt: alt,
         },
-    });
+        title: title,
+        body: blogText,
+        tags: selectedTags,
+    };
+
+    return fetchApi('POST', userUrl, body);
 }
 
 

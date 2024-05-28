@@ -40,6 +40,7 @@ input {
     border-radius: 30px;
     font-family: var(--roboto);
     width: 80%;
+    font-size: 20px;
 }
 
 input:placeholder-shown {
@@ -68,9 +69,8 @@ label {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 250px;
-    border-radius: 5px;
-    z-index: 1000;
+    width: 90%;
+    text-wrap: wrap;
 }
 
 .alert-reg-success {

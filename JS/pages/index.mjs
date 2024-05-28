@@ -6,8 +6,8 @@ import { fetchApi, userUrl } from "../components/fetch.mjs";
 
 
 const months = [
-    "January", "February", "March", "April", "May", "June", "July", 
-    "August", "September", "October", "November", "December"
+    'January', 'February', 'March', 'April', 'May', 'June', 'July', 
+    'August', 'September', 'October', 'November', 'December'
 ];
 
 let currentPage = 1;
@@ -186,7 +186,7 @@ function welcomeUser() {
 
         const welcomeTitle = document.createElement('h2');
             welcomeTitle.classList.add('welcome-user-title');
-            welcomeTitle.textContent = `Welcome back, ${userName} !`;
+            welcomeTitle.textContent = `Pawsome to see you, ${userName}!`;
 
         welcomeDiv.appendChild(welcomeTitle)
         introWrapper.insertBefore(welcomeDiv, introWrapper.firstChild)
@@ -247,7 +247,7 @@ function getSelectedPostIds() {
 }
 
 function confirmDeletion() {
-    const confirm = window.confirm('Voff! Are you sure you want to delete this Pawsome posts?');
+    const confirm = window.confirm('Voff! Are you sure you want to delete the selected Pawsome posts?');
     resetUI()
     return confirm;
 }
