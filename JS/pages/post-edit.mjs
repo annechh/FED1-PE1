@@ -13,7 +13,6 @@ console.log('id, url params: ', id);
 
 async function fetchBlog() {
     const data = await fetchApi('GET', `${userUrl}/${id}`);
-    console.log('data fetchBlog: ', data);
     populateFields(data.data);
 }
 
@@ -64,7 +63,6 @@ document.getElementById('savePostBtn').addEventListener('click', async () => {
     }
     const id = new URLSearchParams(window.location.search).get('id');
 
-    console.log('click', id);
     const updatedPost = {
         title: document.getElementById('fieldTitle').value,
         body: document.getElementById('fieldBlogText').value,
@@ -96,7 +94,6 @@ document.getElementById('deletePostBtn').addEventListener('click', async () => {
         return;
     }
     const id = new URLSearchParams(window.location.search).get('id');
-    console.log('delete post id', id);
     const confirmDel = confirm('Are you sure you want to delete this post?');
     if (confirmDel) {
         try {
