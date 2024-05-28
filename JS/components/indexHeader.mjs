@@ -1,4 +1,4 @@
-// import { loggedInEvents } from "./loginState.mjs";
+import { loggedInEvents } from "./loginState.mjs";
 
 
 export function indexHeader() {
@@ -60,26 +60,3 @@ export function indexHeader() {
 }
 
 indexHeader();
-
-// loggedInEvents();
-
-
-// const userDataString = localStorage.getItem('userData');
-// const userData = JSON.parse(userDataString);
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     const loggedIn = document.querySelector('.loggedOut-state');
-//     const loggedOut = document.querySelector('.loggedIn-state');
-
-//     if (userData) {
-//         // console.log('User is logged in', userData);
-//         loggedIn.style.display = 'flex';
-//         loggedOut.style.display = 'none';
-
-//     } else {
-//         console.log('No user logged in');
-//         loggedIn.style.display = 'none'
-//         loggedOut.style.display = 'flex'
-//     }
-// })

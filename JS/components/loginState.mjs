@@ -1,9 +1,3 @@
-// import { welcomeUser } from "../index.mjs";
-
-
-
-
-
 export function loggedInEvents() {
     const userData = getUserData()
     
