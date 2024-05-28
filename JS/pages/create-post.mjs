@@ -75,7 +75,7 @@ document.querySelector('form').addEventListener('submit', async function(event) 
         const json = await createPost(image, alt, title, blogText);
         handleResponse(json);
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Failed to post', error);
         alert('Pawsome blog post failed to be posted. Please try again.');
     } 
 });
