@@ -6,6 +6,26 @@ import { userUrl } from "../components/fetch.mjs";
 
 // accessDenied();
 
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const selectedTags = [];
+
+checkboxes.forEach(checkbox => {
+    checkbox.addEventListener('change', function() {
+        const tag = this.value;
+        if (this.checked) {
+            console.log(tag);
+            // If checkbox is checked, add tag to selectedTags
+            selectedTags.push(tag);
+        } else {
+            // If checkbox is unchecked, remove tag from selectedTags
+            const index = selectedTags.indexOf(tag);
+            if (index !== -1) {
+                selectedTags.splice(index, 1);
+            }
+        }
+        console.log(selectedTags); // Optionally, log selected tags for debugging
+    });
+});
 
 document.getElementById('createUrl').addEventListener('input', previewImage);
 
@@ -68,6 +88,7 @@ async function createPost(image, alt, title, blogText) {
             },
             title: title,
             body: blogText,
+            tags: selectedTags,
         }),
         headers: {
             'Content-type': 'application/json; charset=UTF-8',

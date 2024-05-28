@@ -27,7 +27,7 @@ export function loggedInEvents() {
             }
             
         } else {
-            console.log('No user logged in');
+            // console.log('No user logged in');
             loggedIn.style.display = 'flex';
             loggedOut.style.display = 'none';
             if (editBtn) {
@@ -54,7 +54,7 @@ export function getUserData(adminName) {
     const userDataString = localStorage.getItem('userData');
     const userData = JSON.parse(userDataString);
     adminName = 'Shira';
-    console.log('user data from log in state', userData);
+    // console.log('user data from log in state', userData);
     
     return userData;
 }

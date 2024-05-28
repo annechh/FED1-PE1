@@ -24,7 +24,7 @@ const token = localStorage.getItem('accessToken');
         }
         const contentType = response.headers.get('Content-Type');
         if (contentType && contentType.includes('application/json')) {
-            console.log('Content type',contentType);
+            // console.log('Content type',contentType);
             return await response.json();
         } else {
             return null;

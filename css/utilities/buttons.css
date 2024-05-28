@@ -109,6 +109,15 @@
     visibility: visible;
 }
 
+select {
+    appearance: none;
+    text-align: center;
+}
+
+select option {
+    position: relative;
+}
+
 
 @media screen and (max-width: 1091px) {
     #cancelSelectPostsBtn,
