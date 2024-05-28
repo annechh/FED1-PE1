@@ -9,13 +9,11 @@
     display: none;
 }
 
-/* Create a custom checkbox */
 .custom-checkbox {
     position: absolute;
     cursor: pointer;
 }
 
-/* Style the check mark */
 .check-mark {
     position: absolute;
     top: -230px;
@@ -30,18 +28,15 @@
     
 }
 
-/* On mouse-over, add a grey background color */
 .custom-checkbox:hover .check-mark {
     background-color: var(--dark-grey);
     
 }
 
-/* When the checkbox is checked, add a blue background */
 .custom-checkbox input:checked + .check-mark {
     background-color: var(--dark-grey);
 }
 
-/* Create the check mark/indicator (hidden when not checked) */
 .custom-checkbox .check-mark:after {
     content: "";
     position: absolute;
@@ -51,7 +46,6 @@
     display: none;
 }
 
-/* Show the check mark when checked */
 .custom-checkbox input:checked + .check-mark:after {
     display: block;
 }

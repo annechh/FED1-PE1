@@ -7,7 +7,6 @@ import { clearFields } from "../components/clear-fields.mjs";
 
 
 const id = new URLSearchParams(window.location.search).get('id');
-console.log('id, url params: ', id);
 
 
 

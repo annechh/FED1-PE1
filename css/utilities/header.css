@@ -1,12 +1,4 @@
 /*Will use this part later, did not have the time to try this with api*/
-header {
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    object-fit: cover;
-    background-position: center;
-    /* background-image: linear-gradient(rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.9)); */
-}
 
 .header {
     max-width: 1440px;

@@ -203,11 +203,7 @@ function displayCheckBox() {
         if (checkMark) {
             checkMark.style.display = 'block';
         }
-        checkbox.addEventListener('change', () => {
-            console.log(`Checkbox with value ${checkbox.value} checked: ${checkbox.checked}`);
-        });
     });
-    console.log('customCheckboxes: ', customCheckboxes);
 }
 
 

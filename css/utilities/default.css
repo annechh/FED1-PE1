@@ -69,7 +69,7 @@ main {
 }
 
 
-/* ----- CLASSES FOR HTML FILE ----- */
+/* Classes to use directly in html */
 
 .ds-txt {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 1);
@@ -160,12 +160,6 @@ main {
     align-items: center;
 }
 
-
-
-@media screen and (max-width: 1091px) {
-
-    
-}
 
 
 @media screen and (max-width: 768px) {

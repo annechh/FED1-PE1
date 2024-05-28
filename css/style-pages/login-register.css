@@ -4,9 +4,6 @@
 @import url('../utilities/footer.css');
 
 
-
-
-
 .log-reg-section {
     max-width: 1440px;
     width: 100%;
@@ -61,7 +58,6 @@ label {
 .btn {
     width: fit-content;
 }
-
 
 
 .log-reg-alert {

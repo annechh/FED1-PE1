@@ -66,9 +66,6 @@
 }
 
 
-
-/* Tooltip edit button ---- Clean this up*/
-
 .tooltip {
     position: relative;
     display: inline-block;
@@ -78,7 +75,7 @@
 .tooltip::after {
     content: attr(data-tooltip);
     position: absolute;
-    bottom: 100%; /* Position above the button */
+    bottom: 100%; 
     left: 50%;
     transform: translateX(-50%);
     color: #fff;
