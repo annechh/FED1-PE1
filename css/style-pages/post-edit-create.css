@@ -113,8 +113,15 @@ input, textarea {
     gap: 20px;
 }
 
+fieldset {
+    display: flex;
+    flex-direction: column;
+}
 
-
+.tag-checkboxes {
+    display: flex;
+    flex-wrap: wrap;
+}
 
 
 @media screen and (max-width: 1091px) {
@@ -137,7 +144,7 @@ input, textarea {
         padding: 20px;
         font-size: 16px;
     }  
-    input {
+    .blog-input {
         height: 40px;
         padding: 5px 20px;
         font-size: 16px;
