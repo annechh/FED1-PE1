@@ -89,17 +89,49 @@ function handleResponse(json) {
 
 
 const addImgBtn = document.getElementById('addImgBtn');
-const createUrlInput = document.getElementById('createUrl');
-const createAltInput = document.getElementById('createAlt');
+
+function getUrlInputLabel() {
+    const createUrlInput = document.getElementById('createUrl');
+    const urlLabel = document.querySelector(`label[for='createUrl']`);
+    return { createUrlInput, urlLabel };
+}
+
+function getAltInputLabel() {
+    const createAltInput = document.getElementById('createAlt');
+    const altLabel = document.querySelector(`label[for='createAlt']`);
+    return { createAltInput, altLabel };
+}
+
+function getTitleInputLabel() {
+    const createTitleInput = document.getElementById('createTitle');
+    const titleLabel = document.querySelector(`label[for='createTitle']`);
+    return { createTitleInput, titleLabel };
+}
+
+function getBlogTextInputLabel() {
+    const createBlogTextInput = document.getElementById('createBlogText');
+    const blogTextLabel = document.querySelector(`label[for='createBlogText']`);
+    return { createBlogTextInput, blogTextLabel };
+}
 
 addImgBtn.addEventListener('click', function() {
+    const { createUrlInput, urlLabel } = getUrlInputLabel();
+    const { createAltInput, altLabel } = getAltInputLabel();
+    const { createTitleInput, titleLabel } = getTitleInputLabel();
+    const { createBlogTextInput, blogTextLabel } = getBlogTextInputLabel();
+    
     createUrlInput.classList.toggle('hide');
+    urlLabel.classList.toggle('hide');
     createAltInput.classList.toggle('hide');
+    altLabel.classList.toggle('hide');
+    createTitleInput.classList.toggle('hide');
+    titleLabel.classList.toggle('hide');
+    createBlogTextInput.classList.toggle('hide');
+    blogTextLabel.classList.toggle('hide');
 });
 
+const createUrlInput = document.getElementById('createUrl');
 createUrlInput.addEventListener('input', previewImage);
-
-
 
 const cancelButton = document.getElementById('cancelPostBtn');
 cancelButton.addEventListener('click', function(event) {
@@ -111,16 +143,16 @@ cancelButton.addEventListener('click', function(event) {
     const createBlogText = document.getElementById('createBlogText').value;
 
     if (!createUrl && !createAlt && !createTitle && !createBlogText) {
-        alert('No fields to clear')
+        alert('No fields to clear');
     } else {
         const confirmClear = window.confirm('Do you want to clear all fields in this post?');
         if (confirmClear) {
-        document.getElementById('previewImg').src = '';
-        document.getElementById('createUrl').value = '';
-        document.getElementById('createAlt').value = '';
-        document.getElementById('createTitle').value = '';
-        document.getElementById('createBlogText').value = '';
-        alert('All fields have been cleared');
-    }}
+            document.getElementById('previewImg').src = '';
+            document.getElementById('createUrl').value = '';
+            document.getElementById('createAlt').value = '';
+            document.getElementById('createTitle').value = '';
+            document.getElementById('createBlogText').value = '';
+            alert('All fields have been cleared');
+        }
+    }
 });
-

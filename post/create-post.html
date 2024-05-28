@@ -28,7 +28,10 @@
                 <div class="post-img-container" id="createBlogImg">
                 </div>
                 <div class="add-img">
-                    <div class="hover tooltip" data-tooltip="Add Img Url"><i class="fa-solid fa-plus" id="addImgBtn" ></i></div>
+                    <div class="hover tooltip" data-tooltip="Create new Post"><i class="fa-solid fa-plus" id="addImgBtn" ></i></div>
+                </div>
+                <div class="title-container">
+                    <h1 class="createEdit-post-title pb ds-txt">Create post</h1>
                 </div>
             </div>
         </div>
@@ -44,21 +47,24 @@
         </div>
     </nav> -->
     <main class="flex flex-col items-center">
-        <h1 class="createEdit-post-title pb">Create post</h1>
         <div class="blog-content-wrapper flex flex-col">
             <div class="blog-content flex flex-col gap">
-                <form class="gap">
-                    <div class="flex flex-col" id="inputUrl">
-                        <input type="url" name="url" id="createUrl" class="hide" placeholder="Add URL">
-                        <input type="text" name="" id="createAlt" class="hide" placeholder="Add Image description">
+                <form class="gap" id="inputUrl">
+                    <div class="flex flex-col input-url">
+                        <label class="hide" for="createUrl">Add url</label>
+                        <input type="url" name="url" id="createUrl" class="hide">
+                    </div>
+                    <div class="flex flex-col input-url">
+                        <label class="hide" for="createAlt">Image Description</label>
+                        <input type="text" name="alt" id="createAlt" class="hide">
                     </div>
                     <div class="flex flex-col">
-                        <label>Pawsome Title</label>
-                        <input type="text" id="createTitle" name="title">
+                        <label class="hide" for="createTitle">Pawsome Title</label>
+                        <input type="text" id="createTitle" name="title" class="hide">
                     </div> 
                     <div class="flex flex-col">
-                        <label>Pawsome Story</label>
-                        <textarea name="blogText" id="createBlogText" ></textarea>
+                        <label class="hide" for="createBlogText">Pawsome Story</label>
+                        <textarea name="blogText" id="createBlogText" class="hide"></textarea>
                     </div>       
                     <div class="btn-container">
                         <button class="btn" id="createPostBtn">Create Post</button>

@@ -40,16 +40,20 @@
         <div class="blog-content-wrapper flex flex-col">
             <div class="blog-content flex flex-col gap">
                 <form class="gap" >
-                    <div class="flex flex-col " id="inputUrl">
-                        <input type="url" name="url" id="updateUrl" class="hide" placeholder="Add URL">
-                        <input type="text" name="alt" id="updateAlt" class="hide" placeholder="Add Image description">
+                    <div class="flex flex-col input-url">
+                        <label for="updateUrl">Add url</label>
+                        <input type="url" name="url" id="updateUrl" class="hide">
+                    </div>
+                    <div class="flex flex-col input-url">
+                        <label for="updateAlt">Image Description</label>
+                        <input type="text" name="alt" id="updateAlt" class="hide">
                     </div>
                     <div class="flex flex-col">
-                        <label>Pawsome Title</label>
+                        <label for="updateTitle">Pawsome Title</label>
                         <input type="text" id="updateTitle" name="title">
                     </div> 
                     <div class="flex flex-col">
-                        <label>Pawsome Story</label>
+                        <label for="updateBlogText">Pawsome Story</label>
                         <textarea name="blogText" id="updateBlogText" ></textarea>
                     </div>       
                 </form>
