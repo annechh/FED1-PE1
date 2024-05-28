@@ -114,8 +114,8 @@ input, textarea {
 }
 
 fieldset {
-    display: flex;
-    flex-direction: column;
+    border: none;
+    gap: 10px;
 }
 
 .tag-checkboxes {
