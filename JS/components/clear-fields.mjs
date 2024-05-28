@@ -10,7 +10,7 @@ export function clearFields() {
             document.getElementById('fieldAlt').value = '';
             document.getElementById('fieldTitle').value = '';
             document.getElementById('fieldBlogText').value = '';
-            alert('All fields have been cleared');
+            alert('All fields have been cleared, add some new Pawsome information');
         }
     });
 }
