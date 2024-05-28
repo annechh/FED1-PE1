@@ -16,7 +16,6 @@ export function loggedInEvents() {
         const deleteBtn = document.getElementById('deletePostBtn')
 
         if (userData) {
-            // console.log('User is logged in', userData);
             loggedOut.style.display = 'flex';
             loggedIn.style.display = 'none';
             
