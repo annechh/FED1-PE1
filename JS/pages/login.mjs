@@ -34,6 +34,7 @@ function createLoginForm() {
 
         const emailError = document.createElement('label');
             emailError.id = 'emailError';
+            emailError.htmlFor = 'loginEmail';
             emailError.classList.add('error-message', 'hide');    
 
     const passwordDiv = document.createElement('div');
@@ -48,6 +49,7 @@ function createLoginForm() {
 
         const passwordError = document.createElement('label');
             passwordError.id = 'passwordError';
+            passwordError.htmlFor = 'loginPassword';
             passwordError.classList.add('error-message', 'hide');
 
     const btnContainer = document.createElement('div');

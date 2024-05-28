@@ -40,6 +40,7 @@ function createRegisterForm() {
 
         const nameError = document.createElement('label');
             nameError.id = 'nameError';
+            nameError.htmlFor = 'registerName';
             nameError.classList.add('error-message', 'hide');
     
     const emailDiv = document.createElement('div');
@@ -54,6 +55,7 @@ function createRegisterForm() {
 
         const emailError = document.createElement('label');
             emailError.id = 'emailError';
+            emailError.htmlFor = 'registerEmail';
             emailError.classList.add('error-message', 'hide');
     
     const passwordDiv = document.createElement('div');
@@ -68,6 +70,7 @@ function createRegisterForm() {
 
         const passwordError = document.createElement('label');
             passwordError.id = 'passwordError';
+            passwordError.htmlFor = 'registerPassword';
             passwordError.classList.add('error-message', 'hide');
 
     const confirmPassDiv = document.createElement('div');
@@ -82,6 +85,7 @@ function createRegisterForm() {
 
         const confirmPassError = document.createElement('label');
             confirmPassError.id = 'confirmPasswordError';
+            confirmPassError.htmlFor = 'registerConfirmPassword';
             confirmPassError.classList.add('error-message', 'hide');
     
 
