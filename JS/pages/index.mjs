@@ -6,19 +6,13 @@ import { fetchApi, userUrl } from "../components/fetch.mjs";
 
 
 const months = [
-    "January", 
-    "February", 
-    "March", 
-    "April", 
-    "May", 
-    "June", 
-    "July", 
-    "August", 
-    "September", 
-    "October", 
-    "November", 
-    "December"];
+    "January", "February", "March", "April", "May", "June", "July", 
+    "August", "September", "October", "November", "December"
+];
 
+let currentPage = 1;
+const postsPerPage = 12;
+let totalPostsLoaded = 0;
 
 async function loadPage() {
 
@@ -28,6 +22,13 @@ async function loadPage() {
     cancelSelectPosts(); 
     selectPostsBtn()
 }
+
+async function loadMorePosts() {
+    currentPage++;
+    await fetchBlogPosts();
+}
+
+document.getElementById('loadMoreBtn').addEventListener('click', loadMorePosts);
 
 
 function createBlogCards(blogPosts) {
@@ -110,9 +111,18 @@ function createBlogCards(blogPosts) {
 
 
 async function fetchBlogPosts() {
-    const data = await fetchApi('GET', userUrl);
+    const data = await fetchApi('GET', `${userUrl}?page=${currentPage}&limit=${postsPerPage}`);
+    // const data = await fetchApi('GET', userUrl);
     console.log('Data index page: ', data);
     createBlogCards(data.data)
+    totalPostsLoaded += data.data.length;
+
+    const loadMoreBtn = document.getElementById('loadMoreBtn');
+    if (data.data.length < postsPerPage) {
+        loadMoreBtn.style.display = 'none';
+    } else {
+        loadMoreBtn.style.display = 'block';
+    }
 }
 
 
