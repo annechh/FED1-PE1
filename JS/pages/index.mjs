@@ -119,7 +119,7 @@ async function fetchBlogPosts() {
     const data = await fetchApi('GET', `${userUrl}?page=${currentPage}&limit=${postsPerPage}`);
     // const data = await fetchApi('GET', userUrl);
     console.log('Data index page: ', data);
-    allBlogPosts = allBlogPosts.concat(data.data); // Store all blog posts
+    allBlogPosts = allBlogPosts.concat(data.data);
     const filteredPosts = selectedTag ? allBlogPosts.filter(post => post.tags.includes(selectedTag)) : allBlogPosts;
     createBlogCards(filteredPosts);
     // createBlogCards(data.data)

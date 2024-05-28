@@ -58,7 +58,16 @@
                     <div class="flex flex-col">
                         <label class="hide" for="createBlogText">Pawsome Story</label>
                         <textarea name="blogText" id="createBlogText" class="hide"></textarea>
-                    </div>       
+                    </div>      
+                    <div class="flex flex-col">
+                        <label class="hide" id="tagSelect">Select Tags</label>
+                        <div class="tag-checkboxes">
+                            <label class="hide" id="tag1"><input type="checkbox" name="tags" value="Mountain hike"> Mountain hike</label>
+                            <label class="hide" id="tag2"><input type="checkbox" name="tags" value="Swim"> Swim</label>
+                            <label class="hide" id="tag3"><input type="checkbox" name="tags" value="Sticks"> Sticks</label>
+                            <label class="hide" id="tag4"><input type="checkbox" name="tags" value="Paddle"> Paddle</label>
+                        </div>
+                    </div>  
                     <div class="btn-container">
                         <button class="btn hide" id="createPostBtn">Create Post</button>
                         <div class="btn tooltip hide" id="cancelPostBtn" data-tooltip="Clear all fields"><i class="fa-solid fa-eraser"></i></div>
