@@ -24,13 +24,11 @@ const token = localStorage.getItem('accessToken');
         }
         const contentType = response.headers.get('Content-Type');
         if (contentType && contentType.includes('application/json')) {
-            // console.log('Content type',contentType);
             return await response.json();
         } else {
             return null;
         }
     } catch (error) {
-        console.error('Could not fetch data:', error);
         throw new Error("There was a problem getting the data");
     } finally {
         hideLoader();
@@ -38,14 +36,14 @@ const token = localStorage.getItem('accessToken');
 }
 
 
-function showLoader() {
+export function showLoader() {
     const loader = document.getElementById('loader');
     if (loader) {
         loader.style.display = 'block';
     }
 }
 
-function hideLoader() {
+export function hideLoader() {
     const loader = document.getElementById('loader');
     if (loader) {
         loader.style.display = 'none';

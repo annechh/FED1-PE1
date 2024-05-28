@@ -94,7 +94,7 @@ document.getElementById('deletePostBtn').addEventListener('click', async () => {
         return;
     }
     const id = new URLSearchParams(window.location.search).get('id');
-    const confirmDel = confirm('Are you sure you want to delete this post?');
+    const confirmDel = confirm('Voff! Are you sure you want to delete this Pawsome post?');
     if (confirmDel) {
         try {
             await fetch(`https://v2.api.noroff.dev/blog/posts/Shira/${id}`, {

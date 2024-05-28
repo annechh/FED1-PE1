@@ -89,7 +89,6 @@ async function fetchData() {
         if (accessToken) {
             localStorage.setItem('accessToken', accessToken);
             localStorage.setItem('userData', JSON.stringify(userData.data));
-            console.log('Token saved to local storage', accessToken);
             
             showLoginAlert();
             
@@ -99,6 +98,7 @@ async function fetchData() {
             }, 2500);
         } else {
             console.error('No token found', userData);
+            alert('Voffsies! could not find the Pawsome post');
         }
 }
 

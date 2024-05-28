@@ -120,11 +120,9 @@ async function fetchBlogPosts() {
     
     try {
         const data = await fetchApi('GET', apiUrl);
-        console.log('Data fetched: ', data);
 
         allBlogPosts = allBlogPosts.concat(data.data);
 
-        // Filter posts based on the selected tag
         const filteredPosts = selectedTag ? allBlogPosts.filter(post => post.tags.includes(selectedTag)) : allBlogPosts;
 
         createBlogCards(filteredPosts);
@@ -134,6 +132,7 @@ async function fetchBlogPosts() {
         loadMoreBtn.style.display = data.data.length < postsPerPage ? 'none' : 'block';
     } catch (error) {
         console.error('Error fetching blog posts:', error);
+        alert('Voffsies! could not find the Pawsome posts');
     }
 }
 
@@ -145,7 +144,7 @@ function filterPostsByTag() {
 
 function populateTagsDropdown() {
     const tagsDropdown = document.getElementById('sortTagsDropdown');
-    tagsDropdown.innerHTML = ''; // Clear existing options
+    tagsDropdown.innerHTML = ''; 
 
     const allOption = document.createElement('option');
     allOption.value = '';
@@ -161,58 +160,19 @@ function populateTagsDropdown() {
         tagsDropdown.appendChild(option);
     });
 
-    // Set the selected value to the currently selected tag
+    
     tagsDropdown.value = selectedTag;
 }
-// function populateTagsDropdown() {
-//     const tagsDropdown = document.getElementById('sortTagsDropdown');
-//     const uniqueTags = [...new Set(allBlogPosts.flatMap(post => post.tags))];
 
-//     uniqueTags.forEach(tag => {
-//         const option = document.createElement('option');
-//         option.value = tag;
-//         option.textContent = tag;
-//         tagsDropdown.appendChild(option);
-//     });
-// }
+
+
 
 document.getElementById('sortTagsDropdown').addEventListener('change', function(event) {
     selectedTag = event.target.value === "All Tags" ? '' : event.target.value;
     filterPostsByTag();
 });
-// async function fetchBlogPosts() {
-//     const data = await fetchApi('GET', `${userUrl}?page=${currentPage}&limit=${postsPerPage}`);
-//         console.log('Data index page: ', data);
-//     allBlogPosts = allBlogPosts.concat(data.data);
-
-//     const filteredPosts = selectedTag ? allBlogPosts.filter(post => post.tags.includes(selectedTag)) : allBlogPosts;
-//     createBlogCards(filteredPosts);
-//     totalPostsLoaded += data.data.length;
-
-//     const loadMoreBtn = document.getElementById('loadMoreBtn');
-//     if (data.data.length < postsPerPage) {
-//         loadMoreBtn.style.display = 'none';
-//     } else {
-//         loadMoreBtn.style.display = 'block';
-//     }
-// }
 
 
-
-// async function fetchBlogPosts() {
-//     const data = await fetchApi('GET', `${userUrl}?page=${currentPage}&limit=${postsPerPage}`);
-//     // const data = await fetchApi('GET', userUrl);
-//     console.log('Data index page: ', data);
-//     createBlogCards(data.data)
-//     totalPostsLoaded += data.data.length;
-
-//     const loadMoreBtn = document.getElementById('loadMoreBtn');
-//     if (data.data.length < postsPerPage) {
-//         loadMoreBtn.style.display = 'none';
-//     } else {
-//         loadMoreBtn.style.display = 'block';
-//     }
-// }
 
 
 function welcomeUser() {
@@ -257,7 +217,6 @@ const cancelBtn = document.getElementById('cancelSelectPostsBtn');
 
 function selectPostsBtn() {
     selectBtn.addEventListener('click', () => {
-        // console.log('Select post, changed to Delete post',selectBtn);
         selectBtn.style.display = 'none';
         deleteBtn.style.display = 'flex';
         cancelBtn.style.display = 'flex';
@@ -273,7 +232,6 @@ function selectPostsBtn() {
 function cancelSelectPosts() {
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
-            console.log('Delete post, changed to Select post');
             resetUI();
         }
     });
@@ -289,7 +247,7 @@ function getSelectedPostIds() {
 }
 
 function confirmDeletion() {
-    const confirm = window.confirm('Do you want to delete selected posts?');
+    const confirm = window.confirm('Voff! Are you sure you want to delete this Pawsome posts?');
     resetUI()
     return confirm;
 }
@@ -306,7 +264,6 @@ async function deleteSelectedPosts() {
             return; 
         }
         const ids = getSelectedPostIds();
-        console.log('ids selected', ids);
 
         if (ids.length === 0) {
             alert('No posts selected for deletion');
@@ -323,7 +280,7 @@ async function deleteSelectedPosts() {
             resetUI(); 
             window.location.href = 'index.html';
         } catch (error) {
-            alert('Failed to delete selected posts');
+            alert('Failed to delete selected Pawsome posts');
         }
     });
 }

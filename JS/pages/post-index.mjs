@@ -13,11 +13,12 @@ const months = [
 ];
 
 
+
 async function fetchBlogs() {
     const postId = new URLSearchParams(window.location.search).get('id');
-        console.log('POST ID',postId);
     if (!postId) {
         console.error('No post ID found in Url');
+        alert('Voffsies! could not find the Pawsome post');
         return;
     }
     const data = await fetchApi('GET',`${userUrl}/${postId}`);
@@ -25,6 +26,8 @@ async function fetchBlogs() {
 }
 
 fetchBlogs();
+
+
 
 
 function getFields(data) {
@@ -81,6 +84,9 @@ function getFields(data) {
             })
 }
 
+
+
+
 document.getElementById('deletePostBtn').addEventListener('click', async () => {
     if (!checkForAdmin()) {
         alert('You do not have permission to delete posts');
@@ -88,24 +94,29 @@ document.getElementById('deletePostBtn').addEventListener('click', async () => {
         return; 
     }
     const id = new URLSearchParams(window.location.search).get('id');
-    console.log('delete post id', id);
-    const confirmDel = confirm('Are you sure you want to delete this post?');
+    const confirmDel = confirm('Voff! Are you sure you want to delete this Pawsome post?');
 
     if (confirmDel) {
         try {
             await fetchApi('DELETE', `${userUrl}/${id}`);
-            alert('Post successfully deleted, redirecting you to homepage');
+            alert('Pawsome post successfully deleted, redirecting you to homepage');
             window.location.href = '../index.html';
         } catch (error) {
             console.error('Error deleting this post:', error);
-            alert('Failed to delete this post');
+            alert('Failed to delete this Pawsome post');
         }
     }
 })
 
+
+
+
 window.onscroll = function() {
     scrollFunction();
 };
+
+
+
 
 function scrollFunction() {
     if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {

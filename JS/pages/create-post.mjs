@@ -3,6 +3,7 @@ import { createHeader } from "../components/header.mjs";
 import { loggedInEvents } from "../components/loginState.mjs";
 import { userUrl } from "../components/fetch.mjs";
 import { clearFields } from "../components/clear-fields.mjs";
+import { showLoader, hideLoader } from "../components/fetch.mjs";
 
 
 const checkboxes = document.querySelectorAll('input[type="checkbox"]');
@@ -20,7 +21,6 @@ checkboxes.forEach(checkbox => {
                 selectedTags.splice(index, 1);
             }
         }
-        console.log(selectedTags);
     });
 });
 
