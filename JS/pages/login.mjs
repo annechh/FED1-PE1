@@ -98,7 +98,7 @@ async function fetchData() {
             }, 2500);
         } else {
             console.error('No token found', userData);
-            alert('Voffsies! could not find the Pawsome post');
+            alert('Voffsies! Login failed, please try again');
         }
 }
 

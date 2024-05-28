@@ -129,6 +129,7 @@ async function fetchData() {
         }
     } catch (error) {
         console.error('Registration failed', error);
+        alert('Voffsies! Registration failed, please try again');
     }
 }
 
