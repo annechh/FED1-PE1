@@ -1,10 +1,10 @@
 import { fontawsomeScript } from "../components/default.mjs";
 import { createHeader } from "../components/header.mjs";
-import { loggedInEvents, accessDenied, getUserData, checkForAdmin } from "../components/loginState.mjs";
+import { loggedInEvents, checkForAdmin } from "../components/loginState.mjs";
 import { fetchApi, userUrl } from "../components/fetch.mjs";
 
 
-accessDenied()
+// accessDenied()
 
 const id = new URLSearchParams(window.location.search).get('id');
 console.log('id, url params: ',id);

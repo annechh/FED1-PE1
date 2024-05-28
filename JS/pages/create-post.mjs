@@ -1,10 +1,10 @@
 import { fontawsomeScript } from "../components/default.mjs";
 import { createHeader } from "../components/header.mjs";
-import { loggedInEvents, accessDenied } from "../components/loginState.mjs";
+import { loggedInEvents } from "../components/loginState.mjs";
 import { userUrl } from "../components/fetch.mjs";
 
 
-accessDenied();
+// accessDenied();
 
 
 document.getElementById('createUrl').addEventListener('input', previewImage);
