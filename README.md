@@ -5,7 +5,7 @@ Client
 Shira’s Adventure
 - Employees - 1
 - Location - Sunnfjord
-- Mission - Share the Paw adventures
+- Mission - Share the Paw adventures.
 Dive into Shira's Adventures for hikes, stick chasing, mud baths and more! It's all about fun and games in the great outdoors. Let's GO!
 ---
 Link to Shira’s Adventure
