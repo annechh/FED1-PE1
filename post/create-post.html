@@ -25,7 +25,7 @@
         <div class="header flex-center flex-col items-center">
             <div class="blog-post-img-wrapper">
                 <div class="big-img-shadow"></div>
-                <div class="post-img-container" id="createBlogImg">
+                <div class="post-img-container" id="fieldBlogImg">
                 </div>
                 <div class="add-img">
                     <div class="hover tooltip" data-tooltip="Create new Post"><i class="fa-solid fa-plus" id="addImgBtn" ></i></div>
@@ -44,33 +44,35 @@
             <div class="blog-content flex flex-col gap">
                 <form class="gap" id="inputUrl">
                     <div class="flex flex-col input-url">
-                        <label class="hide" for="createUrl">Add url</label>
-                        <input type="url" name="url" id="createUrl" class="hide">
+                        <label class="hide select-hidden" for="fieldUrl">Add url</label>
+                        <input type="url" name="url" id="fieldUrl" class="hide select-hidden">
                     </div>
                     <div class="flex flex-col input-url">
-                        <label class="hide" for="createAlt">Image Description</label>
-                        <input type="text" name="alt" id="createAlt" class="hide">
+                        <label class="hide select-hidden" for="fieldAlt">Image Description</label>
+                        <input type="text" name="alt" id="fieldAlt" class="hide select-hidden">
                     </div>
                     <div class="flex flex-col">
-                        <label class="hide" for="createTitle">Pawsome Title</label>
-                        <input type="text" id="createTitle" name="title" class="hide">
+                        <label class="hide select-hidden" for="fieldTitle">Pawsome Title</label>
+                        <input type="text" id="fieldTitle" name="title" class="hide select-hidden">
                     </div> 
                     <div class="flex flex-col">
-                        <label class="hide" for="createBlogText">Pawsome Story</label>
-                        <textarea name="blogText" id="createBlogText" class="hide"></textarea>
-                    </div>      
+                        <label class="hide select-hidden" for="fieldBlogText">Pawsome Story</label>
+                        <textarea name="blogText" id="fieldBlogText" class="hide select-hidden"></textarea>
+                    </div>        
                     <div class="flex flex-col">
-                        <label class="hide" id="tagSelect">Select Tags</label>
+                        <label class="hide select-hidden" id="tagSelect">Select Tags</label>
                         <div class="tag-checkboxes">
-                            <label class="hide" id="tag1" for="inputTag1"><input type="checkbox" id="inputTag1" name="tags" value="Mountain hike"> Mountain hike</label>
-                            <label class="hide" id="tag2" for="inputTag2"><input type="checkbox" id="inputTag2" name="tags" value="Swim"> Swim</label>
-                            <label class="hide" id="tag3" for="inputTag3"><input type="checkbox" id="inputTag3" name="tags" value="Sticks"> Sticks</label>
-                            <label class="hide" id="tag4" for="inputTag4"><input type="checkbox" id="inputTag4" name="tags" value="Paddle"> Paddle</label>
+                            <label class="hide select-hidden" id="tag1" for="inputTag1"><input type="checkbox" id="inputTag1" name="tags" value="Mountain hike"> Mountain hike</label>
+                            <label class="hide select-hidden" id="tag2" for="inputTag2"><input type="checkbox" id="inputTag2" name="tags" value="Swim"> Swim</label>
+                            <label class="hide select-hidden" id="tag3" for="inputTag3"><input type="checkbox" id="inputTag3" name="tags" value="Sticks"> Sticks</label>
+                            <label class="hide select-hidden" id="tag4" for="inputTag4"><input type="checkbox" id="inputTag4" name="tags" value="Paddle"> Paddle</label>
+                            <label class="hide select-hidden" id="tag5" for="inputTag5"><input type="checkbox" id="inputTag5" name="tags" value="Snow"> Snow</label>
+                            <label class="hide select-hidden" id="tag6" for="inputTag6"><input type="checkbox" id="inputTag6" name="tags" value="Fjord"> Fjord</label>
                         </div>
                     </div>  
                     <div class="btn-container">
-                        <button class="btn hide" id="createPostBtn">Create Post</button>
-                        <div class="btn tooltip hide" id="cancelPostBtn" data-tooltip="Clear all fields"><i class="fa-solid fa-eraser"></i></div>
+                        <button class="btn hide select-hidden" id="createPostBtn">Create Post</button>
+                        <div class="btn tooltip hide select-hidden" id="clearPostBtn" data-tooltip="Clear all fields"><i class="fa-solid fa-eraser"></i></div>
                     </div>
                 </form>
             </div>

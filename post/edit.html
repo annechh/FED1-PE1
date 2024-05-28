@@ -24,7 +24,7 @@
         <div class="header flex-center flex-col items-center">
             <div class="blog-post-img-wrapper">
                 <div class="big-img-shadow"></div>
-                <div class="post-img-container" id="updateBlogImg">
+                <div class="post-img-container" id="fieldBlogImg">
                     <!-- <img src="" alt="" id="previewImg" class="hide"> -->
                 </div>
                 <div class="add-img"> 
@@ -36,6 +36,7 @@
             </div>
         </div>
     </header>
+    <span class="loader" id="loader"></span>
     
 
     <main class="flex flex-col items-center">
@@ -43,20 +44,20 @@
             <div class="blog-content flex flex-col gap">
                 <form class="gap" >
                     <div class="flex flex-col input-url">
-                        <label for="updateUrl">Add url</label>
-                        <input type="url" name="url" id="updateUrl">
+                        <label for="fieldUrl">Add url</label>
+                        <input type="url" name="url" id="fieldUrl">
                     </div>
                     <div class="flex flex-col input-url">
-                        <label for="updateAlt">Image Description</label>
-                        <input type="text" name="alt" id="updateAlt">
+                        <label for="fieldAlt">Image Description</label>
+                        <input type="text" name="alt" id="fieldAlt">
                     </div>
                     <div class="flex flex-col">
-                        <label for="updateTitle">Pawsome Title</label>
-                        <input type="text" id="updateTitle" name="title">
+                        <label for="fieldTitle">Pawsome Title</label>
+                        <input type="text" id="fieldTitle" name="title">
                     </div> 
                     <div class="flex flex-col">
-                        <label for="updateBlogText">Pawsome Story</label>
-                        <textarea name="blogText" id="updateBlogText" ></textarea>
+                        <label for="fieldBlogText">Pawsome Story</label>
+                        <textarea name="blogText" id="fieldBlogText" ></textarea>
                     </div>
                     <div class="flex flex-col">
                         <label id="tagSelect">Select Tags</label>
@@ -65,6 +66,8 @@
                             <label id="tag2" for="inputTag2"><input type="checkbox" id="inputTag2" name="tags" value="Swim"> Swim</label>
                             <label id="tag3" for="inputTag3"><input type="checkbox" id="inputTag3" name="tags" value="Sticks"> Sticks</label>
                             <label id="tag4" for="inputTag4"><input type="checkbox" id="inputTag4" name="tags" value="Paddle"> Paddle</label>
+                            <label id="tag5" for="inputTag5"><input type="checkbox" id="inputTag5" name="tags" value="Snow"> Snow</label>
+                            <label id="tag6" for="inputTag6"><input type="checkbox" id="inputTag6" name="tags" value="Fjord"> Fjord</label>
                         </div>
                     </div>       
                 </form>
