@@ -119,6 +119,8 @@ addImgBtn.addEventListener('click', function() {
     const { createAltInput, altLabel } = getAltInputLabel();
     const { createTitleInput, titleLabel } = getTitleInputLabel();
     const { createBlogTextInput, blogTextLabel } = getBlogTextInputLabel();
+    const createPost = document.getElementById('createPostBtn');
+    const cancelPost = document.getElementById('cancelPostBtn')
     
     createUrlInput.classList.toggle('hide');
     urlLabel.classList.toggle('hide');
@@ -128,6 +130,8 @@ addImgBtn.addEventListener('click', function() {
     titleLabel.classList.toggle('hide');
     createBlogTextInput.classList.toggle('hide');
     blogTextLabel.classList.toggle('hide');
+    createPost.classList.toggle('hide');
+    cancelPost.classList.toggle('hide');
 });
 
 const createUrlInput = document.getElementById('createUrl');

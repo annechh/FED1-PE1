@@ -90,16 +90,6 @@ document.getElementById('deletePostBtn').addEventListener('click', async () => {
 })
 
 
-const updateImgBtn = document.getElementById('updateImgBtn');
-
-updateImgBtn.addEventListener('click', function() {
-    const updateUrlInput = document.getElementById('updateUrl');
-    const updateAltInput = document.getElementById('updateAlt');
-    updateUrlInput.classList.toggle('hide');
-    updateAltInput.classList.toggle('hide');
-});
-
-
 function previewImage() {
     const imageUrl = document.getElementById('updateUrl').value;
     const previewImageContainer = document.getElementById('updateBlogImg');
