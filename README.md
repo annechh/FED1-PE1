@@ -22,3 +22,8 @@ Contact
 ---
 
 ![Shira-logo-text](https://github.com/annechh/FED1-Project-Exam-1/assets/142426482/4609a7d4-c961-4b54-90de-5b4722f42d90)
+
+
+Image Content License:
+---
+Please do not use any images without permission. If you would like to use any of the images, please contact me first.
