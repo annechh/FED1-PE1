@@ -1,4 +1,6 @@
-![Shira-logo-text](https://github.com/annechh/FED1-Project-Exam-1/assets/142426482/98b60796-ea6c-4035-bd5d-b3d0af7bb8c3)
+![image](https://github.com/annechh/FED1-Project-Exam-1/assets/142426482/71cfcc6f-34d2-4a31-aa3a-5003aeceee3c)
+
+
 
 # Shira's Adventure - FED1-Project-Exam-1
 
