@@ -1,3 +1,5 @@
+![Shira-logo-text](https://github.com/annechh/FED1-Project-Exam-1/assets/142426482/98b60796-ea6c-4035-bd5d-b3d0af7bb8c3)
+
 # Shira's Adventure - FED1-Project-Exam-1
 ---
 Client
@@ -11,6 +13,7 @@ Dive into Shira's Adventures for hikes, stick chasing, mud baths and more! It's 
 ![Shira-logo-text](https://github.com/annechh/FED1-Project-Exam-1/assets/142426482/4609a7d4-c961-4b54-90de-5b4722f42d90)
 
 Link to Shira’s Adventure - https://annechh.github.io/FED1-Project-Exam-1/
+
 
 
 
