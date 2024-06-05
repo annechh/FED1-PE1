@@ -1,7 +1,7 @@
 ![Shira-logo-text](https://github.com/annechh/FED1-Project-Exam-1/assets/142426482/98b60796-ea6c-4035-bd5d-b3d0af7bb8c3)
 
 # Shira's Adventure - FED1-Project-Exam-1
----
+
 To put into practice the skills you have learned over the FED1 program. You will demonstrate your ability to interpret a brief, plan your solution, design a user interface, build and test a responsive web application. You will be required to use all of the skills that you have learned this year including design, HTML, CSS and JavaScript.
 
 
