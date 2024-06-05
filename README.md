@@ -33,6 +33,6 @@ Contact
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/anne-cathrine-hauge-b893bbb3/)
 
 
-Image Content License:
+License:
 ---
 Please do not use any images without permission. If you would like to use any of the images, please contact me first.
