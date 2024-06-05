@@ -20,6 +20,7 @@ https://annechh.github.io/FED1-Project-Exam-1/
 Description
 --- 
 You have been hired to build a front-end user interface for an existing API blogging application. The client has asked for a responsive application that allows users to view dynamic blog posts. The client requires admin pages to register, login and manage their blog posts.
+You may create your own fictional client for this project, with a theme, backstory and branding of your choosing.
 
 
 Built with
