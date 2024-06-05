@@ -2,6 +2,8 @@
 
 # Shira's Adventure - FED1-Project-Exam-1
 ---
+To put into practice the skills you have learned over the FED1 program. You will demonstrate your ability to interpret a brief, plan your solution, design a user interface, build and test a responsive web application. You will be required to use all of the skills that you have learned this year including design, HTML, CSS and JavaScript.
+
 Client
 ---
 Shira’s Adventure
@@ -11,16 +13,13 @@ Shira’s Adventure
 Dive into Shira's Adventures for hikes, stick chasing, mud baths and more! It's all about fun and games in the great outdoors. Let's GO!
 
 
-Link to Shira’s Adventure - https://annechh.github.io/FED1-Project-Exam-1/
-
-
-
-
+Link to Shira’s Adventure
 ---
-
+https://annechh.github.io/FED1-Project-Exam-1/
 
 Description
 --- 
+You have been hired to build a front-end user interface for an existing API blogging application. The client has asked for a responsive application that allows users to view dynamic blog posts. The client requires admin pages to register, login and manage their blog posts.
 
 
 Built with
