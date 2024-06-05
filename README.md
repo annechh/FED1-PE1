@@ -23,6 +23,9 @@ Description
 
 Built with
 ---
+- HTML
+- CSS
+- JS
 
 Contact
 ---
